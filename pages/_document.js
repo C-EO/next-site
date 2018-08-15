@@ -6,13 +6,22 @@ export default class Doc extends Document {
   render () {
     return (
       <html lang="en">
-        <style jsx>{`
+        <style jsx global>{`
           html {
             line-height: 1.15;
             -webkit-text-size-adjust: 100%;
+            height: 100%;
+            box-sizing: border-box;
+          }
+          *,
+          *:before,
+          *:after {
+            box-sizing: inherit;
           }
           body {
             margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+            text-rendering: optimizeLegibility;
           }
         `}</style>
         <Head>
