@@ -3,7 +3,6 @@ import Link from 'next/link'
 export default () =>
   <div>
     <header>
-      here we have to use a navbar including <br/>
       <style jsx>{`
         nav {
           display: flex;

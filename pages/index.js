@@ -1,12 +1,8 @@
 // prototype
 
-import Header from '../components/header'
-import NextLogo from '../components/logo'
+import Page from '../components/page'
 
 export default () =>
-  <div>
-    <Header/>
-    <div>
-      <NextLogo/>
-    </div>
-  </div>
+  <Page>
+    hello
+  </Page>
