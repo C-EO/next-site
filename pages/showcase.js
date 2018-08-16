@@ -5,10 +5,13 @@ import { OscillatorAnimation } from 'react-spring/dist/addons.cjs'
 
 const data = [{
   name: '1',
-  height: 100
+  height: 300
 }, {
   name: '2',
   height: 200
+}, {
+  name: '3',
+  height: 400
 }]
 
 const Box = (props) => (
@@ -43,7 +46,7 @@ export default () =>
         keys={d => d.name}
         heights={d => d.height}
         columns={2}
-        margin={10}
+        margin={50}
         lockScroll={false}
         closeDelay={400}
         {...({

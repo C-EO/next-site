@@ -14,17 +14,15 @@ export default () =>
       }
     `}</style>
     <nav>
+      <Link href="/docs">Docs</Link>
+      <Link href="/showcase">Showcase</Link>
       <Link href="/">
         <div>
           <NextLogo/>
         </div>
       </Link>
-      <div>
-        <Link href="/docs">Docs</Link>
-        <Link href="/showcase">Showcase</Link>
-        <Link href="/learn">Learn (community?)</Link>
-        <Link href="/blog">Blog</Link>
-        <Link href="/enterprise">Enterprise</Link>
-      </div>
+      <Link href="/learn">Learn (community?)</Link>
+      <Link href="/blog">Blog</Link>
+      <Link href="/enterprise">Enterprise</Link>
     </nav>
   </header>
