@@ -1,6 +1,6 @@
-export default () => <svg
-  width="82"
-  height="50"
+export default ({size}) => <svg
+  // width={size || 82}
+  height={size || 50}
   viewBox="0 0 148 90"
   version="1.1"
   xmlnsXlink="http://www.w3.org/1999/xlink"

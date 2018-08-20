@@ -22,6 +22,12 @@ export default class Doc extends Document {
             margin: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
             text-rendering: optimizeLegibility;
+            font-weight: 300;
+            font-size: 13px;
+          }
+          a {
+            color: inherit;
+            text-decoration: none;
           }
         `}</style>
         <Head>
