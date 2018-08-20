@@ -26,7 +26,7 @@ export default class extends Component {
           display: flex;
           align-items: center;
           justify-content: space-around;
-          height: calc(100vh - 280px);
+          height: calc(100vh - 290px);
           min-height: 240px;
           flex-direction: column;
         }

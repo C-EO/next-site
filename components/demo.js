@@ -7,7 +7,7 @@ export default () =>
         justify-content: space-around;
         flex-direction: column;
         width: 100%;
-        height: 200px;
+        height: 300px;
         border-radius: 8px;
         color: #aaa;
         background: #f5f5f5;

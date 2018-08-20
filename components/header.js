@@ -42,15 +42,15 @@ export default class extends Component {
           box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.06);
           transition: box-shadow .5s ease;
         }
-        .scrolled nav {
-          padding: 0 1rem;
-        }
         nav {
           flex: 1;
+          padding: 0 1rem;
+          height: 100%;
           max-width: 1000px;
           display: flex;
           justify-content: space-between;
           align-items: center;
+          overflow: hidden;
         }
         nav .links {
           flex: 0 0 200px;
@@ -68,7 +68,15 @@ export default class extends Component {
           flex: 1;
           justify-content: space-between;
           text-align: center;
-          display: none;
+          padding-left: 24px;
+          opacity: 0;
+          transform: translateY(60px);
+          transition: opacity .2s ease, transform .1s ease .25s;
+        }
+        .scrolled nav .logo {
+          transform: translateY(0);
+          opacity: 1;
+          transition: all .5s ease;
         }
         nav .links .icons {
           display: flex;

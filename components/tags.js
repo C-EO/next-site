@@ -29,8 +29,11 @@ const randomPos = index => {
   // a *= Math.PI
 
   // random length
-  let x = Math.random() * 50 + 380
-  let y = Math.random() * 50 + 150
+  let h = window.innerHeight / 4
+  let w = window.innerWidth / 4
+
+  let x = Math.random() * 50 + w
+  let y = Math.random() * 50 + h
 
   return { x, y, a }
 }
@@ -104,7 +107,7 @@ export default class extends Component {
           font-weight: 100;
           cursor: default;
           opacity: ${focus ? '1' : '0'};
-          font-size: 14px;
+          font-size: 16px;
           transition: opacity 1s ease, color .3s ease;
         }
         .feature-tag:hover {
