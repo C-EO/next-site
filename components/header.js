@@ -24,6 +24,7 @@ export default class extends Component {
     return <header>
       <style jsx>{`
         header {
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
           height: 120px;
         }
         .fixed-container {
