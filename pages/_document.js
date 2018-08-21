@@ -6,7 +6,7 @@ export default class Doc extends Document {
   render () {
     return (
       <html lang="en">
-        <style jsx global>{`
+        <style>{`
           html {
             line-height: 1.15;
             -webkit-text-size-adjust: 100%;
@@ -28,6 +28,10 @@ export default class Doc extends Document {
           a {
             color: inherit;
             text-decoration: none;
+          }
+          .narrow {
+            max-width: 1000px;
+            margin: 0 auto;
           }
         `}</style>
         <Head>

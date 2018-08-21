@@ -21,6 +21,8 @@ export default class extends Component {
   }
   render () {
     const { scrolled } = this.state
+    const { isHome } = this.props
+
     return <header>
       <style jsx>{`
         header {
@@ -54,7 +56,7 @@ export default class extends Component {
           overflow: hidden;
         }
         nav .links {
-          flex: 0 0 200px;
+          flex: 0 0 250px;
           display: flex;
           align-items: center;
         }
@@ -70,15 +72,19 @@ export default class extends Component {
           justify-content: space-between;
           text-align: center;
           padding-left: 24px;
-          opacity: 0;
-          transform: translateY(60px);
-          transition: opacity .2s ease, transform .1s ease .25s;
         }
-        .scrolled nav .logo {
-          transform: translateY(0);
-          opacity: 1;
-          transition: all .5s ease;
-        }
+        ${isHome && `
+          nav .logo {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity .2s ease, transform .1s ease .25s;
+          }
+          .scrolled nav .logo {
+            transform: translateY(0);
+            opacity: 1;
+            transition: all .5s ease;
+          }
+        `}
         nav .links .icons {
           display: flex;
           align-items: center;

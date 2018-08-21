@@ -1,8 +1,8 @@
 import Header from './header'
 
-export default ({children}) => (
+export default ({ home, children }) => (
   <div>
-    <Header/>
+    <Header isHome={home} />
     <style jsx>{`
       .container {
         margin: 0 auto;

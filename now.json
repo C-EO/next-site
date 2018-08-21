@@ -1,4 +1,8 @@
 {
   "name": "nextjs-org",
-  "public": true
+  "public": true,
+  "static": {
+    "directoryListing": false
+  },
+  "type": "static"
 }

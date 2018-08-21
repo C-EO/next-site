@@ -14,7 +14,7 @@ import Spacer from '../components/spacer'
 import Tweet from '../components/tweet'
 
 export default () =>
-  <Page>
+  <Page home>
     <style jsx>{`
       h2 {
         text-align: center;
@@ -59,10 +59,6 @@ export default () =>
       .caption {
         color: #aaa;
         font-size: 12px;
-      }
-      .narrow {
-        max-width: 1000px;
-        margin: 0 auto;
       }
       .dark {
         margin: -1rem;
