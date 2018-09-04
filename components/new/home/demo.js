@@ -1,6 +1,8 @@
 import Logo from '../logo'
 import Container from '../container'
 import Tabs, { Indicator } from '../tabs'
+import Editor from '../editor'
+import Browser from '../browser'
 
 import TabButton from './tabButton'
 
@@ -15,41 +17,53 @@ const DEMO_DATA = {
 export default () => {
   return (
     <Container center dark wide>
-      <Tabs data={Object.keys(DEMO_DATA)}>{
-        (onSelect, selectedId, selectedIndex) =>
-          <div>
-            <style jsx>{`
-              .tab {
+      <Container center>
+        <Tabs data={Object.keys(DEMO_DATA)}>{
+          (onSelect, selectedId, selectedIndex) =>
+            <div>
+              <style jsx>{`
+                .tab {
 
-              }
-            `}</style>
-            <div>
-              {
-                Object.keys(DEMO_DATA).map(id => 
-                  <TabButton
-                    className='tab'
-                    key={`tab-${id}`}
-                    selected={selectedId === id}
-                    onClick={() => onSelect(id)}
-                  >
-                    {id}
-                  </TabButton>
-                )
-              }
+                }
+                .demo-container {
+                  display: flex;
+                }
+              `}</style>
+              <div>
+                {
+                  Object.keys(DEMO_DATA).map(id => 
+                    <TabButton
+                      className='tab'
+                      key={`tab-${id}`}
+                      selected={selectedId === id}
+                      onClick={() => onSelect(id)}
+                    >
+                      {id}
+                    </TabButton>
+                  )
+                }
+              </div>
+              <div className="demo-container">
+                <Editor>
+                  [Code {selectedId}]
+                </Editor>
+                <Browser>
+                  [Webpage {selectedId}]
+                </Browser>
+              </div>
+              <div>
+                {
+                  Object.keys(DEMO_DATA).map(id => 
+                    <Indicator
+                      key={`indicator-${id}`}
+                      selected={selectedId === id}
+                    />
+                  )
+                }
+              </div>
             </div>
-            hi there {selectedId}
-            <div>
-              {
-                Object.keys(DEMO_DATA).map(id => 
-                  <Indicator
-                    key={`indicator-${id}`}
-                    selected={selectedId === id}
-                  />
-                )
-              }
-            </div>
-          </div>
-      }</Tabs>
+        }</Tabs>
+      </Container>
     </Container>
   )
 }

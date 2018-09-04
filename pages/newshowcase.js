@@ -29,9 +29,7 @@ export default () => {
             <Filter onSelect={onSelect} selectedId={selectedId}/>
           </div>
         </Header>
-        <Screen>
-          <Grid/>
-        </Screen>
+        <Grid/>
       </>
     }</Tabs>
     <Footer/>

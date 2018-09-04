@@ -1,4 +1,4 @@
-export default ({center, dark, wide, children, ...props}) => {
+export default ({center, dark, gray, wide, children, ...props}) => {
   return <div {...props}>
     <style jsx>{`
       {
@@ -10,6 +10,7 @@ export default ({center, dark, wide, children, ...props}) => {
         ${center ? `text-align: center;` : ''}
         ${dark ? `background-image: linear-gradient(to bottom, #121212 0%, #323232 100%);` : ''}
         ${dark ? `color: white;` : ''}
+        ${gray ? `background-color: #F9F9F9;` : ''}
       }
     `}</style>
     {children}
