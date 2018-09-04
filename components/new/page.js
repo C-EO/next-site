@@ -1,9 +1,10 @@
-import Header from './header'
-
-// <Header isHome={home} />
-
 export default ({ children }) => (
   <div>
+    <style jsx>{`
+      {
+        overflow-x: hidden;
+      }
+    `}</style>
     <style jsx global>{`
       html {
         line-height: 1.15;

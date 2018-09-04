@@ -12,9 +12,9 @@
     "start": "next start"
   },
   "dependencies": {
-    "animejs": "^2.2.0",
     "mauerwerk": "^1.0.6",
     "next": "^6.1.1",
+    "polished": "^2.0.3",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-keyframes": "^0.2.3",

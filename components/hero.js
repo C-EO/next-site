@@ -1,7 +1,5 @@
 import React, {Component} from 'react'
 
-import Tags from './tags'
-
 export default class extends Component {
   state = {
     hover: false
@@ -41,7 +39,6 @@ export default class extends Component {
         }
       `}</style>
       <div className="hero-background">
-        <Tags focus={hover}/>
       </div>
       <div className="hero-content">
         {children}

@@ -1,37 +1,25 @@
 import Document, { Head, Main, NextScript } from 'next/document'
-
-// for CSS resets, refer to https://necolas.github.io/normalize.css/8.0.0/normalize.css
+import { transparentize } from 'polished'
 
 export default class Doc extends Document {
+  static async getInitialProps(ctx) {
+    const initialProps = await Document.getInitialProps(ctx)
+
+    let theme = ctx.query.theme || 'FF4954'
+
+    return { ...initialProps, theme }
+  }
+
   render () {
+    const { theme } = this.props
+    const themeColor = '#' + theme
+
     return (
       <html lang="en">
         <style>{`
-          html {
-            line-height: 1.15;
-            -webkit-text-size-adjust: 100%;
-            height: 100%;
-            box-sizing: border-box;
-          }
-          *,
-          *:before,
-          *:after {
-            box-sizing: inherit;
-          }
-          body {
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-            text-rendering: optimizeLegibility;
-            font-weight: 300;
-            font-size: 13px;
-          }
-          a {
-            color: inherit;
-            text-decoration: none;
-          }
-          .narrow {
-            max-width: 1000px;
-            margin: 0 auto;
+          :root {
+            --theme-color: ${themeColor};
+            --theme-color-transparent: ${transparentize(0.39, themeColor)};
           }
         `}</style>
         <Head>
