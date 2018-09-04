@@ -67,7 +67,7 @@ export default () => {
         <Link href="/newshowcase"><a>Showcase</a></Link>
       </div>
       <div className="logo">
-        <Link href="/">
+        <Link href="/home">
           <a>
             <NextLogo/>
           </a>

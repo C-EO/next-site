@@ -4,6 +4,7 @@ export default ({center, dark, wide, children, ...props}) => {
       {
         width: 100%;
         margin: 0 auto;
+        overflow-y: hidden;
         ${wide ? '' : `max-width: 1024px;`}
         ${wide ? '' : `padding: 0 1rem;`}
         ${center ? `text-align: center;` : ''}

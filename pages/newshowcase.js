@@ -4,6 +4,11 @@ import Header from '../components/new/header'
 import Footer from '../components/new/footer'
 import Navbar from '../components/new/navbar'
 import Notification from '../components/new/notification'
+import Tabs from '../components/new/tabs'
+
+import Title from '../components/new/showcase/title'
+import Grid from '../components/new/showcase/grid'
+import Filter from '../components/new/showcase/filter'
 
 export default () => {
   return <Page>
@@ -13,7 +18,22 @@ export default () => {
       </Notification>
       <Navbar/>
     </Header>
-    
+    <Title/>
+    <Tabs data={['all', 'finace', 'news', 'tool', 'personal', 'heart']}>{
+      (onSelect, selectedId, selectedIndex) => <>
+        <Header height={32} distance={8 * 30} offset={64 + 32}>
+          <div style={{
+            height: 32,
+            width: '100%'
+          }}>
+            <Filter onSelect={onSelect} selectedId={selectedId}/>
+          </div>
+        </Header>
+        <Screen>
+          <Grid/>
+        </Screen>
+      </>
+    }</Tabs>
     <Footer/>
   </Page>
 }
