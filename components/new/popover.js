@@ -26,9 +26,10 @@ export default class Popover extends Component {
           border-radius: 5px;
           background: white;
           box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
-          transition: all .2s ease;
+          transition: opacity .2s ease;
           transform: translateX(-50%);
           opacity: 0;
+          visibility: hidden;
           z-index: 3;
         }
         .popover.top {
@@ -57,6 +58,7 @@ export default class Popover extends Component {
         }
         .popover.show {
           opacity: 1;
+          visibility: visible;
         }
       `}</style>
       {children}

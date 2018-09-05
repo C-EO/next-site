@@ -19,7 +19,8 @@ export default class Doc extends Document {
         <style>{`
           :root {
             --theme-color: ${themeColor};
-            --theme-color-transparent: ${transparentize(0.39, themeColor)};
+            --theme-color-transparent: ${transparentize(1 - 0.39, themeColor)};
+            --theme-color-transparent-light: ${transparentize(1 - 0.23, themeColor)};
           }
         `}</style>
         <Head>

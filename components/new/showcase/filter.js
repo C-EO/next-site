@@ -6,8 +6,8 @@ const TABS = [
     name: 'All'
   },
   {
-    id: 'finace',
-    name: 'Finace'
+    id: 'finance',
+    name: 'Finance'
   },
   {
     id: 'news',
@@ -19,7 +19,7 @@ const TABS = [
   },
   {
     id: 'heart',
-    name: 'h'
+    name: 'Heart'
   }
 ]
 
@@ -31,22 +31,21 @@ export default ({onSelect, selectedId}) => <Container wide center>
       display: flex;
       align-items: center;
       justify-content: center;
+      box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .02);
     }
     .tab {
       display: inline-block;
       margin: 0 1rem;
       cursor: pointer;
+      z-index: 2;
     }
     .tab span {
       opacity: 1;
     }
     .tab strong {
+      color: var(--theme-color);
       position: absolute;
       opacity: 0;
-    }
-    .tab.selected {
-      font-weight: bold;
-      color: var(--theme-color);
     }
     .tab.selected span {
       opacity: 0;
@@ -54,22 +53,27 @@ export default ({onSelect, selectedId}) => <Container wide center>
     .tab.selected strong {
       opacity: 1;
     }
-    .background {
-      position: absolute;
-      top: 0;
-      width: 100%;
-      height: 32px;
-      background: white;
-      z-index: -1;
-    }
     .indicator {
       position: absolute;
-      bottom: 0;
+      top: 100%;
       display: inline-block;
-      width: 50px;
-      height: 10px;
-      box-shadow: 0 10px 20px 0 var(--theme-color-transparent);
-      z-index: -2;
+      width: 108px;
+      height: 30px;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .indicator:after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 100%;
+      display: inline-block;
+      width: 60px;
+      height: 30px;
+      border-raidus: 20px;
+      box-shadow: 0 6px 24px 0 var(--theme-color-transparent-light);
+      transform: translateX(-50%);
+      z-index: 0;
     }
   `}</style>
   <div className="tabs">

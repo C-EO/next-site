@@ -21,7 +21,7 @@ export default class extends Component {
   }
   render () {
     const { scrolled } = this.state
-    const { isHome } = this.props
+    const { isHome, zIndex } = this.props
 
     return <header>
       <style jsx>{`
@@ -36,7 +36,7 @@ export default class extends Component {
           justify-content: space-around;
           align-items: center;
           left: 0;
-          z-index: 100;
+          z-index: ${zIndex || 100};
           background-color: rgba(255, 255, 255, 0.96);
         }
         .scrolled {

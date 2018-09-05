@@ -40,9 +40,31 @@ export default ({ children }) => (
       svg {
         text-rendering: optimizeLegibility;
       }
-      h2 {
+      h1, h2, h3 {
         margin: 0;
-        font-weight: normal;
+      }
+      .f1 {
+        font-weight: 500;
+        font-size: 32px;
+      }
+      .f2 {
+        margin: 0;
+        font-weight: 300;
+        font-size: 24px;
+      }
+      .f3 {
+        font-size: 18px;
+      }
+      .f4 {
+        font-size: 16px;
+      }
+      .subtitle {
+        font-weight: 300;
+        font-size: 18px;
+        color: #BCBCBC;
+      }
+      .mute {
+        color: #ccc;
       }
     `}</style>
     {children}

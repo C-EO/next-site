@@ -1,4 +1,8 @@
-export default ({size}) => <svg
+export default ({size}) => <div 
+  style={{
+    transform: 'translateX(-10%)'
+  }}>
+  <svg
     // width={size || 82}
     height={size || 50}
     viewBox="0 0 148 90"
@@ -10,4 +14,5 @@ export default ({size}) => <svg
     fill="#000"
     fillRule="nonzero"
   />
-</svg>
+  </svg>
+</div>

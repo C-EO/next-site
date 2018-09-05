@@ -8,16 +8,18 @@ export default ({children, invert, href, className}) => (
           justify-content: center;
           align-content: center;
           align-items: center;
-          height: 40px;
-          border-radius: 7px;
           cursor: pointer;
           text-decoration: none;
           font-size: 16px;
-          padding: 10px 20px;
+          font-weight: 300;
           display: inline-block;
           color: var(--theme-color);
         }
         a.invert {
+          padding: 0 30px;
+          height: 40px;
+          line-height: 40px;
+          border-radius: 7px;
           background: var(--theme-color);
           box-shadow: 0 4px 14px 0 var(--theme-color-transparent);
           color: white;

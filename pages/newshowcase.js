@@ -12,16 +12,13 @@ import Filter from '../components/new/showcase/filter'
 
 export default () => {
   return <Page>
-    <Header height={64 + 32}>
-      <Notification title="Next 6 is out!">
-        Next 6 is out! — Babel 7, App Component, Improved stacktraces, Improved static export. Saturday, April 28th 2018
-      </Notification>
+    <Header height={0} zIndex={1001} background='transparent'>
       <Navbar/>
     </Header>
-    <Title/>
-    <Tabs data={['all', 'finace', 'news', 'tool', 'personal', 'heart']}>{
+    <Tabs data={['all', 'finance', 'news', 'tool', 'personal', 'heart']}>{
       (onSelect, selectedId, selectedIndex) => <>
-        <Header height={32} distance={8 * 30} offset={64 + 32}>
+        <Header height={240 + 64 + 32} distance={240} offset={-240}>
+          <Title height={240 + 64}/>
           <div style={{
             height: 32,
             width: '100%'

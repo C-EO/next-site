@@ -12,7 +12,7 @@ import Customers from '../components/new/home/customers'
 
 export default () => {
   return <Page>
-    <Header height={64 + 32} shadow>
+    <Header height={64 + 32} shadow active={120}>
       <Notification title="Next 6 is out!">
         Next 6 is out! — Babel 7, App Component, Improved stacktraces, Improved static export. Saturday, April 28th 2018
       </Notification>
