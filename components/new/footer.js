@@ -1,6 +1,6 @@
 import Container from './container'
 
-export default () => <Container wide dark>
+export default () => <Container wide dark padding>
   <Container>
     <div className="row">
       <div className="column">

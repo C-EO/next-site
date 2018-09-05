@@ -11,7 +11,7 @@ export default ({title, children}) => {
         height: 32px;
         text-align: center;
         color: #6A6A6A;
-        background: #F3F3F3;
+        background: rgba(0, 0, 0, 0.06);
         display: flex;
         align-items: center;
         justify-content: space-around;

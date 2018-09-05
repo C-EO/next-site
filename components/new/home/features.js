@@ -1,7 +1,7 @@
 import Container from '../container'
 import Button from '../button'
 
-export default () => <Container center>
+export default () => <Container center padding>
   <h2>Why Next.js?</h2>
   <p>The world’s leading companies use and love Next.js</p>
   <div className="row">
@@ -24,9 +24,11 @@ export default () => <Container center>
   <style jsx>{`
     .row {
       display: flex;
+      margin: -1rem;
     }
     .column {
       text-align: left;
+      padding: 0 1rem;
     }
   `}</style>
 </Container>

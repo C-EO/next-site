@@ -37,6 +37,13 @@ export default ({ children }) => (
         background-color: #000;
         color: #FFF;
       }
+      svg {
+        text-rendering: optimizeLegibility;
+      }
+      h2 {
+        margin: 0;
+        font-weight: normal;
+      }
     `}</style>
     {children}
   </div>

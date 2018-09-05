@@ -2,6 +2,7 @@ import Link from 'next/link'
 
 import NextLogo from './logo'
 import Container from './container'
+import Popover from './popover'
 
 export default () => {
   return <Container>
@@ -15,7 +16,6 @@ export default () => {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          overflow: hidden;
         }
         nav .links {
           display: flex;
@@ -23,6 +23,7 @@ export default () => {
           z-index: 1;
         }
         nav .links a {
+          display: inline-block;
           // enlarge the clickable area
           padding: 5px;
           margin-left: -5px;
@@ -49,7 +50,7 @@ export default () => {
         nav .links .icons a .badge {
           position: absolute;
           display: inline-block;
-          right: 0;
+          right: 0px;
           bottom: 4px;
           width: 8px;
           height: 8px;
@@ -57,7 +58,7 @@ export default () => {
           background-color: #2BDB66;
           pointer-events: none;
         }
-        nav .links .icons a:last-of-type {
+        nav .links .icons a.no-margin {
           margin-right: 0;
         }
       `}</style>
@@ -78,7 +79,9 @@ export default () => {
         <Link href="/enterprise"><a>Enterprise</a></Link>
         <div className="icons">
           <Link href="https://github.com/zeit"><a><img src="/static/icons/logo-github.svg"/></a></Link>
-          <Link href="https://github.com/zeit"><a><img src="/static/icons/spectrum.svg"/><span className="badge"/></a></Link>
+          <Popover content={<div style={{ whiteSpace: 'nowrap' }}>Join <strong>Next.js</strong> on <strong>Spectrum</strong></div>}>
+            <Link href="https://github.com/zeit"><a className="no-margin"><img src="/static/icons/spectrum.svg"/><span className="badge"/></a></Link>
+          </Popover>
         </div>
       </div>
     </nav>
