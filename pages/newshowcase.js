@@ -12,7 +12,7 @@ import Filter from '../components/new/showcase/filter'
 
 export default () => {
   return <Page>
-    <Header height={0} zIndex={1001} background='transparent'>
+    <Header height={0} zIndex={1001} background='white' defaultActive>
       <Navbar/>
     </Header>
     <Tabs data={['all', 'finance', 'news', 'tool', 'personal', 'heart']}>{

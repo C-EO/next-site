@@ -6,7 +6,11 @@ import Measure from 'react-measure'
 import { Transition, Trail, animated, interpolate, config } from 'react-spring'
 
 const styles = {
-  outer: { position: 'relative', width: '100%', height: '100%' },
+  outer: { 
+    position: 'relative', 
+    width: '100%', 
+    height: '100%',
+   },
   inner: {
     position: 'relative',
     width: '100%',
@@ -68,9 +72,9 @@ export class Grid extends React.PureComponent {
     return {
       opacity,
       x: open ? this.outerRef.scrollLeft : x,
-      y: open ? this.outerRef.scrollTop : y,
+      y: open ? window.scrollY - 240 : y, // this.outerRef.scrollTop : y,
       width: open ? this.state.width : width,
-      height: open ? this.state.heightOuter : height,
+      height: open ? 500 : height // this.state.heightOuter : height,
     }
   }
 

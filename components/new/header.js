@@ -25,7 +25,7 @@ export default class extends Component {
   }
   render () {
     const { scrolled, fixed, active } = this.state
-    const { isHome, height, offset, shadow, zIndex, background, children } = this.props
+    const { isHome, height, offset, shadow, zIndex, background, defaultActive, children } = this.props
 
     return <header>
       <style jsx>{`
@@ -55,7 +55,7 @@ export default class extends Component {
           ${shadow ? `box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.06);` : ''}
         }
       `}</style>
-      <div className={`fixed-container${scrolled ? ' scrolled' : ''}${fixed ? ' fixed' : ''}${active ? ' active' : ''}`}>
+      <div className={`fixed-container${scrolled ? ' scrolled' : ''}${fixed ? ' fixed' : ''}${active || defaultActive ? ' active' : ''}`}>
         {children}
       </div>
     </header>

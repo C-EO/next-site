@@ -17,7 +17,7 @@ const DEMO_DATA = {
 export default () => {
   return (
     <Container center dark wide>
-      <Container center padding>
+      <Container center>
         <Tabs data={Object.keys(DEMO_DATA)}>{
           (onSelect, selectedId, selectedIndex) =>
             <div>

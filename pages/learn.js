@@ -12,7 +12,7 @@ import Customers from '../components/new/home/customers'
 
 export default () => {
   return <Page>
-    <Header height={64} shadow active={120}>
+    <Header height={64} shadow defaultActive>
       <Navbar/>
     </Header>
     <h1>learn</h1>

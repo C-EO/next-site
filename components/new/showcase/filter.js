@@ -61,6 +61,7 @@ export default ({onSelect, selectedId}) => <Container wide center>
       height: 30px;
       z-index: 0;
       overflow: hidden;
+      pointer-events: none;
     }
     .indicator:after {
       content: '';

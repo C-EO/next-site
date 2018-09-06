@@ -22,22 +22,21 @@ const Box = ({data, maximized, toggle}) => (
         background-image: url(${data.src});
         background-size: cover;
         background-position: center top;
-        height: ${maximized ? '100%' : '220px'};
+        height: 100%;
         cursor: ${maximized ? 'auto' : 'pointer'};
+        transition: border-radius .2s ease;
       }
     `}</style>
   </div>
 )
 
 export default () => <Container wide gray center>
-  <div style={{
-    paddingBottom: 100
-  }}>
+  <div>
     <Grid
       className="grid"
       data={data}
       keys={d => d.internalUrl}
-      heights={200}
+      heights={300}
       columns={3}
       margin={50}
       lockScroll={false}
@@ -49,6 +48,8 @@ export default () => <Container wide gray center>
         friction: 86,
         restDisplacementThreshold: 0.01,
         restSpeedThreshold: 0.01
+      }}
+      style={{
       }}
     >
       {(data, maximized, toggle) => {

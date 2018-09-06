@@ -4,7 +4,7 @@ export default ({center, dark, gray, wide, padding, children, ...props}) => {
       {
         width: 100%;
         margin: 0 auto;
-        padding: ${padding ? '40px' : '0'} ${wide ? '0' : '1rem'};
+        padding: ${padding ? '4rem' : '0'} ${wide ? '0' : '1rem'};
         ${wide ? '' : `max-width: 1024px;`}
         ${center ? `text-align: center;` : ''}
         ${dark ? `background-image: linear-gradient(to bottom, #121212 0%, #323232 100%);` : ''}
