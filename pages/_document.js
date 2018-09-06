@@ -1,5 +1,5 @@
 import Document, { Head, Main, NextScript } from 'next/document'
-import { transparentize } from 'polished'
+import { transparentize, modularScale } from 'polished'
 
 export default class Doc extends Document {
   static async getInitialProps(ctx) {
@@ -13,6 +13,7 @@ export default class Doc extends Document {
   render () {
     const { theme } = this.props
     const themeColor = '#' + theme
+    const modularScaleRatio = 'minorThird'
 
     return (
       <html lang="en">
@@ -21,6 +22,19 @@ export default class Doc extends Document {
             --theme-color: ${themeColor};
             --theme-color-transparent: ${transparentize(1 - 0.39, themeColor)};
             --theme-color-transparent-light: ${transparentize(1 - 0.23, themeColor)};
+            
+            /* set base values */
+            --text-base-size: 1em;
+            --text-scale-ratio: 1.2;
+
+            /* type scale */
+            --text-xs: ${modularScale(-2, '1em', modularScaleRatio)};
+            --text-sm: ${modularScale(-1, '1em', modularScaleRatio)};
+            --text-md: ${modularScale(1, '1em', modularScaleRatio)};
+            --text-lg: ${modularScale(2, '1em', modularScaleRatio)};
+            --text-xl: ${modularScale(3, '1em', modularScaleRatio)};
+            --text-xxl: ${modularScale(4, '1em', modularScaleRatio)};
+            --text-xxxl: ${modularScale(5, '1em', modularScaleRatio)};
           }
         `}</style>
         <Head>

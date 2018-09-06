@@ -24,7 +24,7 @@ export default ({ children }) => (
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
         text-rendering: optimizeLegibility;
         line-height: 1.5;
-        font-size: 13px;
+        font-size: var(--text-base-size);
       }
       a {
         -webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -44,23 +44,43 @@ export default ({ children }) => (
         margin: 0;
       }
       .f1 {
-        font-weight: 500;
-        font-size: 32px;
+        font-size: var(--text-xxl);
       }
       .f2 {
-        margin: 0;
-        font-weight: 300;
-        font-size: 24px;
+        font-size: var(--text-xl);
       }
       .f3 {
-        font-size: 18px;
+        font-size: var(--text-lg);
       }
       .f4 {
-        font-size: 16px;
+        font-size: var(--text-md);
+      }
+      .f5 {
+        font-size: var(--text-sm);
+      }
+      .f6 {
+        font-size: var(--text-xs);
+      }
+      .fw1 {
+        font-weight: 100;
+      }
+      .fw2 {
+        font-weight: 200;
+      }
+      .fw3 {
+        font-weight: 300;
+      }
+      .fw4 {
+        font-weight: 400;
+      }
+      .fw5 {
+        font-weight: 500;
+      }
+      .fw6 {
+        font-weight: 600;
       }
       .subtitle {
         font-weight: 300;
-        font-size: 18px;
         color: #BCBCBC;
       }
       .mute {

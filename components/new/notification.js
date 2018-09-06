@@ -4,7 +4,7 @@ import { ellipsis } from 'polished'
 import Container from './container'
 
 export default ({title, children}) => {
-  return <div className='notification' title={title}>
+  return <div className='notification f5' title={title}>
     <style jsx>{`
       .notification {
         width: 100%;

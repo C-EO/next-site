@@ -5,6 +5,7 @@ import Footer from '../components/new/footer'
 import Navbar from '../components/new/navbar'
 import Notification from '../components/new/notification'
 import Container from '../components/new/container'
+import Section from '../components/new/section'
 
 export default () => {
   return <Page>
@@ -14,13 +15,15 @@ export default () => {
       </Notification>
       <Navbar/>
     </Header>
-    <Container center>
-      <h1>nextjs.org components</h1>
-    </Container>
     <Container padding>
-      <h1 className="f1">heading 1</h1>
-      <h2 className="f2">heading 2</h2>
-      <h3>heading 3</h3>
+      <Section title='Design' description='Components for nextjs.org'>
+        <h1 className="f1">heading 1</h1>
+        <h2 className="f2">heading 2</h2>
+        <h3 className="f3">heading 3</h3>
+        <h3 className="f4">heading 4</h3>
+        <h3 className="f5">heading 5</h3>
+        <h3 className="f6">heading 6</h3>
+      </Section>
     </Container>
     <Footer/>
   </Page>
