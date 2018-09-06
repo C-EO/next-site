@@ -14,7 +14,7 @@ export default () => {
         }
       `}</style>
       <Logo size={90}/>
-      <h2 className="f2">
+      <h2 className="f2 fw3">
         a lightweight framework
         <br/>
         for <strong>static</strong> and <strong>server‑rendered</strong> applications

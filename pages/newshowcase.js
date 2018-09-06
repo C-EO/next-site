@@ -17,7 +17,7 @@ export default () => {
     </Header>
     <Tabs data={['all', 'finance', 'news', 'tool', 'personal', 'heart']}>{
       (onSelect, selectedId, selectedIndex) => <>
-        <Header height={240 + 64 + 32} distance={240} offset={-240}>
+        <Header height={240 + 64 + 32} distance={240} offset={-240} shadow>
           <Title height={240 + 64}/>
           <div style={{
             height: 32,

@@ -1,4 +1,5 @@
 import Container from '../container'
+import SectionHeader from '../section-header'
 
 export default ({ height }) => <Container center>
   <div className="showcase-title">
@@ -12,7 +13,6 @@ export default ({ height }) => <Container center>
         justify-content: flex-end;
       }
     `}</style>
-    <h1 className="f1">Showcases</h1>
-    <h2 className="subtitle">Meet hundreds of beautiful websites powered by Next.js</h2>
+    <SectionHeader title='Showcase' description='Meet hundreds of beautiful websites powered by Next.js' />
   </div>
 </Container>

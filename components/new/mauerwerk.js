@@ -63,8 +63,10 @@ export class Grid extends React.PureComponent {
   resizeInner = props => this.resize('width', 'height', props)
   update = ({ key, x, y, width, height }) => {
     const open = this.state.open === key
+    const opacity = width <= 0 ? 0 : (this.state.open && !open ? 0 : 1)
+
     return {
-      opacity: this.state.open && !open ? 0 : 1,
+      opacity,
       x: open ? this.outerRef.scrollLeft : x,
       y: open ? this.outerRef.scrollTop : y,
       width: open ? this.state.width : width,
@@ -84,14 +86,14 @@ export class Grid extends React.PureComponent {
     y,
     width,
     height,
-  }) => (
-    <animated.div
+  }) => {
+    return <animated.div
       style={{
         ...styles.cell,
         opacity,
         width,
         height,
-        zIndex: lastOpen === key || open === key ? 1000 : i,
+        zIndex: lastOpen === key || open === key ? 999 : i,
         transform: interpolate(
           [x, y],
           (x, y) => `translate3d(${x}px,${y}px, 0)`
@@ -101,7 +103,7 @@ export class Grid extends React.PureComponent {
         this.toggle(key)
       )}
     />
-  )
+  }
 
   render() {
     let {
@@ -122,6 +124,8 @@ export class Grid extends React.PureComponent {
     let { lastOpen, open, height, width, widthOuter, heightOuter } = this.state
     let column = 0
     let columnHeights = new Array(columns).fill(0)
+
+    width = width || (typeof window === 'undefined' ? 0 : window.innerWidth)
 
     let displayData = data.map((child, i) => {
       let index = occupySpace
@@ -147,7 +151,7 @@ export class Grid extends React.PureComponent {
     })
     const overflow = lockScroll ? (open ? 'hidden' : 'auto') : 'auto'
     const totalHeight = Math.max(...columnHeights) + margin
-    const renderContainer = widthOuter > 0 // && heightOuter > 0
+    const renderContainer = widthOuter > 0
     const renderContent = transitionMount || (height > 0 && width > 0)
 
     return (

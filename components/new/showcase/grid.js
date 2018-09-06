@@ -15,14 +15,14 @@ const Box = ({data, maximized, toggle}) => (
     <style jsx>{`
       .tile {
         box-shadow: 0 10px 20px 0 rgba(0,0,0,0.12);
-        border-radius: 7px;
+        border-radius: ${maximized ? '0' : '7px'};
         text-align: center;
         overflow: hidden;
         background-color: #FFFFFF;
         background-image: url(${data.src});
         background-size: cover;
         background-position: center top;
-        height: ${maximized ? '300px' : '220px'};
+        height: ${maximized ? '100%' : '220px'};
         cursor: ${maximized ? 'auto' : 'pointer'};
       }
     `}</style>

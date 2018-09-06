@@ -33,6 +33,7 @@ export default class extends Component {
           height: ${height}px;
         }
         .fixed-container {
+          position: relative;
           width: 100%;
           display: flex;
           flex-direction: column;
