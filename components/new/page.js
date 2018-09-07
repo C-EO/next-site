@@ -27,14 +27,14 @@ export default ({ children }) => (
         font-size: var(--text-base-size);
       }
       a {
-        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
       }
       html, body {
         background-color: #FFF;
         color: #000;
       }
       ::selection {
-        background-color: #000;
+        background-color: var(--theme-color);
         color: #FFF;
       }
       svg {
@@ -85,6 +85,14 @@ export default ({ children }) => (
       }
       .mute {
         color: #ccc;
+      }
+      .row {
+        display: flex;
+        margin: 0 -1rem;
+      }
+      .column {
+        flex: 1;
+        padding: 0 1rem;
       }
     `}</style>
     {children}

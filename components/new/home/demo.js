@@ -22,15 +22,21 @@ export default () => {
           (onSelect, selectedId, selectedIndex) =>
             <div>
               <style jsx>{`
-                .tab {
-
-                }
-                .demo-container {
+                .demo-header {
                   display: flex;
+                  justify-content: center;
+                  margin: 2rem 0;
+                }
+                .demo-body {
+                }
+                .demo-footer {
+                  display: flex;
+                  margin: 2rem 0;
+                  align-items: flex-end;
                   justify-content: space-between;
                 }
               `}</style>
-              <div>
+              <div className="demo-header">
                 {
                   Object.keys(DEMO_DATA).map(id => 
                     <TabButton
@@ -44,23 +50,32 @@ export default () => {
                   )
                 }
               </div>
-              <div className="demo-container">
-                <Editor>
-                  [Code {selectedId}]
-                </Editor>
-                <Browser>
-                  [Webpage {selectedId}]
-                </Browser>
+              <div className="demo-body row">
+                <div className="column">
+                  <Editor>
+                    [Code {selectedId}]
+                  </Editor>
+                </div>
+                <div className="column">
+                  <Browser>
+                    [Webpage {selectedId}]
+                  </Browser>
+                </div>
               </div>
-              <div>
-                {
-                  Object.keys(DEMO_DATA).map(id => 
-                    <Indicator
-                      key={`indicator-${id}`}
-                      selected={selectedId === id}
-                    />
-                  )
-                }
+              <div className="demo-footer">
+                <div className="note">
+                  <p>Next will serve each file in <code>`/pages`</code> under a pathname matching the filename.</p>
+                </div>
+                <div className="indicator">
+                  {
+                    Object.keys(DEMO_DATA).map(id => 
+                      <Indicator
+                        key={`indicator-${id}`}
+                        selected={selectedId === id}
+                      />
+                    )
+                  }
+                </div>
               </div>
             </div>
         }</Tabs>

@@ -18,7 +18,7 @@ export default () => {
       </Notification>
       <Navbar/>
     </Header>
-    <Screen offset={64 + 32 + 200}>
+    <Screen offset={64 + 32 + 150}>
       <Intro/>
     </Screen>
     <Demo/>

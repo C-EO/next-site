@@ -22,9 +22,10 @@ export default class Doc extends Document {
             --theme-color: ${themeColor};
             --theme-color-transparent: ${transparentize(1 - 0.39, themeColor)};
             --theme-color-transparent-light: ${transparentize(1 - 0.23, themeColor)};
+            --theme-color-transparent-near-white: ${transparentize(1 - 0.1, themeColor)};
             
             /* set base values */
-            --text-base-size: 1em;
+            --text-base-size: 16px;
             --text-scale-ratio: 1.2;
 
             /* type scale */

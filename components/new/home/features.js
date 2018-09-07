@@ -22,13 +22,8 @@ export default () => <Container center padding>
     </div>
   </div>
   <style jsx>{`
-    .row {
-      display: flex;
-      margin: 0 -1rem;
-    }
     .column {
       text-align: left;
-      padding: 0 1rem;
     }
   `}</style>
 </Container>
