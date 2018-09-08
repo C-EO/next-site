@@ -188,15 +188,18 @@ const SitePreview = withRouter(class extends PureComponent {
       }
     
         <div className='content'>
-          <div className={`preview`} onClick={this.loadDetail}>
-            <div className='shadow'>
-              <div className='info'>
-                <h3 className={siteData.highlighted ? 'f2' : 'f4'}>{siteData.title}</h3>
-                <Link href={siteData.link}><a className='f5'>{siteData.link}</a></Link>
+          <Fade show={isVisible}>
+            <div className={`preview`} onClick={this.loadDetail}>
+              <div className='shadow'>
+                <div className='info'>
+                  <h3 className={siteData.highlighted ? 'f2' : 'f4'}>{siteData.title}</h3>
+                  <Link href={siteData.link}><a className='f5'>{siteData.link}</a></Link>
+                </div>
               </div>
             </div>
-          </div>
+          </Fade>
         </div>
+        
       </div>
   }
 })
@@ -229,7 +232,7 @@ const Row = ({
     ...directionalProperty('padding', 0, GAP_X / 2),
     ...style
   }}>
-    {highlighted ? [highlighted, <div style={{
+    {highlighted ? [highlighted, <div key={`column-normal`} style={{
       display: 'flex',
       flexDirection: 'column',
       flex: 1

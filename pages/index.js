@@ -9,6 +9,7 @@ import Intro from '../components/new/home/intro'
 import Demo from '../components/new/home/demo'
 import Features from '../components/new/home/features'
 import Customers from '../components/new/home/customers'
+import FAQ from '../components/new/home/faq'
 
 export default () => {
   return <Page>
@@ -24,6 +25,7 @@ export default () => {
     <Demo/>
     <Features/>
     <Customers/>
+    <FAQ/>
     <Footer/>
   </Page>
 }

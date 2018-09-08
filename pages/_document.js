@@ -5,7 +5,7 @@ export default class Doc extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx)
 
-    let theme = ctx.query.theme || 'FF4954'
+    let theme = ctx.query.theme || 'FF2A37' // || 'FF4954'
 
     return { ...initialProps, theme }
   }

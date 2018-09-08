@@ -22,7 +22,7 @@ export default class extends PureComponent {
 
     let src = siteData.src
 
-    return <Fade>
+    return (
       <div className="lightbox" onClick={this.clickOuter}>
         <style jsx>{`
           .lightbox {
@@ -34,7 +34,7 @@ export default class extends PureComponent {
             bottom: 0;
             padding: 3rem 3rem 7rem 3rem;
             // background-color: rgba(255, 255, 255, 0.95);
-            background-color: rgba(0, 0, 0, 0.85);
+            background-color: rgba(0, 0, 0, 0.9);
             // visibility: hidden;
           }
           .preview {
@@ -69,15 +69,17 @@ export default class extends PureComponent {
             overflow: hidden;
           }
         `}</style>
+        <Fade>
           <div className={`preview`}>
             <img src={src}/>
-          <div className='close' onClick={clearRoute}>close</div>
-          <div className='info'>
-            <h3 className={siteData.highlighted ? 'f2' : 'f4'}>{siteData.title}</h3>
-            <Link href={siteData.link}><a className='f5'>{siteData.link}</a></Link>
+            <div className='close' onClick={clearRoute}>close</div>
+            <div className='info'>
+              <h3 className={siteData.highlighted ? 'f2' : 'f4'}>{siteData.title}</h3>
+              <Link href={siteData.link}><a className='f5'>{siteData.link}</a></Link>
+            </div>
           </div>
-        </div>
+        </Fade>
       </div>
-    </Fade>
+    )
   }
 }

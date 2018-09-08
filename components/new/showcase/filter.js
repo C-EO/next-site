@@ -1,20 +1,22 @@
 import Container from '../container'
+import Popover from '../popover'
+
 import { categories } from '../../../showcase-manifest'
 
 const Heart = () =>
-  <svg width="16px" height="14px" viewBox="0 0 16 14" version="1.1" xmlns="http://www.w3.org/2000/svg">
-      <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-          <g transform="translate(-917.000000, -313.000000)" fill="#FD3B47" fillRule="nonzero">
-              <g transform="translate(504.000000, 253.000000)">
-                  <g transform="translate(413.000000, 60.000000)">
-                      <path d="M14.682,1.318 C12.925,-0.439 10.075,-0.439 8.318,1.318 C8.197,1.439 8.104,1.577 8,1.707 C7.896,1.577 7.803,1.439 7.682,1.318 C5.925,-0.439 3.075,-0.439 1.318,1.318 C-0.439,3.075 -0.439,5.925 1.318,7.682 L8,14 L14.682,7.682 C16.439,5.925 16.439,3.075 14.682,1.318 Z" id="Shape"></path>
-                  </g>
-              </g>
+  <svg width="14px" height="14px" viewBox="0 0 16 14" version="1.1" xmlns="http://www.w3.org/2000/svg" style={{ verticalAlign: 'middle' }}>
+    <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+      <g transform="translate(-917.000000, -313.000000)" fill="#FD3B47" fillRule="nonzero">
+        <g transform="translate(504.000000, 253.000000)">
+          <g transform="translate(413.000000, 60.000000)">
+            <path d="M14.682,1.318 C12.925,-0.439 10.075,-0.439 8.318,1.318 C8.197,1.439 8.104,1.577 8,1.707 C7.896,1.577 7.803,1.439 7.682,1.318 C5.925,-0.439 3.075,-0.439 1.318,1.318 C-0.439,3.075 -0.439,5.925 1.318,7.682 L8,14 L14.682,7.682 C16.439,5.925 16.439,3.075 14.682,1.318 Z" id="Shape"></path>
           </g>
+        </g>
       </g>
+    </g>
   </svg>
 
-export default ({onSelect, selectedId}) => <Container wide center>
+export default ({onSelect, fixed, selectedId}) => <Container center>
   <style jsx>{`
     .categories {
       display: flex;
@@ -22,7 +24,10 @@ export default ({onSelect, selectedId}) => <Container wide center>
       align-items: baseline;
       justify-content: center;
       font-weight: 500;
-      text-transform: uppercase;
+    }
+    .categories *::selection {
+      background-color: inherit;
+      color: inherit;
     }
     .tab {
       display: inline-block;
@@ -30,6 +35,7 @@ export default ({onSelect, selectedId}) => <Container wide center>
       text-align: center;
       padding: 0 1.25rem;
       cursor: pointer;
+      text-transform: uppercase;
     }
     .tab.selected {
       // font-weight: 900;
@@ -70,8 +76,10 @@ export default ({onSelect, selectedId}) => <Container wide center>
         </span>
       })
     }
-    <span className='tab f5'>
-      <Heart/>
-    </span>
+    <Popover content={<div style={{ whiteSpace: 'nowrap' }}>Share your website!</div>} >
+      <span className='tab f5'>
+        <Heart/>
+      </span>
+    </Popover>
   </div>
 </Container>

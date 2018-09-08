@@ -25,6 +25,33 @@ const sortOrder = [
   "design-better",
   "weedmaps",
   "sanity",
+
+  //
+
+  "marvel",
+  "nike",
+  "invision",
+  "magic-leap",
+  "mozilla-vr",
+  "netflix-jobs",
+  "hulu",
+  "boosted-boards",
+  "elton-john",
+  "auth0-careers",
+  "scale",
+  "open-collective",
+  "eaze",
+  "hyper",
+  "zeit",
+  "a24",
+  "avocode",
+  "iota-data-market",
+  "expo",
+  "sumup",
+  "hashnode",
+  "design-better",
+  "weedmaps",
+  "sanity",
 ]
 
 const mapping = {
