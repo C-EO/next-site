@@ -9,8 +9,8 @@ export default ({center, dark, gray, wide, padding, children, ...props}) => {
         ${center ? `text-align: center;` : ''}
         ${dark ? `background-image: linear-gradient(to bottom, #121212 0%, #323232 100%);` : ''}
         ${dark ? `color: white;` : ''}
-        ${gray ? `background-color: #F9F9F9;` : ''}
-        ${wide ? 'overflow-y: hidden;' : ''}
+        ${gray ? `background-color: var(--gray-background);` : ''}
+        ${wide ? 'overflow: hidden;' : ''}
       }
       :after {
         // BFC

@@ -22,7 +22,6 @@ export const InternalLink = (
       <style jsx>{`
         a {
           text-decoration: ${error ? 'underline' : 'none'};
-          color: ${error ? 'red' : '#3333FF'};
           font-size: inherit;
         }
 
@@ -42,7 +41,6 @@ export const AnchorLink = ({ href, onClick, children }) => (
       {`
         a {
           text-decoration: none;
-          color: #3333FF;
           font-size: inherit;
         }
 
@@ -66,7 +64,6 @@ export const ExternalLink = ({ href, children }) => (
       {`
         a {
           text-decoration: none;
-          color: #3333FF;
           font-size: inherit;
         }
 

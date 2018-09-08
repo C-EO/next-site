@@ -62,7 +62,7 @@ export default class Popover extends Component {
         }
       `}</style>
       {children}
-      <div className={`popover${show ? ' show' : ''} bottom f5`}>{content}</div>
+      <div className={`popover${show ? ' show' : ''} bottom f6`}>{content}</div>
     </div>
   }
 }

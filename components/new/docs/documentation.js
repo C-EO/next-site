@@ -101,10 +101,12 @@ export default class Documentation extends Component {
         <div className="documentation">
           <Sidebar updateSelected={this.updateSelected} currentSelection={this.state.currentSelection} />
 
-          <div className="documentation__content">
-            <div className="documentation__header">
-              <H1 active="something">{ this.props.meta.title }</H1>
-            </div>
+          <div className="documentation__container">
+            {/*
+              <div className="documentation__header">
+                <H1 active="something">{ this.props.meta.title }</H1>
+              </div>
+            */}
 
             <div className="documentation__content" ref={ref => (this.contentNode = ref)}>
               { this.props.children }
@@ -119,7 +121,10 @@ export default class Documentation extends Component {
           .documentation__sidebar {
             display: flex;
             flex-direction: column;
-            padding-left: 56px;
+          }
+
+          .documentation__container {
+            flex: 1;
           }
 
           .documentation__header h1 {
@@ -127,9 +132,8 @@ export default class Documentation extends Component {
           }
 
           .documentation__content {
-            width: calc(100vw - 312px);
+            width: 100%;
             max-width: 600px;
-            padding-right: 56px;
           }
         `}</style>
         </div>

@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default ({children, invert, href, className}) => (
   <Link href={href}>
-    <a className={invert ? `invert fw3` : 'fw4'}>
+    <a className={`${invert ? `invert` : ''} fw4`}>
       <style jsx>{`
         a {
           display: inline-block;

@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component, PureComponent } from 'react'
 import Link from 'next/link'
 
 import NextLogo from './logo'
 
-export default class extends Component {
+export default class extends PureComponent {
   state = {
     scrolled: false,
     fixed: false,
@@ -14,7 +14,12 @@ export default class extends Component {
     let scrolled = scroll > (this.props.distance || 0)
     let fixed = scroll >= (this.props.distance || 0)
     let active = scroll >= (this.props.active || 0)
-    this.setState({ scrolled, fixed, active })
+    
+    if (scrolled !== this.state.scrolled 
+      || fixed !== this.state.fixed
+      || active !== this.state.active) {
+      this.setState({ scrolled, fixed, active })
+    }
   }
   componentDidMount() {
     window.addEventListener('scroll', this.onScroll)
@@ -41,11 +46,12 @@ export default class extends Component {
           align-items: center;
           left: 0;
           z-index: ${zIndex || 1000};
-          background: ${background || 'rgba(255, 255, 255, 0.99)'};
+          background: ${background || 'rgba(255, 255, 255, 0.98)'};
           transition: box-shadow .5s ease;
         }
         .fixed {
           position: fixed;
+          top: ${offset || 0}px;
         }
         .scrolled {
           position: fixed;

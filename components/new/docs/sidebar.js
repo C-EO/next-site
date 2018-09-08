@@ -1,6 +1,7 @@
 import { Fragment, Component } from 'react'
 import { Code } from './text/code'
 import _scrollIntoViewIfNeeded from 'scroll-into-view-if-needed'
+import slugify from '@sindresorhus/slugify'
 
 const navElements = [
   "Setup",
@@ -20,24 +21,29 @@ const navElements = [
   "Custom configuration",
   "Customizing webpack config",
   "Customizing babel config",
+  "CDN support with Asset Prefix",
   "Production deployment",
   "Static HTML export",
+  "Usage",
+  "Limitation",
   "Multi Zones",
+  "How to define a zone",
+  "How to merge them",
   "Recipes",
   "FAQ",
   "Contributing"
 ]
 
-const convertToSnakeCase = (string) => string.toLowerCase().replace(/\s+/g, '-').replace(/[?!]/g, '');
-
-function scrollIntoViewIfNeeded(elem, centerIfNeeded, options, config) {
+function scrollIntoViewIfNeeded(elem) {
   const finalElement = findClosestScrollableElement(elem)
   return _scrollIntoViewIfNeeded(
-    elem,
-    centerIfNeeded,
-    options,
-    finalElement,
-    config
+    elem.parentElement,
+    {
+      behavior: 'smooth',
+      scrollMode: 'if-needed',
+      block: 'center',
+      boundary: finalElement,
+    },
   )
 }
 
@@ -88,26 +94,36 @@ export class SidebarNavItem extends Component {
     const {item, updateSelected, isActive} = this.props
 
     return (
-      <a href={`#${convertToSnakeCase(item)}`} onClick={updateSelected} className={isActive ? 'active' : ''} ref={ref => (this.activeNavItem = ref)}>
-        { item }
-
+      <li>
+        <a 
+          href={`#${slugify(item)}`} 
+          onClick={updateSelected} 
+          className={`${isActive ? 'active' : ''} f5`}
+          ref={ref => (this.activeNavItem = ref)}
+        >
+          {item}
+        </a>
         <style jsx>{`
-          a {
-            display: flex;
-            align-items: center;
-            color: #000000;
-            text-decoration: none;
-            padding: 6px 0;
-            position: relative;
-            flex: 1 0 auto;
+          li {
+            list-style: none;
           }
-
+          li:last-of-type {
+            padding-bottom: 2rem;
+          }
+          a {
+            display: inline-block;
+            color: inherit;
+            padding: 6px 0;
+          }
+          a:hover {
+            color: gray;
+          }
           a.active {
-            font-weight: 500;
+            font-weight: 600;
             color: var(--theme-color);
           }
         `}</style>
-      </a>
+      </li>
     )
   }
 }
@@ -118,11 +134,19 @@ export default class Sidebar extends React.Component {
       <div className="documentation__sidebar">
         <nav>
           <span className="documentation__sidebar-heading">Getting Started</span>
-          {
-            navElements.map((item, i) => (
-              <SidebarNavItem key={i} item={item} updateSelected={() => this.props.updateSelected(`#${convertToSnakeCase(item)}`)} isActive={this.props.currentSelection === `#${convertToSnakeCase(item)}`} />
-            ))
-          }
+          <ul>
+            {
+              navElements.map((item, i) => (
+                <SidebarNavItem 
+                  key={i} 
+                  item={item} 
+                  updateSelected={() => 
+                    this.props.updateSelected(`#${slugify(item)}`)
+                  } 
+                  isActive={this.props.currentSelection === `#${slugify(item)}`} />
+              ))
+            }
+          </ul>
         </nav>
 
         <style jsx>{`
@@ -130,7 +154,7 @@ export default class Sidebar extends React.Component {
             width: 312px;
             flex: 0 0 auto;
             position: relative;
-            padding-right: 56px;
+            padding-right: 3rem;
           }
 
           .documentation__sidebar nav {
@@ -138,19 +162,20 @@ export default class Sidebar extends React.Component {
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            width: 256px;
-            height: 100%;
+            width: 18rem;
+            padding: 2rem 1rem 0 0;
+            height: calc(100vh - ${64 + 32}px);
+          }
+
+          .documentation__sidebar nav ul {
+            margin: 0;
+            padding: 0;
           }
 
           .documentation__sidebar-heading {
             color: #999999;
             text-transform: uppercase;
-            font-size: 1.2rem;
             margin-bottom: 12px;
-          }
-
-          .documentation__sidebar nav a.active {
-            font-weight: 600;
           }
         `}</style>
     </div>

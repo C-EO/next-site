@@ -2,7 +2,7 @@ import Logo from '../logo'
 import Container from '../container'
 import Button from '../button'
 
-export default () => {
+export default ({}) => {
   return <Container wide center>
     <Container>
       <div className='intro-container'>

@@ -1,5 +1,5 @@
 export default ({ children }) => (
-  <div>
+  <div className='is-mobile'>
     <style jsx>{`
       {
         overflow-x: hidden;
@@ -23,25 +23,40 @@ export default ({ children }) => (
         margin: 0;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
         text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
         line-height: 1.5;
         font-size: var(--text-base-size);
+        font-weight: 400;
       }
       a {
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
       }
       html, body {
         background-color: #FFF;
-        color: #000;
+        color: #111;
       }
       ::selection {
         background-color: var(--theme-color);
         color: #FFF;
+      }
+      [role="grid"]:focus {
+        outline: none;
       }
       svg {
         text-rendering: optimizeLegibility;
       }
       h1, h2, h3 {
         margin: 0;
+      }
+      a {
+        color: #2195ff;
+        text-decoration: none;
+      }
+      .f-reset {
+        font-size: 1rem;
+      }
+      .f0 {
+        font-size: var(--text-xxxl);
       }
       .f1 {
         font-size: var(--text-xxl);
@@ -80,7 +95,6 @@ export default ({ children }) => (
         font-weight: 600;
       }
       .subtitle {
-        font-weight: 300;
         color: #BCBCBC;
       }
       .mute {
@@ -88,11 +102,18 @@ export default ({ children }) => (
       }
       .row {
         display: flex;
-        margin: 0 -1rem;
+        margin: 0 -1.5rem;
       }
       .column {
         flex: 1;
-        padding: 0 1rem;
+        padding: 0 1.5rem;
+      }
+      .is-mobile .row {
+        flex-direction: column;
+        margin: -1.5rem 0;
+      }
+      .is-mobile .column {
+        padding: 1.5rem 0;
       }
     `}</style>
     {children}

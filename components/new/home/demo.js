@@ -24,6 +24,7 @@ export default () => {
               <style jsx>{`
                 .demo-header {
                   display: flex;
+                  align-items: center;
                   justify-content: center;
                   margin: 2rem 0;
                 }
@@ -34,6 +35,9 @@ export default () => {
                   margin: 2rem 0;
                   align-items: flex-end;
                   justify-content: space-between;
+                }
+                :global(.is-mobile) .demo-header {
+                  flex-direction: column;
                 }
               `}</style>
               <div className="demo-header">

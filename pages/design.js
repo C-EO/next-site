@@ -15,14 +15,21 @@ export default () => {
       </Notification>
       <Navbar/>
     </Header>
+    <style jsx>{`
+      .component-title {
+        margin-bottom: 2rem;
+      }
+    `}</style>
     <Container padding>
       <SectionHeader title='Design' description='Components for nextjs.org'/>
-      <h1 className="f1">heading 1</h1>
-      <h2 className="f2">heading 2</h2>
-      <h3 className="f3">heading 3</h3>
-      <h3 className="f4">heading 4</h3>
-      <h3 className="f5">heading 5</h3>
-      <h3 className="f6">heading 6</h3>
+      <h3 className="fw4 f4 component-title">Modular Scale</h3>
+      <h1 className="f0">XXXL - Heading 0</h1>
+      <h1 className="f1">XXL - Heading 1</h1>
+      <h2 className="f2">XL - Heading 2</h2>
+      <h3 className="f3">LG - Heading 3</h3>
+      <h3 className="f4">MD - Heading 4</h3>
+      <h3 className="f5">SM - Heading 5</h3>
+      <h3 className="f6">XS - Heading 6</h3>
     </Container>
     <Footer/>
   </Page>

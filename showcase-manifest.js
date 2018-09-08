@@ -1,8 +1,10 @@
+const categories = ['All', 'Finance', 'News', 'Tool', 'Personal']
+
 const sortOrder = [
-  "magic-leap",
   "marvel",
   "nike",
   "invision",
+  "magic-leap",
   "mozilla-vr",
   "netflix-jobs",
   "hulu",
@@ -14,15 +16,15 @@ const sortOrder = [
   "eaze",
   "hyper",
   "zeit",
-  // "a24",
-  // "avocode",
-  // "iota-data-market",
-  // "expo",
-  // "sumup",
-  // "hashnode",
-  // "design-better",
-  // "weedmaps",
-  // "sanity"
+  "a24",
+  "avocode",
+  "iota-data-market",
+  "expo",
+  "sumup",
+  "hashnode",
+  "design-better",
+  "weedmaps",
+  "sanity",
 ]
 
 const mapping = {
@@ -33,7 +35,8 @@ const mapping = {
     "src": "/static/images/showcases/showcases-00.png",
     "width": 1280,
     "height": 734,
-    "internalUrl": "magic-leap"
+    "internalUrl": "magic-leap",
+    "highlighted": true
   },
   "marvel": {
     "title": "Marvel",
@@ -245,6 +248,7 @@ const mapping = {
 }
 
 module.exports = {
+  categories,
   sortOrder,
   mapping
 }
