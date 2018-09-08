@@ -5,7 +5,7 @@ import Container from './container'
 import Popover from './popover'
 
 export default ({ isMobile }) => {
-  if (!isMobile) {
+  if (isMobile) {
     return <Container center>
       <nav>
         <style jsx>{`

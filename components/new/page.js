@@ -1,5 +1,5 @@
 export default ({ children }) => (
-  <div className='is-mobile'>
+  <div className='n-is-mobile'>
     <style jsx>{`
       {
         overflow-x: hidden;

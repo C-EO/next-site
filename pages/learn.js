@@ -15,7 +15,9 @@ export default () => {
     <Header height={64} shadow defaultActive>
       <Navbar/>
     </Header>
-    <h1>learn</h1>
+    <Demo/>
+    <Features/>
+    <Customers/>
     <Footer/>
   </Page>
 }
