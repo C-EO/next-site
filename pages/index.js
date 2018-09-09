@@ -1,27 +1,30 @@
-import Page from '../components/new/page'
-import Screen from '../components/new/screen'
-import Header from '../components/new/header'
-import Footer from '../components/new/footer'
-import Navbar from '../components/new/navbar'
-import Notification from '../components/new/notification'
+import Page from '../components/page'
+import Screen from '../components/screen'
+import Header from '../components/header'
+import Footer from '../components/footer'
+import Navbar from '../components/navbar'
+import Notification from '../components/notification'
 
-import Intro from '../components/new/home/intro'
-import Demo from '../components/new/home/demo'
-import Features from '../components/new/home/features'
-import Customers from '../components/new/home/customers'
-import FAQ from '../components/new/home/faq'
+import Intro from '../components/home/intro'
+import Demo from '../components/home/demo'
+import Features from '../components/home/features'
+import Customers from '../components/home/customers'
+import FAQ from '../components/home/faq'
+import { MediaQueryConsumer } from '../components/media-query'
 
 export default () => {
   return <Page>
-    <Header height={64 + 32} shadow active={120}>
-      <Notification title="Next 6 is out!">
-        Next 6 is out! — Babel 7, App Component, Improved stacktraces, Improved static export. Saturday, April 28th 2018
-      </Notification>
-      <Navbar/>
-    </Header>
-    <Screen offset={64 + 32 + 150}>
-      <Intro/>
-    </Screen>
+    <MediaQueryConsumer>{({isMobile}) => <>
+      <Header height={64 + 32 + (isMobile ? 32 : 0)} shadow active={isMobile ? 1 : 120}>
+        <Notification title="Next 6 is out!">
+          Next 6 is out! — Babel 7, App Component, Improved stacktraces, Improved static export. Saturday, April 28th 2018
+        </Notification>
+        <Navbar/>
+      </Header>
+      <Screen offset={64 + 32 + 150}>
+        <Intro/>
+      </Screen>
+    </>}</MediaQueryConsumer>
     <Demo/>
     <Features/>
     <Customers/>

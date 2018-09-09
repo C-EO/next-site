@@ -1,12 +1,12 @@
-import Page from '../../components/new/page'
-import Header from '../../components/new/header'
-import Navbar from '../../components/new/navbar'
-import Notification from '../../components/new/notification'
+import Page from '../../components/page'
+import Header from '../../components/header'
+import Navbar from '../../components/navbar'
+import Notification from '../../components/notification'
 
-import Container from '../../components/new/container'
+import Container from '../../components/container'
 
 import Markdown, { meta } from './index.mdx'
-import Documentation, { components } from '../../components/new/docs/documentation'
+import Documentation, { components } from '../../components/docs/documentation'
 
 export default () => (
   <Page>

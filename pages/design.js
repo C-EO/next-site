@@ -1,11 +1,12 @@
-import Page from '../components/new/page'
-import Screen from '../components/new/screen'
-import Header from '../components/new/header'
-import Footer from '../components/new/footer'
-import Navbar from '../components/new/navbar'
-import Notification from '../components/new/notification'
-import Container from '../components/new/container'
-import SectionHeader from '../components/new/section-header'
+import Page from '../components/page'
+import Screen from '../components/screen'
+import Header from '../components/header'
+import Footer from '../components/footer'
+import Navbar from '../components/navbar'
+import Notification from '../components/notification'
+import Container from '../components/container'
+import SectionHeader from '../components/section-header'
+import Button from '../components/button'
 
 export default () => {
   return <Page>
@@ -17,7 +18,7 @@ export default () => {
     </Header>
     <style jsx>{`
       .component-title {
-        margin-bottom: 2rem;
+        margin: 3rem 0 2rem;
       }
     `}</style>
     <Container padding>
@@ -30,6 +31,10 @@ export default () => {
       <h3 className="f4">MD - Heading 4</h3>
       <h3 className="f5">SM - Heading 5</h3>
       <h3 className="f6">XS - Heading 6</h3>
+      <h3 className="fw4 f4 component-title">Button</h3>
+      <Button href="#" invert>inverted button</Button>
+      <h3 className="fw4 f4 component-title">Light button</h3>
+      <Button href="#">button</Button> 
     </Container>
     <Footer/>
   </Page>

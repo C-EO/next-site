@@ -1,17 +1,20 @@
-import Header from '../components/new/header'
-import Footer from '../components/new/footer'
-import Navbar from '../components/new/navbar'
-import Page from '../components/new/page'
-import Container from '../components/new/container'
+import Header from '../components/header'
+import Footer from '../components/footer'
+import Navbar from '../components/navbar'
+import Page from '../components/page'
+import Container from '../components/container'
+import { MediaQueryConsumer } from '../components/media-query'
 
-import Preview from '../components/new/blog/preview'
-import List from '../components/new/blog/list'
+import Preview from '../components/blog/preview'
+import List from '../components/blog/list'
 
 export default () =>
   <Page>
-    <Header height={64} shadow defaultActive>
-      <Navbar/>
-    </Header>
+    <MediaQueryConsumer>{({isMobile}) => 
+      <Header height={64 + (isMobile ? 32 : 0)} shadow defaultActive>
+        <Navbar/>
+      </Header>
+    }</MediaQueryConsumer>
     <Preview caseStudy wide/>
     <List/>
     <Footer/>

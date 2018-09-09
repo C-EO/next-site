@@ -1,4 +1,4 @@
-const categories = ['All', 'Finance', 'News', 'Tool', 'Personal']
+const categories = ['All', 'Finance', 'Dev', 'Creative', 'Entertainment']
 
 const sortOrder = [
   "marvel",
@@ -28,30 +28,30 @@ const sortOrder = [
 
   //
 
-  "marvel",
-  "nike",
-  "invision",
-  "magic-leap",
-  "mozilla-vr",
-  "netflix-jobs",
-  "hulu",
-  "boosted-boards",
-  "elton-john",
-  "auth0-careers",
-  "scale",
-  "open-collective",
-  "eaze",
-  "hyper",
-  "zeit",
-  "a24",
-  "avocode",
-  "iota-data-market",
-  "expo",
-  "sumup",
-  "hashnode",
-  "design-better",
-  "weedmaps",
-  "sanity",
+  // "marvel",
+  // "nike",
+  // "invision",
+  // "magic-leap",
+  // "mozilla-vr",
+  // "netflix-jobs",
+  // "hulu",
+  // "boosted-boards",
+  // "elton-john",
+  // "auth0-careers",
+  // "scale",
+  // "open-collective",
+  // "eaze",
+  // "hyper",
+  // "zeit",
+  // "a24",
+  // "avocode",
+  // "iota-data-market",
+  // "expo",
+  // "sumup",
+  // "hashnode",
+  // "design-better",
+  // "weedmaps",
+  // "sanity",
 ]
 
 const mapping = {
@@ -63,7 +63,8 @@ const mapping = {
     "width": 1280,
     "height": 734,
     "internalUrl": "magic-leap",
-    "highlighted": true
+    "highlighted": true,
+    "tags": ['creative']
   },
   "marvel": {
     "title": "Marvel",
@@ -72,7 +73,8 @@ const mapping = {
     "src": "/static/images/showcases/marvel.png",
     "width": 3840,
     "height": 2204,
-    "internalUrl": "marvel"
+    "internalUrl": "marvel",
+    "tags": ['entertainment']
   },
   "nike": {
     "title": "Nike",
@@ -108,7 +110,8 @@ const mapping = {
     "src": "/static/images/showcases/showcases-02.png",
     "width": 3836,
     "height": 2200,
-    "internalUrl": "netflix-jobs"
+    "internalUrl": "netflix-jobs",
+    "tags": ['entertainment']
   },
   "auth0-careers": {
     "title": "Auth0 Careers",
@@ -117,7 +120,8 @@ const mapping = {
     "src": "/static/images/showcases/showcases-03.png",
     "width": 3828,
     "height": 2184,
-    "internalUrl": "auth0-careers"
+    "internalUrl": "auth0-careers",
+    "tags": ['dev']
   },
   "scale": {
     "title": "Scale",
@@ -126,7 +130,8 @@ const mapping = {
     "src": "/static/images/showcases/showcases-04.png",
     "width": 3836,
     "height": 2198,
-    "internalUrl": "scale"
+    "internalUrl": "scale",
+    "tags": ['dev']
   },
   "elton-john": {
     "title": "Elton John",
@@ -135,7 +140,8 @@ const mapping = {
     "src": "/static/images/showcases/showcases-05.png",
     "width": 3840,
     "height": 2206,
-    "internalUrl": "elton-john"
+    "internalUrl": "elton-john",
+    "tags": ['creative']
   },
   "open-collective": {
     "title": "Open Collective",
@@ -144,7 +150,8 @@ const mapping = {
     "src": "/static/images/showcases/showcases-06.png",
     "width": 3836,
     "height": 2206,
-    "internalUrl": "open-collective"
+    "internalUrl": "open-collective",
+    "tags": ['dev']
   },
   "a24": {
     "title": "A24",
@@ -162,7 +169,8 @@ const mapping = {
     "src": "/static/images/showcases/showcases-08.png",
     "width": 3828,
     "height": 2198,
-    "internalUrl": "hyper"
+    "internalUrl": "hyper",
+    "tags": ["dev"]
   },
   "zeit": {
     "title": "ZEIT",
@@ -171,7 +179,8 @@ const mapping = {
     "src": "/static/images/showcases/showcases-09.png",
     "width": 3836,
     "height": 2198,
-    "internalUrl": "zeit"
+    "internalUrl": "zeit",
+    "tags": ["dev"]
   },
   "mozilla-vr": {
     "title": "Mozilla VR",
@@ -180,7 +189,8 @@ const mapping = {
     "src": "/static/images/showcases/showcases-10.png",
     "width": 3830,
     "height": 2196,
-    "internalUrl": "mozilla-vr"
+    "internalUrl": "mozilla-vr",
+    "tags": ['dev', 'creative']
   },
   "avocode": {
     "title": "Avocode",
@@ -198,7 +208,8 @@ const mapping = {
     "src": "/static/images/showcases/showcases-12.png",
     "width": 3832,
     "height": 2200,
-    "internalUrl": "iota-data-market"
+    "internalUrl": "iota-data-market",
+    "tags": ['dev']
   },
   "expo": {
     "title": "Expo",
@@ -207,7 +218,8 @@ const mapping = {
     "src": "/static/images/showcases/showcases-13.png",
     "width": 3830,
     "height": 2196,
-    "internalUrl": "expo"
+    "internalUrl": "expo",
+    "tags": ['dev']
   },
   "sumup": {
     "title": "Sumup",
@@ -216,7 +228,8 @@ const mapping = {
     "src": "/static/images/showcases/showcases-14.png",
     "width": 3830,
     "height": 2194,
-    "internalUrl": "sumup"
+    "internalUrl": "sumup",
+    "tags": ['finance']
   },
   "hashnode": {
     "title": "Hashnode",
@@ -225,7 +238,8 @@ const mapping = {
     "src": "/static/images/showcases/showcases-15.png",
     "width": 3830,
     "height": 2194,
-    "internalUrl": "hashnode"
+    "internalUrl": "hashnode",
+    "tags": ["dev"]
   },
   "invision": {
     "title": "Invision",
@@ -234,7 +248,8 @@ const mapping = {
     "src": "/static/images/showcases/showcases-16.png",
     "width": 3830,
     "height": 2200,
-    "internalUrl": "invision"
+    "internalUrl": "invision",
+    "tags": ["dev", "creative"]
   },
   "hulu": {
     "title": "Hulu",
@@ -243,7 +258,8 @@ const mapping = {
     "src": "/static/images/showcases/showcases-17.png",
     "width": 3832,
     "height": 2198,
-    "internalUrl": "hulu"
+    "internalUrl": "hulu",
+    "tags": ['entertainment']
   },
   "design-better": {
     "title": "DesignBetter.co",
@@ -252,7 +268,8 @@ const mapping = {
     "src": "/static/images/showcases/showcases-18.png",
     "width": 3832,
     "height": 2194,
-    "internalUrl": "design-better"
+    "internalUrl": "design-better",
+    "tags": ["dev", "creative"]
   },
   "weedmaps": {
     "title": "Weedmaps",
