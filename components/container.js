@@ -1,4 +1,4 @@
-export default ({center, dark, gray, wide, padding, children, ...props}) => {
+export default ({center, dark, gray, wide, padding, overflow, children, ...props}) => {
   return <div {...props}>
     <style jsx>{`
       {
@@ -10,7 +10,7 @@ export default ({center, dark, gray, wide, padding, children, ...props}) => {
         ${dark ? `background-image: linear-gradient(to bottom, #121212 0%, #323232 100%);` : ''}
         ${dark ? `color: white;` : ''}
         ${gray ? `background-color: var(--gray-background);` : ''}
-        ${wide ? 'overflow: hidden;' : ''}
+        ${wide && !overflow ? 'overflow: hidden;' : ''}
       }
       :after {
         // BFC

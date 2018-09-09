@@ -1,9 +1,9 @@
 import { Component, PureComponent } from 'react'
-import { Transition, Trail, animated, interpolate, config } from 'react-spring'
+import { Transition, Trail, animated, interpolate, config as cfg } from 'react-spring'
 
 const wrap = (child, styles) => {
   styles = { willChange: Object.keys(styles).join(','), ...styles }
-  if (!animated[child.type]) {
+  if (!child || !animated[child.type]) {
     // Wrap components into animated divs
     return <animated.div style={{ ...styles }}>{child}</animated.div>
   } else {
@@ -25,6 +25,7 @@ export default class extends PureComponent {
     const {
       children,
       show = true,
+      config = cfg.fast,
       from = { opacity: 0 },
       enter = { opacity: 1 },
       leave = { opacity: 0 },
@@ -33,7 +34,7 @@ export default class extends PureComponent {
     const result = styles => wrap(children, styles)
     return (
       <Transition
-        config={config.fast}
+        config={config}
         native
         keys={show.toString()}
         {...rest}

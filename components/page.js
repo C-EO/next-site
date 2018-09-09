@@ -1,5 +1,7 @@
 import { withMediaQuery } from './media-query'
 
+import Fade from '../components/fade'
+
 export default withMediaQuery(({ isMobile, children }) => (
   <div className={isMobile ? 'is-mobile' : ''}>
     <style jsx>{`
@@ -241,6 +243,6 @@ export default withMediaQuery(({ isMobile, children }) => (
           display: none;
       }
     `}</style>
-    {children}
+    <Fade config={{ tension: 180, friction: 12 }}>{children}</Fade>
   </div>
 ))

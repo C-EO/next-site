@@ -87,6 +87,10 @@ export default class extends PureComponent {
         .indicator .tab.selected:after {
           box-shadow: 0 4px 24px 0 var(--theme-color-transparent-light);
         }
+        .indicator *::selection {
+          background: transparent;
+          color: transparent;
+        }
       `}</style>
       <div className="indicator">
         {

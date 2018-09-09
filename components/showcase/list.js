@@ -1,12 +1,14 @@
 import Link from 'next/link'
 import Router, { withRouter } from 'next/router'
+import classNames from 'classnames'
 
 import { format, parse } from 'url'
 import { Component, PureComponent } from 'react'
 import { List, WindowScroller, defaultCellRangeRenderer } from 'react-virtualized'
 import { directionalProperty } from 'polished'
-import { Spring, Transition } from 'react-spring'
+import { Spring, animated, Transition, config } from 'react-spring'
 import Measure from 'react-measure'
+import ImageZoom from 'react-medium-image-zoom'
 
 import Button from '../button'
 import Container from '../container'
@@ -19,7 +21,6 @@ import { sortOrder, mapping } from '../../showcase-manifest'
 
 const SUBMIT_URL = `https://spectrum.chat/thread/e425a8b6-c9cb-4cd1-90bb-740fb3bd7541`
 
-const COLUMN_COUNT = 3
 const GAP_X = 48
 const GAP_Y = 48
 const ROW_HEIGHT = 250 + GAP_Y
@@ -30,26 +31,26 @@ function getData(category) {
   })
 }
 
+let dataCategory = 'All'
 let dataSource = getData('all')
 
 function changeRoute(item) {
-  Router.router.push('/showcase?item=' + item, '/showcase/' + item, { shallow: true })
+  if (!item) {
+    Router.router.push('/showcase', '/showcase', { shallow: true })
+  } else {
+    Router.router.push('/showcase?item=' + item, '/showcase/' + item, { shallow: true })
+  }
 }
 
-const getRowHeight = ({index}, isTablet) => {
-  if (isTablet) {
-    let height = 0, startIndex = index * COLUMN_COUNT
-    for (let i = 0; i < COLUMN_COUNT; ++i) {
-      if (dataSource[startIndex + i]) {
-        height++
-      }
-    }
-    return height
+const getRowHeight = ({index}, columnCount) => {
+  if (columnCount < 3) {
+    // no highlighted
+    return 1
   }
-  let height = 1, startIndex = index * COLUMN_COUNT
-  for (let i = 0; i < COLUMN_COUNT; ++i) {
+  let height = 1, startIndex = index * columnCount
+  for (let i = 0; i < columnCount; ++i) {
     if (dataSource[startIndex + i] && mapping[dataSource[startIndex + i]].highlighted) {
-      height *= (COLUMN_COUNT - 1)
+      height *= (columnCount - 1)
     }
   }
   return height
@@ -61,46 +62,105 @@ const SitePreviewPlaceholder = () => <div style={{
 }} />
 
 const SitePreview = withRouter(class extends PureComponent {
-  state = {
-    open: false,
-    // width: -1,
-    // height: -1,
-    // outerWidth: -1,
-    // outerHeight: -1,
-    // top: -1,
-    // left: -1
-  }
+  state = { open: false }
   loadDetail = () => {
     changeRoute(this.props.siteData.internalUrl)
+    this.setState({ open: true })
+  }  
+  closeDetail = () => {
+    changeRoute()
+    this.setState({ open: false })
   }
-  // resizeInner = (props) => {
-  //   this.setState({
-  //     width: props.bounds.width,
-  //     height: props.bounds.height,
-  //     top: props.bounds.top,
-  //     left: props.bounds.left,
-  //     outerWidth: window.innerWidth,
-  //     outerHeight: window.innerHeight,
-  //   })
-  // }
+  getSlugPosition = () => {
+    if (!this.previewEl) {
+      return {}
+    }
+    if (this.state.open) {
+      let { top, left, bottom, right } = this.previewEl.getBoundingClientRect()
+      let margin = 32
+      return { 
+        opacity: 1,
+        top: -top + margin,
+        left: -left + margin, 
+        right: right - window.innerWidth + margin, 
+        bottom: bottom - window.innerHeight + margin 
+      }
+    } else {
+      return {}
+    }
+  }
   componentWillReceiveProps(newProps) {
     let open = newProps.router.query.item === this.props.siteData.internalUrl
-    if (open !== this.state.oepn) {
+    if (open !== this.state.open) {
       this.setState({ open })
     }
   }
   render () {
-    const { siteData, flex, isVisible, isTablet } = this.props
-    const { open } = this.state
+    const { siteData, flex, isVisible, isScrolling, isTablet } = this.props
+    let { open } = this.state
+
+    if (isScrolling && open) {
+      open = false
+      this.closeDetail()
+    }
     // const { height, width, top, left, outerWidth, outerHeight } = this.state
 
     let src = siteData.src.replace('/showcases/', '/showcase-thumbnails/')
 
     return <div className={`site-container${siteData.highlighted && !isTablet ? ' highlighed' : ''}`} key={`site-${siteData.internalUrl}`}>
-      <style jsx>{`
+        <Spring native from={{
+          opacity: 1,
+          top: 24,
+          left: 24,
+          right: 24,
+          bottom: 24,
+        }}
+        to={this.getSlugPosition()}
+        config={{ ...config.default, restSpeedThreshold: 1, restDisplacementThreshold: 0.1 }}>
+          {styles => <animated.div className={classNames('slug', { open })} style={{
+            ...styles,
+            position: 'absolute',
+            backgroundColor: '#ccc',
+            backgroundImage: `url(${src})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center top',
+            backgroundRepeat: 'no-repeat',
+            zIndex: open ? 1001 : 0,
+            pointerEvents: 'none',
+            borderRadius: 7,
+            boxShadow: `0 4px 12px 0 rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.02)`
+            // border: '1px solid'
+            // boxShadow: `rgba(0, 0, 0, 0.15) 0px 10px 40px 10px, rgba(0, 0, 0, 0.02) 0px 0px 0px 1px`
+          }}/>}
+        </Spring>
+        <div className='content' ref={el => this.previewEl = el}>
+          <Fade show={isVisible}>
+            <div className={classNames('preview', { open })} onClick={this.loadDetail}>
+              <div className='shadow'>
+                <div className='info'>
+                  <h3 className={siteData.highlighted && !isTablet ? 'f2' : 'f4'}>{siteData.title}</h3>
+                  <Link href={siteData.link}><a className='f5'>{siteData.link}</a></Link>
+                </div>
+              </div>
+            </div>
+          </Fade>
+        </div>
+        <style jsx>{`
         .site-container {
+          position: relative;
           flex: ${flex || 1};
           height: ${isTablet ? 'unset' : '100%'};
+
+          -webkit-user-select: none;
+          -moz-user-select: none;
+            -ms-user-select: none;
+                user-select: none;
+    
+          -webkit-touch-callout: none;
+          -khtml-user-select: none;
+          -ms-touch-action: pan-y;
+              touch-action: pan-y;
+          -webkit-tap-highlight-color: transparent;
         }
         .content {
           position: relative;
@@ -158,80 +218,36 @@ const SitePreview = withRouter(class extends PureComponent {
         .preview:hover .info {
           opacity: 1;
         }
-
-        .preview.open {
-          position: fixed;
-          // left: 0;
-          // right: 0;
-          // top: 0;
-          // bottom: 0;
-          z-index: 1009;
+        .preview {
+          transition: all 10ms ease 1s;
         }
-        .preview.hide {
-          opacity: 0;
+        .preview.open {
+          visibility: hidden;
+          transition: none;
+        }
+        .slug {
+          position: absolute;
+          left: 24px;
+          top: 24px;
+          right: 24px;
+          bottom: 24px;
+          background: #ccc;
+          z-index: 1;
+          pointer-events: none;
+          background-image: url(${src});
+          background-size: cover;
+          background-position: center top;
+          background-repeat: no-repeat;
+        }
+        .slug.open {
+          z-index: 1001;
         }
       `}</style>
-      {
-      // {
-      //   <Transition
-      //     delay={200}
-      //     from={{
-      //       width, height, top, left
-      //     }}
-      //     update={{
-      //       width: outerWidth, height: outerHeight, top: 0, left: 0
-      //     }}
-      //     leave={{
-      //       width, height, top, left
-      //     }}
-      //     open={open}>{
-      //     style => {
-      //       if (open) {
-      //         return <div className='preview open' style={style}/>
-      //       } else {
-      //         return null
-      //       }
-      //     }
-      //   }</Transition>
-      // }
-        // !open && <div className='content'>
-        //   <Fade show={isVisible}>
-        //     <div className='preview'  onClick={this.loadDetail}>
-        //       <div className='shadow'>
-        //         <div className='info'>
-        //           <h3 className={siteData.highlighted ? 'f2' : 'f4'}>{siteData.title}</h3>
-        //           <Link href={siteData.link}><a className='f5'>{siteData.link}</a></Link>
-        //         </div>
-        //       </div>
-        //     </div>
-        //   </Fade>
-        // </div>
-        // <Measure
-        //   bounds
-        //   innerRef={r => (this.innerRef = r)}
-        //   onResize={this.resizeInner}>{
-        //   ({ measureRef }) =>
-        // }</Measure>
-      }
-    
-        <div className='content'>
-          <Fade show={isVisible}>
-            <div className={`preview`} onClick={this.loadDetail}>
-              <div className='shadow'>
-                <div className='info'>
-                  <h3 className={siteData.highlighted && !isTablet ? 'f2' : 'f4'}>{siteData.title}</h3>
-                  <Link href={siteData.link}><a className='f5'>{siteData.link}</a></Link>
-                </div>
-              </div>
-            </div>
-          </Fade>
-        </div>
-        
       </div>
   }
 })
 
-const getRowRender = isTablet => ({
+const getRowRender = columnCount => ({
   index,
   isScrolling,
   isVisible,
@@ -239,30 +255,30 @@ const getRowRender = isTablet => ({
   parent,
   style
 }) => {
-  let height = getRowHeight({index})
+  let height = getRowHeight({index}, columnCount)
   let content = []
   let highlighted = null
 
-  let startIndex = index * COLUMN_COUNT
-  for (let i = 0; i < COLUMN_COUNT; ++i) {
+  let startIndex = index * columnCount
+  for (let i = 0; i < columnCount; ++i) {
     let siteData = mapping[dataSource[startIndex + i]]
     if (!siteData) {
-      if (!isTablet) {
+      if (columnCount > 1) {
         // push placeholder
         content.push(<SitePreviewPlaceholder key={`site-${startIndex + i}`} />)
       }
       continue
     }
-    if (siteData.highlighted && !isTablet) {
-      highlighted = <SitePreview siteData={siteData} flex={COLUMN_COUNT - 1} isVisible={isVisible} isTablet={isTablet} key={`site-${siteData.internalUrl}`}/>
+    if (siteData.highlighted && columnCount === 3) {
+      highlighted = <SitePreview siteData={siteData} flex={columnCount - 1} isVisible={isVisible} isScrolling={isScrolling} isTablet={columnCount < 3} key={`site-${siteData.internalUrl}`}/>
     } else {
-      content.push(<SitePreview siteData={siteData} isVisible={isVisible} isTablet={isTablet} key={`site-${siteData.internalUrl}`}/>)
+      content.push(<SitePreview siteData={siteData} isVisible={isVisible} isScrolling={isScrolling} isTablet={columnCount < 3} key={`site-${siteData.internalUrl}`}/>)
     }
   }
 
   return <div key={`row-${index}`} style={{
     display: 'flex',
-    flexDirection: isTablet ? 'column' : 'row',
+    flexDirection: columnCount === 1 ? 'column' : 'row',
     ...directionalProperty('padding', 0, GAP_X / 2),
     ...style
   }}>
@@ -279,10 +295,13 @@ const getRowRender = isTablet => ({
 }
 
 // render 3 images per row
-const Row = getRowRender(false)
+const Row = getRowRender(3)
+
+// render 2 images per row
+const TabletRow = getRowRender(2)
 
 // render 1 image per row
-const TabletRow = getRowRender(true)
+const MobileRow = getRowRender(1)
 
 export default class extends Component {
   state = {
@@ -290,19 +309,29 @@ export default class extends Component {
   }
   stopCachedIndex = 0
   startCachedIndex = Infinity
-  lastTabletStatus = false
+  lastColumnCount = 3
   
   resize = () => {
     this.setState({
-      width: window.innerWidth
+      width: Math.min(window.innerWidth, 1440)
     })
   }
+  updateCategory(category) {
+    if (category !== dataCategory) {
+      dataCategory = category
+      dataSource = getData(category.toLowerCase())
+    }
+  }
   componentDidMount () {
+    this.updateCategory(this.props.category)
     window.addEventListener('resize', this.resize)
     this.resize()
   }
   componentWillUnmount () {
     window.removeEventListener('resize', this.resize)
+  }
+  componentWillReceiveProps(newProps) {
+    this.updateCategory(newProps.category)
   }
   overscanIndicesGetter = ({
     cellCount,
@@ -323,13 +352,8 @@ export default class extends Component {
       overscanStopIndex
     }
   }
-  componentWillReceiveProps(newProps) {
-    if (newProps.category !== this.props.category) {
-      dataSource = getData(newProps.category.toLowerCase())
-    }
-  }
   render() {
-    return <Container wide gray center><MediaQueryConsumer>{({isMobile, isTablet}) =>
+    return <Container wide gray center overflow><MediaQueryConsumer>{({isMobile, isTablet}) =>
       <div className='container'>
         <style jsx>{`
           .container {
@@ -342,6 +366,9 @@ export default class extends Component {
             // vertical-align: middle;
             margin-right: .625rem;
           }
+          :global(.ReactVirtualized__Grid__innerScrollContainer) {
+            overflow: visible !important;
+          }
         `}</style>
         <WindowScroller>
           {({ height, isScrolling, onChildScroll, scrollTop }) => (
@@ -352,19 +379,22 @@ export default class extends Component {
               onScroll={onChildScroll}
               scrollTop={scrollTop}
               width={this.state.width}
-              rowCount={Math.ceil(dataSource.length / COLUMN_COUNT)}
+              rowCount={Math.ceil(dataSource.length / (isMobile ? 1 : isTablet ? 2 : 3))}
               estimatedRowSize={500}
-              rowHeight={args => getRowHeight(args, isTablet) * ROW_HEIGHT}
-              rowRenderer={isTablet ? TabletRow : Row}
+              rowHeight={args => getRowHeight(args, (isMobile ? 1 : isTablet ? 2 : 3)) * ROW_HEIGHT}
+              rowRenderer={isMobile ? MobileRow : isTablet ? TabletRow : Row}
               overscanRowCount={5}
               overscanIndicesGetter={(args) => this.overscanIndicesGetter(args, isTablet)}
               style={{
-                willChange: ''
+                willChange: '',
+                margin: 'auto',
+                overflow: 'visible'
               }}
               ref={list => {
-                if (isTablet !== this.lastTabletStatus) {
+                let columnCount = (isMobile ? 1 : isTablet ? 2 : 3)
+                if (columnCount !== this.lastColumnCount) {
                   // reset row height for responsive width
-                  this.lastTabletStatus = isTablet
+                  this.lastColumnCount = columnCount
                   list.recomputeRowHeights()
                 }
               }}

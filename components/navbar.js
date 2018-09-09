@@ -146,11 +146,13 @@ export default withRouter(({ isMobile, router }) => {
             overflow: hidden;
             transform: translateY(30%);
             opacity: 0;
+            pointer-events: none;
             transition: all .2s ease;
           }
           :global(.active) nav .logo {
             transform: translateY(0);
             opacity: 1;
+            pointer-events: unset;
           }
           nav .logo a {
             display: inline-block;

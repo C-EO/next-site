@@ -18,9 +18,9 @@ export default class extends PureComponent {
 
   render () {
     const { siteData } = this.props
-    if (!siteData) {
+    // if (!siteData) {
       return null
-    }
+    // }
 
     let src = siteData.src
 
