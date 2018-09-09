@@ -99,10 +99,10 @@ export default withRouter(({ isMobile, router }) => {
             </div>
           </div>
           <div className="links dropdown">
-            <Link href="/docs"><a className={classNames('f5', { selected: route === '/docs' })} title='Documentation'>Docs</a></Link>
-            <Link href="/learn"><a className={classNames('f5', { selected: route === '/learn' })} title='Learn'>Learn</a></Link>
-            <Link href="/showcase"><a className={classNames('f5', { selected: route === '/showcase' })} title='Showcase'>Showcase</a></Link>
-            <Link href="/blog"><a className={classNames('f5', { selected: route === '/blog' })}>Blog</a></Link>
+            <Link href="/docs"><a className={classNames('f5', { selected: route.startsWith('/docs') })} title='Documentation'>Docs</a></Link>
+            <Link href="/learn"><a className={classNames('f5', { selected: route.startsWith('/learn') })} title='Learn'>Learn</a></Link>
+            <Link href="/showcase"><a className={classNames('f5', { selected: route.startsWith('/showcase') })} title='Showcase'>Showcase</a></Link>
+            <Link href="/blog"><a className={classNames('f5', { selected: route.startsWith('/blog') })}>Blog</a></Link>
             <Link href="/enterprise"><a className='f5'>Enterprise</a></Link>
           </div>
         </nav>
@@ -180,9 +180,9 @@ export default withRouter(({ isMobile, router }) => {
           }
         `}</style>
         <div className="links">
-          <Link href="/docs"><a className={classNames('f5', { selected: route === '/docs' })} title='Documentation'>Docs</a></Link>
-          <Link href="/learn"><a className={classNames('f5', { selected: route === '/learn' })} title='Learn'>Learn</a></Link>
-          <Link href="/showcase"><a className={classNames('f5', { selected: route === '/showcase' })} title='Showcase'>Showcase</a></Link>
+          <Link href="/docs"><a className={classNames('f5', { selected: route.startsWith('/docs') })} title='Documentation'>Docs</a></Link>
+          <Link href="/learn"><a className={classNames('f5', { selected: route.startsWith('/learn') })} title='Learn'>Learn</a></Link>
+          <Link href="/showcase"><a className={classNames('f5', { selected: route.startsWith('/showcase') })} title='Showcase'>Showcase</a></Link>
         </div>
         <div className="logo">
           <Link href="/">
@@ -192,7 +192,7 @@ export default withRouter(({ isMobile, router }) => {
           </Link>
         </div>
         <div className="links">
-          <Link href="/blog"><a className={classNames('f5', { selected: route === '/blog' })}>Blog</a></Link>
+          <Link href="/blog"><a className={classNames('f5', { selected: route.startsWith('/blog') })}>Blog</a></Link>
           <Link href="/enterprise"><a className='f5'>Enterprise</a></Link>
           <div className="icons">
             <Link href="https://github.com/zeit"><a><img src="/static/icons/github.svg"/></a></Link>

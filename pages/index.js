@@ -16,7 +16,7 @@ export default () => {
   return <Page>
     <MediaQueryConsumer>{({isMobile}) => <>
       <Header height={64 + 32 + (isMobile ? 32 : 0)} shadow active={isMobile ? 1 : 120}>
-        <Notification title="Next 6 is out!">
+        <Notification title="Next 6 is out!" titleMobile={'Next 6: Babel 7, App Component & tons of improvements'}>
           Next 6 is out! — Babel 7, App Component, Improved stacktraces, Improved static export. Saturday, April 28th 2018
         </Notification>
         <Navbar/>

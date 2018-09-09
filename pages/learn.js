@@ -4,13 +4,16 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import Navbar from '../components/navbar'
 import Notification from '../components/notification'
+import Container from '../components/container'
 
 export default () => {
   return <Page>
     <Header height={64} shadow defaultActive>
       <Navbar/>
     </Header>
-    <p>[zone]</p>
+    <Container padding>
+      <p>[zone]</p>
+    </Container>
     <Footer/>
   </Page>
 }
