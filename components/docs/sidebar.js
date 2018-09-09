@@ -3,6 +3,9 @@ import { Code } from './text/code'
 import _scrollIntoViewIfNeeded from 'scroll-into-view-if-needed'
 import slugify from '@sindresorhus/slugify'
 
+import Header from '../header'
+import Container from '../container'
+
 const navElements = [
   "Setup",
   "Automatic Code Splitting",
@@ -91,7 +94,7 @@ export class SidebarNavItem extends Component {
   }
 
   render() {
-    const {item, updateSelected, isActive} = this.props
+    const {item, updateSelected, isActive, isMobile} = this.props
 
     return (
       <li>
@@ -113,7 +116,8 @@ export class SidebarNavItem extends Component {
           a {
             display: inline-block;
             color: inherit;
-            padding: 6px 0;
+            padding: 6px 3px;
+            ${isMobile ? 'width: 100%;' : ''}
           }
           a:hover {
             color: gray;
@@ -129,7 +133,109 @@ export class SidebarNavItem extends Component {
 }
 
 export default class Sidebar extends React.Component {
+  state = {
+    dropdown: false
+  }
+  updateSelected = (hash) => {
+    this.props.updateSelected(hash)
+    this.setState({ dropdown: false })
+  }
+  toggleDropdown = () => {
+    this.setState({ dropdown: !this.state.dropdown })
+  }
   render() {
+    const { isMobile } = this.props
+    const { dropdown } = this.state
+
+    if (isMobile) {
+      const currentItem = navElements.filter(item => this.props.currentSelection === `#${slugify(item)}`)[0]
+      return <>
+        <div className='negative-spacer'>
+          <Header height={48} zIndex={999} offset={64 + 32 + 32} distance={1} defaultActive shadow>
+            <div className="docs-select f5 fw6" onClick={this.toggleDropdown}>
+              <Container>
+                <img src='/static/icons/arrow-right.svg'/> {currentItem}
+              </Container>
+            </div>
+            <div className={`documentation__sidebar docs-dropdown ${dropdown ? '' : ' docs-closed'}`}>
+              <Container>
+                <nav>
+                  <span className="documentation__sidebar-heading f6 fw6">Getting Started</span>
+                  <ul>
+                    {
+                      navElements.map((item, i) => (
+                        <SidebarNavItem 
+                          key={i} 
+                          item={item} 
+                          updateSelected={() => 
+                            this.updateSelected(`#${slugify(item)}`)
+                          } 
+                          isActive={this.props.currentSelection === `#${slugify(item)}`} 
+                          isMobile={true} />
+                      ))
+                    }
+                  </ul>
+                </nav>
+              </Container>
+            </div>
+          </Header>
+        </div>
+        <style jsx>{`
+          .docs-select {
+            height: 3rem;
+            width: 100%;
+            border-top: 1px solid #f5f5f5;
+            line-height: 3rem;
+            text-align: left;
+            cursor: pointer;
+          }
+          .docs-select img {
+            vertical-align: middle;
+            margin-top: -2px;
+          }
+          .docs-dropdown {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 100%;
+            bottom: -60vh;
+            background: white;
+            overflow-y: scroll;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, .1);
+            transition: bottom .5s ease;
+            -webkit-overflow-scrolling: touch;
+          }
+          .docs-dropdown.docs-closed {
+            bottom: 100%;
+          }
+          .documentation__sidebar nav {
+            padding-left: 24px;
+          }
+          .documentation__sidebar nav ul {
+            margin: 0;
+            padding: 0;
+          }
+          .documentation__sidebar-heading {
+            display: inline-block;
+            margin-top: 1rem;
+            margin-bottom: 12px;
+            margin-left: 3px;
+            color: #999999;
+            text-transform: uppercase;
+          }
+          .negative-spacer {
+            margin: 0 -1rem;
+          }
+        `}</style>
+        <style jsx global>{`
+          :global(.target.docs-anchor-target) {
+            margin-top: -208px;
+            padding-top: 208px;
+          }
+        `}</style>
+      </>
+    }
+
     return (
       <div className="documentation__sidebar">
         <nav>
@@ -160,6 +266,7 @@ export default class Sidebar extends React.Component {
           .documentation__sidebar nav {
             position: fixed;
             overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
             display: flex;
             flex-direction: column;
             width: 18rem;

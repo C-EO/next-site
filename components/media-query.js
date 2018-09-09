@@ -7,7 +7,7 @@ const { Provider: MediaQueryProvider, Consumer: MediaQueryConsumer } = React.cre
 
 const withMediaQuery = Comp => class extends Component {
   state = {
-    isMobile: false,
+    isMobile: true,
     isTablet: false
   }
   onResize = () => {

@@ -35,6 +35,9 @@ export default class extends PureComponent {
     return <header>
       <style jsx>{`
         header {
+          left: 0;
+          top: 0;
+          width: 100%;
           height: ${height}px;
         }
         .fixed-container {

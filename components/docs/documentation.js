@@ -10,9 +10,12 @@ import { InlineCode, Code } from './text/code'
 import { GenericLink } from './text/link'
 import Heading from './heading'
 
-// if (typeof window !== 'undefined') {
-//   require('intersection-observer')
-// }
+import Container from '../container'
+import { MediaQueryConsumer } from '../media-query'
+
+if (typeof window !== 'undefined') {
+  require('intersection-observer')
+}
 
 function changeHash(hash) {
   const { pathname, query } = Router
@@ -95,49 +98,51 @@ export default class Documentation extends Component {
 
   render() {
     return (
-      <Fragment>
-        <Head title="Getting Started"/>
+      <MediaQueryConsumer>{({isMobile, isTablet}) => {
+        return <>
+          <Head title="Getting Started"/>
 
-        <div className="documentation">
-          <Sidebar updateSelected={this.updateSelected} currentSelection={this.state.currentSelection} />
+          <div className="documentation">
+            <Sidebar updateSelected={this.updateSelected} currentSelection={this.state.currentSelection} isMobile={isMobile} />
 
-          <div className="documentation__container">
-            {/*
-              <div className="documentation__header">
-                <H1 active="something">{ this.props.meta.title }</H1>
+            <div className="documentation__container">
+              {/*
+                <div className="documentation__header">
+                  <H1 active="something">{ this.props.meta.title }</H1>
+                </div>
+              */}
+              <div className="documentation__content" ref={ref => (this.contentNode = ref)}>
+                { this.props.children }
               </div>
-            */}
-
-            <div className="documentation__content" ref={ref => (this.contentNode = ref)}>
-              { this.props.children }
             </div>
+
+            <style jsx>{`
+            .documentation {
+              display: ${isMobile ? 'block' : 'flex'};
+            }
+
+            .documentation__sidebar {
+              display: flex;
+              flex-direction: column;
+            }
+
+            .documentation__container {
+              flex: 1;
+              overflow: hidden;
+            }
+
+            .documentation__header h1 {
+              margin-top: 0;
+            }
+
+            .documentation__content {
+              width: 100%;
+              max-width: 600px;
+            }
+          `}</style>
           </div>
-
-          <style jsx>{`
-          .documentation {
-            display: flex;
-          }
-
-          .documentation__sidebar {
-            display: flex;
-            flex-direction: column;
-          }
-
-          .documentation__container {
-            flex: 1;
-          }
-
-          .documentation__header h1 {
-            margin-top: 0;
-          }
-
-          .documentation__content {
-            width: 100%;
-            max-width: 600px;
-          }
-        `}</style>
-        </div>
-      </Fragment>
+        </>
+      }}</MediaQueryConsumer>
     )
   }
 }

@@ -56,7 +56,7 @@ export default props => {
       component={component}
       data-components-heading
     >
-      <span id={id} className="target" style={targetStyle} />
+      <span id={id} className="target docs-anchor-target" style={targetStyle} />
       <a href={'#' + id}>
         {children}
       </a>

@@ -16,6 +16,7 @@
     "@sindresorhus/slugify": "^0.3.0",
     "@zeit/next-mdx": "^1.1.0",
     "classnames": "^2.2.6",
+    "intersection-observer": "^0.5.0",
     "mauerwerk": "^1.0.6",
     "next": "^6.1.2",
     "polished": "^2.0.3",
