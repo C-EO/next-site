@@ -11,7 +11,12 @@ export default class MyApp extends App {
       pageProps = await Component.getInitialProps(ctx)
     }
 
-    let theme = router.query.theme || 'FF2A37' // || 'FF4954'
+    let theme = router.asPath.match(/\?theme=(.+)/)
+    if (theme) {
+      theme = theme[1] 
+    } else {
+      theme = 'FF2A37' // || 'FF4954'
+    }
     
     return {pageProps, theme}
   }

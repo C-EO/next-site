@@ -45,7 +45,7 @@ export default () => <MediaQueryConsumer>{({isMobile, isTablet}) => {
       <div className="overlay"></div>
       <div className="slides">
         {DATA.slice(0, DATA.length - 1).map((item, i) => {
-          return <div className="slide">
+          return <div className="slide" key={`thumbnail-${i}`}>
             <img src={item.src.replace('/showcases/', '/showcase-thumbnails/')} alt={`Showcase ${i}`}/>
           </div>
         })}
