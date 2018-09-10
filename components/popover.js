@@ -10,29 +10,43 @@ export default class Popover extends Component {
   onMouseEnter = () => {
     let top = Infinity
     let right = Infinity
+    let left = 0
+
     if (this.containerEl) {
       const bounding = this.containerEl.getBoundingClientRect()
       top = bounding.top
       right = window.innerWidth - bounding.right
+      left = bounding.left
     }
 
-    this.setState({ show: true, top: top > 100, left: right < 80 })
+    this.setState({ show: true, left: right < 100, right: left < 100, bottom: top < 150 })
   }
   onMouseLeave = () => {
     this.setState({ show: false })
   }
+  toggle = (ev) => {
+    if (this.state.show) {
+      this.onMouseLeave()
+    } else {
+      this.onMouseEnter()
+    }
+    ev.preventDefault()
+    return false
+  }
   render() {
-    const { content, children } = this.props
-    const { show, top, left } = this.state
+    const { bottom: _bottom, left: _left, right: _right, content, children } = this.props
+    const { show, left, right, bottom } = this.state
 
     return <div 
       className='container'
       ref={el => this.containerEl = el}
-      onMouseEnter={this.onMouseEnter} 
+      onTouchStart={this.toggle}
+      onMouseEnter={this.onMouseEnter}
       onMouseLeave={this.onMouseLeave}>
       <style jsx>{`
         .container {
           position: relative;
+          display: inline-block;
         }
         .popover {
           position: absolute;
@@ -52,6 +66,7 @@ export default class Popover extends Component {
         }
         .popover.bottom {
           top: 100%;
+          bottom: unset;
           margin-top: 10px;
         }
         .popover:after {
@@ -79,17 +94,26 @@ export default class Popover extends Component {
           left: unset;
           transform: translateX(-50%) translateY(-50%) rotate(45deg);
         }
+        .popover.right {
+          left: calc(50% - 17px);
+          transform: translateX(0%);
+        }
+        .popover.right:after {
+          right: unset;
+          left: 10px;
+          transform: translateX(-50%) translateY(-50%) rotate(45deg);
+        }
         .popover.show {
           opacity: 1;
           visibility: visible;
         }
       `}</style>
       {children}
-      <div className={classNames('popover', 'f6', {
+      <div className={classNames('popover top', 'f6', {
         show,
-        top,
-        bottom: !top,
-        left
+        bottom: _bottom || bottom,
+        left: _left || left,
+        right: _right || right
       })}>{content}</div>
     </div>
   }

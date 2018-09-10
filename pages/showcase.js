@@ -11,7 +11,6 @@ import Tabs from '../components/tabs'
 import { MediaQueryConsumer } from '../components/media-query'
 
 import Title from '../components/showcase/title'
-import Grid from '../components/showcase/grid'
 import List from '../components/showcase/list'
 import Filter from '../components/showcase/filter'
 import SiteDetail from '../components/showcase/site-detail'
@@ -25,7 +24,7 @@ export default withRouter(class extends Component {
     const { router } = this.props
     const item = router.query.item
 
-    return <Page>
+    return <Page title='Next.js Showcase'>
       <Header height={0} zIndex={1001} background='white' defaultActive>
         <Navbar/>
       </Header>

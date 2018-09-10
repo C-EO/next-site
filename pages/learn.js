@@ -7,7 +7,7 @@ import Notification from '../components/notification'
 import Container from '../components/container'
 
 export default () => {
-  return <Page>
+  return <Page title='Learn Next.js'>
     <Header height={64} shadow defaultActive>
       <Navbar/>
     </Header>

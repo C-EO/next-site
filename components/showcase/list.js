@@ -8,7 +8,6 @@ import { List, WindowScroller, defaultCellRangeRenderer } from 'react-virtualize
 import { directionalProperty } from 'polished'
 import { Spring, animated, Transition, config } from 'react-spring'
 import Measure from 'react-measure'
-import ImageZoom from 'react-medium-image-zoom'
 
 import Button from '../button'
 import Container from '../container'
@@ -107,7 +106,7 @@ const SitePreview = withRouter(class extends PureComponent {
 
     let src = siteData.src.replace('/showcases/', '/showcase-thumbnails/')
 
-    return <div className={`site-container${siteData.highlighted && !isTablet ? ' highlighed' : ''}`} key={`site-${siteData.internalUrl}`}>
+    return <div className={`no-tap-highlight site-container${siteData.highlighted && !isTablet ? ' highlighed' : ''}`} key={`site-${siteData.internalUrl}`}>
         <Spring native from={{
           opacity: 1,
           top: 24,
@@ -150,17 +149,6 @@ const SitePreview = withRouter(class extends PureComponent {
           position: relative;
           flex: ${flex || 1};
           height: ${isTablet ? 'unset' : '100%'};
-
-          -webkit-user-select: none;
-          -moz-user-select: none;
-            -ms-user-select: none;
-                user-select: none;
-    
-          -webkit-touch-callout: none;
-          -khtml-user-select: none;
-          -ms-touch-action: pan-y;
-              touch-action: pan-y;
-          -webkit-tap-highlight-color: transparent;
         }
         .content {
           position: relative;

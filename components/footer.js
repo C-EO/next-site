@@ -38,7 +38,7 @@ export default () => <Container wide dark padding>
           flex: 1 1 120px;
         }
       `}</style>
-      <div className="row f-reset">
+      <div className="row f5">
         <div className="column">
           <h4 className="fw5">Docs</h4>
           <p>Setup</p>

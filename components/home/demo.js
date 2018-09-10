@@ -58,6 +58,7 @@ export default () => {
                   {
                     Object.keys(DEMO_DATA).map(id => 
                       <TabButton
+                        invert
                         className='tab'
                         key={`tab-${id}`}
                         isMobile={isMobile}
@@ -82,8 +83,8 @@ export default () => {
                         return <div>
                           {content}
                           <br/>
-                          <TabButton light isMobile={true} selected={_selectedId === 'editor'} onClick={() => onSelect('editor')}>Code</TabButton>
-                          <TabButton light isMobile={true} selected={_selectedId === 'browser'} onClick={() => onSelect('browser')}>Website</TabButton>
+                          <TabButton invert light isMobile={true} selected={_selectedId === 'editor'} onClick={() => onSelect('editor')}>Code</TabButton>
+                          <TabButton invert light isMobile={true} selected={_selectedId === 'browser'} onClick={() => onSelect('browser')}>Website</TabButton>
                         </div>
                       }
                     }</Tabs></div>

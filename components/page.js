@@ -1,9 +1,13 @@
+import Head from 'next/head'
+
 import { withMediaQuery } from './media-query'
+import Fade from './fade'
 
-import Fade from '../components/fade'
-
-export default withMediaQuery(({ isMobile, children }) => (
+export default withMediaQuery(({ isMobile, title, children }) => (
   <div className={isMobile ? 'is-mobile' : ''}>
+    <Head>
+      {title && <title>{title}</title>}
+    </Head>
     <style jsx>{`
       {
         overflow-x: hidden;
@@ -33,9 +37,6 @@ export default withMediaQuery(({ isMobile, children }) => (
         font-size: var(--text-base-size);
         font-weight: 400;
         min-width: 320px;
-      }
-      a {
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
       }
       html, body {
         background-color: #FFF;
@@ -126,6 +127,18 @@ export default withMediaQuery(({ isMobile, children }) => (
       .is-mobile .column {
         width: 100%;
         padding: 1.5rem 0;
+      }
+      .no-tap-highlight, a {
+        -webkit-user-select: none;
+          -moz-user-select: none;
+            -ms-user-select: none;
+                user-select: none;
+    
+        -webkit-touch-callout: none;
+        -khtml-user-select: none;
+        -ms-touch-action: pan-y;
+            touch-action: pan-y;
+        -webkit-tap-highlight-color: transparent;
       }
       .slick-slider
       {

@@ -56,8 +56,9 @@ export default ({ data, children }) => {
       }
       .content {
         flex: 1;
-        overflow-y: auto;
         text-align: left;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
       }
     `}</style>
     <Tabs data={data.editorTabs}>{

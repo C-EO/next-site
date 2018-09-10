@@ -103,7 +103,7 @@ export default withRouter(({ isMobile, router }) => {
             <Link href="/learn"><a className={classNames('f5', { selected: route.startsWith('/learn') })} title='Learn'>Learn</a></Link>
             <Link href="/showcase"><a className={classNames('f5', { selected: route.startsWith('/showcase') })} title='Showcase'>Showcase</a></Link>
             <Link href="/blog"><a className={classNames('f5', { selected: route.startsWith('/blog') })}>Blog</a></Link>
-            <Link href="/enterprise"><a className='f5'>Enterprise</a></Link>
+            <Link href="/enterprise"><a className={classNames('f5', { selected: route.startsWith('/enterprise') })}>Enterprise</a></Link>
           </div>
         </nav>
       </Container>
@@ -195,7 +195,7 @@ export default withRouter(({ isMobile, router }) => {
         </div>
         <div className="links">
           <Link href="/blog"><a className={classNames('f5', { selected: route.startsWith('/blog') })}>Blog</a></Link>
-          <Link href="/enterprise"><a className='f5'>Enterprise</a></Link>
+          <Link href="/enterprise"><a className={classNames('f5', { selected: route.startsWith('/enterprise') })}>Enterprise</a></Link>
           <div className="icons">
             <Link href="https://github.com/zeit"><a><img src="/static/icons/github.svg"/></a></Link>
             <Popover content={<div style={{ whiteSpace: 'nowrap' }}>Join <strong>Next.js</strong> on <strong>Spectrum</strong></div>}>
