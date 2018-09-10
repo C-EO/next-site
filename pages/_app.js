@@ -1,7 +1,14 @@
-import App, {Container} from 'next/app'
+import App, { Container } from 'next/app'
 import Head from 'next/head'
 import React from 'react'
 import { transparentize, lighten, modularScale } from 'polished'
+
+// if (typeof window !== 'undefined') {
+//   if (!Object.entries) {
+//     let entries = require('es5-shim')
+//     entries.shim()
+//   }
+// }
 
 export default class MyApp extends App {
   static async getInitialProps ({ Component, router, ctx }) {
