@@ -2,6 +2,7 @@ import Link from 'next/link'
 
 import { MediaQueryConsumer } from './media-query'
 import { sortOrder, mapping } from '../showcase-manifest'
+import BackgroundSlider from './background-slider'
 
 // length should be odd number
 const DATA = sortOrder.slice(0, 7).map(id => {
@@ -31,6 +32,7 @@ export default () => <MediaQueryConsumer>{({isMobile, isTablet}) => {
         }
         img {
           max-width: 100%;
+          border-radius: 5px;
           box-shadow: 0 5px 20px rgba(0, 0, 0, .1);
         }
         .overlay {
@@ -53,6 +55,18 @@ export default () => <MediaQueryConsumer>{({isMobile, isTablet}) => {
     </div>
   }
   return <div className="showcase-container">
+  {/*
+    <BackgroundSlider duration={30}>
+      <div>{DATA.map((item, i) => {
+        return <img key={`showcase-${i}`} src={item.src.replace('/showcases/', '/showcase-thumbnails/')} alt={`Showcase ${i}`} style={{
+          height: 200,
+          margin: '1rem',
+          borderRadius: 7,
+          boxShadow: '0 5px 12px rgba(0, 0, 0, .08)',
+        }}/>
+      })}</div>
+    </BackgroundSlider>
+  */}
     <style jsx>{`
       .showcase-container {
         margin: 4rem 0 2rem;
@@ -99,7 +113,7 @@ export default () => <MediaQueryConsumer>{({isMobile, isTablet}) => {
         height: 185px;
         margin: 0 calc(${50 / DATA.length}vw - ${imgWidth / 2}px);
         border-radius: 7px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, .08);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, .08), 0 5px 12px rgba(0, 0, 0, .1);
         transition: all .5s ease;
         // cursor: zoom-in;
         cursor: pointer;
@@ -125,7 +139,7 @@ export default () => <MediaQueryConsumer>{({isMobile, isTablet}) => {
       {DATA.map((item, i) => {
         let offset = ~~(DATA.length / 2) - i
         let z = -Math.abs(offset)
-        let top = z * margin
+        let top = z * (margin + 5)
         return <Link key={`showcase-${i}`} href={`/showcase/${item.internalUrl}`}>
           <div className="slide" style={{
             zIndex: DATA.length + z,
