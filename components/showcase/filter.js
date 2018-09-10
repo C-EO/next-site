@@ -103,7 +103,7 @@ export default class extends PureComponent {
       <div className="categories">
         {
           categories.map(id => {
-            return <span className={`no-tap-highlight tab${selectedId === id ? ' selected' : ''} f6`} role='button' onClick={() => onSelect(id)} key={id}>
+            return <span className={`no-tap-highlight tab${selectedId === id ? ' selected' : ''} f6`} role='button' onMouseDown={() => onSelect(id)} key={id}>
               {id}
             </span>
           })

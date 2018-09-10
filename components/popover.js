@@ -24,14 +24,18 @@ export default class Popover extends Component {
   onMouseLeave = () => {
     this.setState({ show: false })
   }
-  toggle = (ev) => {
-    if (this.state.show) {
+  handleClickOutside = ev => {
+    if (this.state.show && this.containerEl && this.containerEl.contains(ev.target)) {
       this.onMouseLeave()
-    } else {
-      this.onMouseEnter()
     }
-    ev.preventDefault()
-    return false
+  }
+  componentDidMount() {
+    window.addEventListener('mousedown', this.handleClickOutside)
+    window.addEventListener('touchstart', this.handleClickOutside)
+  }
+  componentWillUnmount() {
+    window.removeEventListener('mousedown', this.handleClickOutside)
+    window.removeEventListener('touchstart', this.handleClickOutside)
   }
   render() {
     const { bottom: _bottom, left: _left, right: _right, content, children } = this.props
@@ -40,7 +44,7 @@ export default class Popover extends Component {
     return <div 
       className='container'
       ref={el => this.containerEl = el}
-      onTouchStart={this.toggle}
+      onTouchStart={this.onMouseEnter}
       onMouseEnter={this.onMouseEnter}
       onMouseLeave={this.onMouseLeave}>
       <style jsx>{`
@@ -59,6 +63,7 @@ export default class Popover extends Component {
           transform: translateX(-50%);
           opacity: 0;
           visibility: hidden;
+          z-index: 1011;
         }
         .popover.top {
           bottom: 100%;
