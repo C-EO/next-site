@@ -63,6 +63,11 @@ export default withMediaQuery(({ isMobile, title, children }) => (
         font-size: .9em;
         font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
       }
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
       .f-reset {
         font-size: 1rem;
       }
@@ -127,6 +132,12 @@ export default withMediaQuery(({ isMobile, title, children }) => (
       .is-mobile .column {
         width: 100%;
         padding: 1.5rem 0;
+      }
+      .display-mobile {
+        display: none;
+      }
+      .is-mobile .display-mobile {
+        display: unset;
       }
       .no-tap-highlight, a {
         -webkit-user-select: none;

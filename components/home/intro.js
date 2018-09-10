@@ -1,6 +1,7 @@
 import Logo from '../logo'
 import Container from '../container'
 import Button from '../button'
+import Slogan from './slogan'
 
 import { MediaQueryConsumer } from '../media-query'
 
@@ -32,6 +33,9 @@ export default ({}) => {
           return <>
             {
               isMobile ? null : <Logo size={90}/>
+            }
+            {
+              // <Slogan/>
             }
             {
               isMobile ?

@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 
 export default ({isMobile, light, invert, selected, onClick, children}) => (
-  <a className={classNames('fw3', { selected, f5: isMobile })} onClick={onClick}>
+  <a className={classNames('fw4', { selected, f5: isMobile })} onClick={onClick}>
     <style jsx>{`
       a {
         display: inline-block;

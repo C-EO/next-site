@@ -60,7 +60,7 @@ export default () => <MediaQueryConsumer>{({isMobile, isTablet}) => {
       .slides {
         display: flex;
         max-width: 100vw;
-        margin: 50px 0;
+        margin: 50px 0 0;
       }
       .slides *::selection {
         background-color: transparent;

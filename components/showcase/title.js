@@ -12,13 +12,7 @@ export default ({ height }) => <Container center>
         align-items: center;
         justify-content: flex-end;
       }
-      br {
-        display: none;
-      }
-      :global(.is-mobile) br {
-        display: initial;
-      }
     `}</style>
-    <SectionHeader title='Showcase' description={<span>Meet hundreds of beautiful websites<br/> powered by Next.js</span>} />
+    <SectionHeader title='Showcase' description={<span>Meet hundreds of beautiful websites <br className="display-mobile"/>powered by Next.js</span>} />
   </div>
 </Container>

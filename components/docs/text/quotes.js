@@ -7,7 +7,7 @@ export const Blockquote = ({ children, ...props }) => (
         padding: 14px 0;
         // border-left: 6px solid #000;
         margin-left: 0;
-        padding-left: 32px;
+        padding-left: 1.25rem;
 
         background: #f7f7f7;
         // border-left: none;

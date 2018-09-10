@@ -9,9 +9,11 @@ export default ({id, offset, children}) => {
       <style jsx>{`
         {
           display: flex;
+          flex-direction: column;
           width: 100%;
           min-height: 100vh;
           align-items: center;
+          justify-content: center;
         }
       `}</style>
       {children}

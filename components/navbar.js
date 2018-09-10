@@ -16,7 +16,7 @@ export default withRouter(({ isMobile, router }) => {
   return <MediaQueryConsumer>{media => {
     if (media.isMobile) {
       return <Container center>
-        <nav className='expand'>
+        <nav className='expand f5'>
           <style jsx>{`
             nav {
               position: relative;
@@ -99,18 +99,18 @@ export default withRouter(({ isMobile, router }) => {
             </div>
           </div>
           <div className="links dropdown">
-            <Link href="/docs"><a className={classNames('f5', { selected: route.startsWith('/docs') })} title='Documentation'>Docs</a></Link>
-            <Link href="/learn"><a className={classNames('f5', { selected: route.startsWith('/learn') })} title='Learn'>Learn</a></Link>
-            <Link href="/showcase"><a className={classNames('f5', { selected: route.startsWith('/showcase') })} title='Showcase'>Showcase</a></Link>
-            <Link href="/blog"><a className={classNames('f5', { selected: route.startsWith('/blog') })}>Blog</a></Link>
-            <Link href="/enterprise"><a className={classNames('f5', { selected: route.startsWith('/enterprise') })}>Enterprise</a></Link>
+            <Link href="/docs"><a className={classNames({ selected: route.startsWith('/docs') })} title='Documentation'>Docs</a></Link>
+            <Link href="/learn"><a className={classNames({ selected: route.startsWith('/learn') })} title='Learn'>Learn</a></Link>
+            <Link href="/showcase"><a className={classNames({ selected: route.startsWith('/showcase') })} title='Showcase'>Showcase</a></Link>
+            <Link href="/blog"><a className={classNames({ selected: route.startsWith('/blog') })}>Blog</a></Link>
+            <Link href="/enterprise"><a className={classNames({ selected: route.startsWith('/enterprise') })}>Enterprise</a></Link>
           </div>
         </nav>
       </Container>
     }
 
     return <Container center>
-      <nav>
+      <nav className='f-reset'>
         <style jsx>{`
           nav {
             position: relative;
@@ -182,9 +182,9 @@ export default withRouter(({ isMobile, router }) => {
           }
         `}</style>
         <div className="links">
-          <Link href="/docs"><a className={classNames('f5', { selected: route.startsWith('/docs') })} title='Documentation'>Docs</a></Link>
-          <Link href="/learn"><a className={classNames('f5', { selected: route.startsWith('/learn') })} title='Learn'>Learn</a></Link>
-          <Link href="/showcase"><a className={classNames('f5', { selected: route.startsWith('/showcase') })} title='Showcase'>Showcase</a></Link>
+          <Link href="/docs"><a className={classNames({ selected: route.startsWith('/docs') })} title='Documentation'>Docs</a></Link>
+          <Link href="/learn"><a className={classNames({ selected: route.startsWith('/learn') })} title='Learn'>Learn</a></Link>
+          <Link href="/showcase"><a className={classNames({ selected: route.startsWith('/showcase') })} title='Showcase'>Showcase</a></Link>
         </div>
         <div className="logo">
           <Link href="/">
@@ -194,11 +194,11 @@ export default withRouter(({ isMobile, router }) => {
           </Link>
         </div>
         <div className="links">
-          <Link href="/blog"><a className={classNames('f5', { selected: route.startsWith('/blog') })}>Blog</a></Link>
-          <Link href="/enterprise"><a className={classNames('f5', { selected: route.startsWith('/enterprise') })}>Enterprise</a></Link>
+          <Link href="/blog"><a className={classNames({ selected: route.startsWith('/blog') })}>Blog</a></Link>
+          <Link href="/enterprise"><a className={classNames({ selected: route.startsWith('/enterprise') })}>Enterprise</a></Link>
           <div className="icons">
             <Link href="https://github.com/zeit"><a><img src="/static/icons/github.svg"/></a></Link>
-            <Popover content={<div style={{ whiteSpace: 'nowrap' }}>Join <strong>Next.js</strong> on <strong>Spectrum</strong></div>}>
+            <Popover content={<div style={{ whiteSpace: 'nowrap' }}>Join <strong className="fw6">Next.js</strong> on <strong className="fw6">Spectrum</strong></div>}>
               <Link href={SPECTRUM}><a className="no-margin"><img src="/static/icons/spectrum.svg"/><span className="badge"/></a></Link>
             </Popover>
           </div>

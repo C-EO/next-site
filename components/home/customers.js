@@ -24,7 +24,7 @@ export default () => <Container gray wide center padding>
         margin-top: 4rem;
       }
     `}</style>
-    <h3 className="f-reset subtitle fw4">Meet hundreds of beautiful websites powered by Next.js</h3>
+    <h3 className="f-reset subtitle fw4">Meet hundreds of beautiful websites <br className="display-mobile"/>powered by Next.js</h3>
   </div>
   <ShowcasePreview/>
   <div>

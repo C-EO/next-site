@@ -48,13 +48,13 @@ export default class MyApp extends App {
             --text-scale-ratio: 1.2;
 
             /* type scale */
-            --text-xs: ${modularScale(-2, '1em', modularScaleRatio)};
-            --text-sm: ${modularScale(-1, '1em', modularScaleRatio)};
-            --text-md: ${modularScale(1, '1em', modularScaleRatio)};
-            --text-lg: ${modularScale(2, '1em', modularScaleRatio)};
-            --text-xl: ${modularScale(3, '1em', modularScaleRatio)};
-            --text-xxl: ${modularScale(4, '1em', modularScaleRatio)};
-            --text-xxxl: ${modularScale(5, '1em', modularScaleRatio)};
+            --text-xs: ${modularScale(-2, '1rem', modularScaleRatio)};
+            --text-sm: ${modularScale(-1, '1rem', modularScaleRatio)};
+            --text-md: ${modularScale(1, '1rem', modularScaleRatio)};
+            --text-lg: ${modularScale(2, '1rem', modularScaleRatio)};
+            --text-xl: ${modularScale(3, '1rem', modularScaleRatio)};
+            --text-xxl: ${modularScale(4, '1rem', modularScaleRatio)};
+            --text-xxxl: ${modularScale(5, '1rem', modularScaleRatio)};
           }
         `}</style>
       </Head>

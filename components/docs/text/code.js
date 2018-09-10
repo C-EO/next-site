@@ -5,7 +5,7 @@ export const Code = ({ children, syntax }) => (
       {`
         pre {
           border: 1px solid #eaeaea;
-          padding: 20px;
+          padding: 1.25rem;
           margin: 40px 0;
           white-space: pre;
           overflow: auto;
@@ -31,7 +31,7 @@ export const InlineCode = ({ children, noWrap }) => (
     <style jsx>
       {`
         code {
-          color: #666;
+          color: #313131;
           font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
             DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace,
             serif;

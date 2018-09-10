@@ -5,13 +5,6 @@ const makeLink = onSelect => ({tab, children}) =>
 
 export default Comp => ({ onSelect }) => 
   <Frame>
-    <style jsx global>{`
-      iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-      }
-    `}</style>
     <Comp A={makeLink(onSelect)}/>
   </Frame>
 

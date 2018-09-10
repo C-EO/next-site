@@ -25,7 +25,9 @@ export default class Popover extends Component {
     this.setState({ show: false })
   }
   handleClickOutside = ev => {
-    if (this.state.show && this.containerEl && this.containerEl.contains(ev.target)) {
+    if (this.state.show && this.containerEl && (
+      this.containerEl === ev.target || this.containerEl.contains(ev.target)
+    )) {
       this.onMouseLeave()
     }
   }

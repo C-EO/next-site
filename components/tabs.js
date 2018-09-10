@@ -38,6 +38,7 @@ export const Indicator = ({selected, onClick}) =>
         height: 10px;
         margin: 0 5px;
         border-radius: 50%;
+        transition: background .2s ease;
         background: ${selected ? `#EEEEEE` : `#909090`};
         cursor: pointer;
       }

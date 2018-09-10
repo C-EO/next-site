@@ -93,7 +93,7 @@ export default class Documentation extends Component {
   }
 
   onHashChange() {
-    this.updateSelected(window.location.hash);
+    this.updateSelected(window.location.hash)
   }
 
   render() {

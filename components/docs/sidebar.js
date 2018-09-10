@@ -198,7 +198,7 @@ export default class Sidebar extends React.Component {
             left: 0;
             right: 0;
             top: 100%;
-            bottom: -60vh;
+            bottom: -50vh;
             background: white;
             overflow-y: scroll;
             box-shadow: 0 10px 20px rgba(0, 0, 0, .1);

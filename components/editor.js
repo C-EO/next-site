@@ -45,7 +45,7 @@ export default ({ data, children }) => {
         display: inline-block;
         padding: 0 .5rem;
         color: #969696;
-        cursor: default;
+        cursor: pointer;
       }
       .tab:hover {
         background: #272727;
