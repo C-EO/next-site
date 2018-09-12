@@ -1,4 +1,4 @@
-import { PureComponent } from 'react'
+import React, { PureComponent } from 'react'
 
 const { Provider: MediaQueryProvider, Consumer: MediaQueryConsumer } = React.createContext({
   isMobile: false,
