@@ -146,7 +146,7 @@ export default () => <MediaQueryConsumer>{({isMobile, isTablet}) => {
             transform: `scale(${1 + Math.sin(z / 9)}) translate3d(${-Math.sin(offset) * 30}px, ${top}px, 0)`,
             // filter: `brightness(${z === 0 ? 1 : 0.8})`
           }}>
-            <img src={item.src.replace('/showcases/', '/showcase-thumbnails/')} alt={`Showcase ${i}`} style={{
+            <img src={item.src.replace('/showcases/', '/showcase-thumbnails/')} alt={item.title} style={{
               opacity: z === 0 ? 1 : 0.8
             }}/>
             <div className='info'>

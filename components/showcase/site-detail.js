@@ -68,7 +68,7 @@ export default class extends PureComponent {
         `}</style>
         <Fade>
           <div className={`preview`}>
-            <img src={src}/>
+            <img src={src} alt={siteData.title}/>
             <div className='info'>
               <h3 className='f4'>{siteData.title}</h3>
               <Link href={siteData.link}><a className='f5'>{siteData.link}</a></Link>

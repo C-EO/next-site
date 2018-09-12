@@ -74,11 +74,11 @@ export default withPure(() => <Container wide dark padding>
         </div>
       </div>
       <div className='external-links f6'>
-        <Link href="https://zeit.co/oss"><a>ZEIT OSS</a></Link>
-        <Link href="https://github.com/zeit/next.js"><a>GitHub</a></Link>
-        <Link href="https://github.com/zeit/next.js"><a>Changelog</a></Link>
-        <Link href="https://github.com/zeit/next.js"><a>Releases</a></Link>
-        <Link href={links.spectrum}><a>Spectrum</a></Link>
+        <Link href="https://zeit.co/oss"><a rel="noreferrer">ZEIT OSS</a></Link>
+        <Link href="https://github.com/zeit/next.js"><a rel="noreferrer">GitHub</a></Link>
+        <Link href="https://github.com/zeit/next.js"><a rel="noreferrer">Changelog</a></Link>
+        <Link href="https://github.com/zeit/next.js"><a rel="noreferrer">Releases</a></Link>
+        <Link href={links.spectrum}><a rel="noreferrer">Spectrum</a></Link>
       </div>
     </footer>
   </Container>

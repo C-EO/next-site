@@ -154,7 +154,7 @@ export default class Sidebar extends React.Component {
           <Header height={48} zIndex={999} offset={64 + 32 + 32} distance={1} defaultActive shadow>
             <div className="docs-select f5 fw6" onClick={this.toggleDropdown}>
               <Container>
-                <img src='/static/icons/arrow-right.svg'/> {currentItem}
+                <img alt="→" src='/static/icons/arrow-right.svg'/> {currentItem}
               </Container>
             </div>
             <div className={`documentation__sidebar docs-dropdown ${dropdown ? '' : ' docs-closed'}`}>

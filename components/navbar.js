@@ -86,15 +86,15 @@ export default withRouter(({ isMobile, router }) => {
           `}</style>
           <div className="logo">
             <Link href="/">
-              <a>
+              <a aria-label="Next.js">
                 <NextLogo/>
               </a>
             </Link>
           </div>
           <div className="links">
             <div className="icons">
-              <Link href="https://github.com/zeit"><a><img src="/static/icons/github.svg"/></a></Link>
-              <Link href={links.spectrum}><a className="no-margin"><img src="/static/icons/spectrum.svg"/><span className="badge"/></a></Link>
+              <Link href="https://github.com/zeit"><a><img alt="GitHub" src="/static/icons/github.svg"/></a></Link>
+              <Link href={links.spectrum}><a className="no-margin"><img alt="Spectrum" src="/static/icons/spectrum.svg"/><span className="badge"/></a></Link>
             </div>
           </div>
           <div className="links dropdown">
@@ -187,7 +187,7 @@ export default withRouter(({ isMobile, router }) => {
         </div>
         <div className="logo">
           <Link href="/">
-            <a>
+            <a aria-label="Next.js">
               <NextLogo/>
             </a>
           </Link>
@@ -196,9 +196,9 @@ export default withRouter(({ isMobile, router }) => {
           <Link href="/blog"><a className={classNames({ selected: route.startsWith('/blog') })}>Blog</a></Link>
           <Link href="/enterprise"><a className={classNames({ selected: route.startsWith('/enterprise') })}>Enterprise</a></Link>
           <div className="icons">
-            <Link href="https://github.com/zeit"><a><img src="/static/icons/github.svg"/></a></Link>
+            <Link href="https://github.com/zeit"><a><img alt="GitHub" src="/static/icons/github.svg"/></a></Link>
             <Popover content={<div style={{ whiteSpace: 'nowrap' }}>Join <strong className="fw6">Next.js</strong> on <strong className="fw6">Spectrum</strong></div>}>
-              <Link href={links.spectrum}><a className="no-margin"><img src="/static/icons/spectrum.svg"/><span className="badge"/></a></Link>
+              <Link href={links.spectrum}><a className="no-margin"><img alt="Spectrum" src="/static/icons/spectrum.svg"/><span className="badge"/></a></Link>
             </Popover>
           </div>
         </div>

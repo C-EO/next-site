@@ -1,4 +1,3 @@
-
 const mapping = {
   example: {
     type: 'post'
