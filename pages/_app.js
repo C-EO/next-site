@@ -22,7 +22,7 @@ export default class NextSite extends App {
     if (theme) {
       theme = theme[1] 
     } else {
-      theme = 'EB0010' // 'FF2A37' // || 'FF4954'
+      theme = 'FF2A37' // || 'FF4954'
     }
     
     return {pageProps, theme}
