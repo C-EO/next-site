@@ -1,8 +1,11 @@
 import Link from 'next/link'
 
-export default ({children, invert, href, className, ...props }) => (
+import withPure from './pure'
+
+export default withPure(({children, invert, href, className, ...props }) => (
   <Link href={href}>
     <a className={`${invert ? `invert` : ''} fw4`} {...props}>
+      {children}
       <style jsx>{`
         a {
           display: inline-block;
@@ -27,7 +30,6 @@ export default ({children, invert, href, className, ...props }) => (
           color: white;
         }
       `}</style>
-      {children}
     </a>
   </Link>
-)
+))

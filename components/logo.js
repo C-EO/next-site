@@ -1,4 +1,6 @@
-export default ({size}) => (
+import withPure from './pure'
+
+export default withPure(({size}) => (
   <svg
     // width={size || 82}
     height={size || 50}
@@ -16,4 +18,4 @@ export default ({size}) => (
       fillRule="nonzero"
     />
   </svg>
-)
+))

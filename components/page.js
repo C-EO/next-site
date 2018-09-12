@@ -270,6 +270,7 @@ export default withMediaQuery(({ isMobile, title, children }) => (
     `}</style>
     <noscript>
       <style>{`
+        // still show the page when JavaScript disabled
         .fade-reset {
           opacity: 1 !important;
         }

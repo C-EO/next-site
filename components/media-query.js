@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import { PureComponent } from 'react'
 
 const { Provider: MediaQueryProvider, Consumer: MediaQueryConsumer } = React.createContext({
   isMobile: false,
   isTablet: false
 })
 
-const withMediaQuery = Comp => class extends Component {
+const withMediaQuery = Comp => class extends PureComponent {
   state = {
     isMobile: false,
     isTablet: false

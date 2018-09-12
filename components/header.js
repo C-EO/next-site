@@ -1,7 +1,4 @@
-import React, { Component, PureComponent } from 'react'
-import Link from 'next/link'
-
-import NextLogo from './logo'
+import React, { PureComponent } from 'react'
 
 export default class extends PureComponent {
   state = {
@@ -30,7 +27,7 @@ export default class extends PureComponent {
   }
   render () {
     const { scrolled, fixed, active } = this.state
-    const { isHome, height, offset, shadow, zIndex, background, defaultActive, children } = this.props
+    const { height, offset, shadow, zIndex, background, defaultActive, children } = this.props
 
     return <header>
       <style jsx>{`

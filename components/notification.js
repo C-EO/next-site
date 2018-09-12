@@ -3,8 +3,11 @@ import { ellipsis } from 'polished'
 
 import { MediaQueryConsumer } from './media-query'
 import Container from './container'
+import withPure from './pure'
 
-export default ({title, titleMobile, children}) => {
+// TODO: dismiss & localStorage
+
+export default withPure(({title, titleMobile, children}) => {
   return <MediaQueryConsumer>{({isMobile}) => {
     return <div className='notification f6' title={title}>
       <style jsx>{`
@@ -24,4 +27,4 @@ export default ({title, titleMobile, children}) => {
       </Container>
     </div>
   }}</MediaQueryConsumer>
-}
+})

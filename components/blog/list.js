@@ -3,7 +3,7 @@ import SectionHeader from '../section-header'
 
 import Preview from './preview'
 
-export default () => <>
+export default () => (
   <Container padding wide>
     <SectionHeader title='Blog' description=''/>
     <Preview detail/>
@@ -12,4 +12,4 @@ export default () => <>
     <Preview/>
     <Preview/>
   </Container>
-</>
+)

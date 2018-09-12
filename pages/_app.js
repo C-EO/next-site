@@ -1,7 +1,7 @@
 import App, { Container } from 'next/app'
 import Head from 'next/head'
 import React from 'react'
-import { transparentize, lighten, modularScale } from 'polished'
+import { transparentize, modularScale } from 'polished'
 
 // if (typeof window !== 'undefined') {
 //   if (!Object.entries) {
@@ -10,7 +10,7 @@ import { transparentize, lighten, modularScale } from 'polished'
 //   }
 // }
 
-export default class MyApp extends App {
+export default class NextSite extends App {
   static async getInitialProps ({ Component, router, ctx }) {
     let pageProps = {}
 

@@ -7,8 +7,7 @@ import NextLogo from './logo'
 import Container from './container'
 import Popover from './popover'
 
-// TODO: manage urls in config
-const SPECTRUM = `https://spectrum.chat/next-js`
+import { links } from '../site-manifest'
 
 export default withRouter(({ isMobile, router }) => {
   let { route } = router
@@ -95,7 +94,7 @@ export default withRouter(({ isMobile, router }) => {
           <div className="links">
             <div className="icons">
               <Link href="https://github.com/zeit"><a><img src="/static/icons/github.svg"/></a></Link>
-              <Link href={SPECTRUM}><a className="no-margin"><img src="/static/icons/spectrum.svg"/><span className="badge"/></a></Link>
+              <Link href={links.spectrum}><a className="no-margin"><img src="/static/icons/spectrum.svg"/><span className="badge"/></a></Link>
             </div>
           </div>
           <div className="links dropdown">
@@ -199,7 +198,7 @@ export default withRouter(({ isMobile, router }) => {
           <div className="icons">
             <Link href="https://github.com/zeit"><a><img src="/static/icons/github.svg"/></a></Link>
             <Popover content={<div style={{ whiteSpace: 'nowrap' }}>Join <strong className="fw6">Next.js</strong> on <strong className="fw6">Spectrum</strong></div>}>
-              <Link href={SPECTRUM}><a className="no-margin"><img src="/static/icons/spectrum.svg"/><span className="badge"/></a></Link>
+              <Link href={links.spectrum}><a className="no-margin"><img src="/static/icons/spectrum.svg"/><span className="badge"/></a></Link>
             </Popover>
           </div>
         </div>

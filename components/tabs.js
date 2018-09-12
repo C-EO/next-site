@@ -1,6 +1,8 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 
-export default class Tabs extends Component {
+import withPure from './pure'
+
+export default class Tabs extends PureComponent {
   constructor(props) {
     super()
     this.state = {
@@ -29,7 +31,7 @@ export default class Tabs extends Component {
   }
 }
 
-export const Indicator = ({selected, onClick}) => 
+export const Indicator = withPure(({selected, onClick}) => 
   <div onClick={onClick}>
     <style jsx>{`
       {
@@ -46,4 +48,4 @@ export const Indicator = ({selected, onClick}) =>
         background: ${selected ? `#EEEEEE` : `#AAAAAA`};
       }
     `}</style>
-  </div>
+  </div>)

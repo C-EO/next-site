@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import { PureComponent } from 'react'
 import classNames from 'classnames'
 
-export default class Popover extends Component {
+export default class Popover extends PureComponent {
   state = {
     show: false,
     top: true,

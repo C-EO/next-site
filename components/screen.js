@@ -1,4 +1,6 @@
-export default ({id, offset, children}) => {
+import withPure from './pure'
+
+export default withPure(({id, offset, children}) => {
   return (
     <div
       id={id}
@@ -19,4 +21,4 @@ export default ({id, offset, children}) => {
       {children}
     </div>
   )
-}
+})

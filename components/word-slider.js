@@ -1,4 +1,4 @@
-import React from 'react'
+import { PureComponent } from 'react'
 import { Spring } from 'react-spring'
 
 const ANIMATION_STAGES = [
@@ -7,7 +7,7 @@ const ANIMATION_STAGES = [
   { opacity: 0, y: 100 },
 ]
 
-export default class extends React.PureComponent {
+export default class extends PureComponent {
   constructor(props) {
     super(props)
     this.children = React.Children.toArray(props.children)

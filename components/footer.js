@@ -1,8 +1,11 @@
 import Link from 'next/link'
 
 import Container from './container'
+import withPure from './pure'
 
-export default () => <Container wide dark padding>
+import { links } from '../site-manifest'
+
+export default withPure(() => <Container wide dark padding>
   <Container>
     <footer>
       <style jsx>{`
@@ -75,8 +78,8 @@ export default () => <Container wide dark padding>
         <Link href="https://github.com/zeit/next.js"><a>GitHub</a></Link>
         <Link href="https://github.com/zeit/next.js"><a>Changelog</a></Link>
         <Link href="https://github.com/zeit/next.js"><a>Releases</a></Link>
-        <Link href="https://spectrum.chat/next-js"><a>Spectrum</a></Link>
+        <Link href={links.spectrum}><a>Spectrum</a></Link>
       </div>
     </footer>
   </Container>
-</Container>
+</Container>)
