@@ -22,13 +22,13 @@ const HEADER_HEIGHT = 16 * 12
 export default withRouter(class extends Component {
   render () {
     const { router } = this.props
-    const item = router.query.item
+    const { item, from } = router.query
 
-    return <Page title='Next.js Showcase'>
+    return <Page title='Showcase - Next.js'>
       <Header height={0} zIndex={1001} background='white' defaultActive>
         <Navbar/>
       </Header>
-      <SiteDetail siteData={mapping[item]}/>
+      <SiteDetail siteData={mapping[item]} from={from}/>
       <MediaQueryConsumer>{({isMobile}) => 
         <Tabs data={categories}>{
           (onSelect, selectedId, selectedIndex) => <>

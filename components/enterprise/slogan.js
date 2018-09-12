@@ -7,7 +7,9 @@ export default () => <Container padding>
       <span>static websites</span>
       <span>server-rendered Apps</span>
       <span>production</span>
-      <span>enterprise</span>
+      <span>the enterprise</span>
+      <span>the desktop</span>
+      <span>the mobile web</span>
     </WordSlider>
   </h1>
   <style jsx>{`

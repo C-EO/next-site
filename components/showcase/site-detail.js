@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Head from 'next/head'
 import Router from 'next/router'
 
 import { PureComponent } from 'react'
@@ -12,19 +13,21 @@ function clearRoute() {
 
 export default class extends PureComponent {
   clickOuter = (ev) => {
-    console.log(ev.target, this.lightbox)
     clearRoute()
   }
 
   render () {
-    const { siteData } = this.props
-    // if (!siteData) {
+    const { siteData, from } = this.props
+    if (!siteData) {
       return null
-    // }
+    }
 
     let src = siteData.src
 
-    return <MediaQueryConsumer>{({isMobile}) => 
+    return <MediaQueryConsumer>{({isMobile}) => <>
+      <Head>
+        <title>{siteData.title} - Showcase</title>
+      </Head>
       <div className="lightbox" onClick={this.clickOuter} ref={el => this.lightbox = el}>
         <style jsx>{`
           .lightbox {
@@ -73,6 +76,6 @@ export default class extends PureComponent {
           </div>
         </Fade>
       </div>
-    }</MediaQueryConsumer>
+    </>}</MediaQueryConsumer>
   }
 }

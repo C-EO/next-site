@@ -30,16 +30,16 @@ export default () => (
     <div style={{ marginBottom: '1rem' }}/>
     <BackgroundSlider duration={50}>
       <div className="company-logos-container">
-        <div><Netflix /></div>
-        <div><GitHub /></div>
-        <div><Scale /></div>
-        <div><Auth0 /></div>
         <div><Ticketmaster /></div>
         <div><OpenCollective /></div>
+        <div><Netflix /></div>
         <div><Eaze /></div>
+        <div><GitHub /></div>
         <div><MagicLeap /></div>
+        <div><Scale /></div>
         <div><Trulia /></div>
         <div><MozillaVR /></div>
+        <div><Auth0 /></div>
       </div>
     </BackgroundSlider>
     

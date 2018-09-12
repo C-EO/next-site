@@ -16,7 +16,7 @@ export default ({ caseStudy, card, detail, wide }) => {
           align-items: center;
           min-height: ${wide ? '20rem' : '200px'};
           text-align: left;
-          background-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 1100px), url(/static/images/showcases/marvel.png);
+          background-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) ${card ? '1100px' : '110%'}), url(/static/images/showcases/marvel.png);
           background-size: cover;
           background-position: center top;
           overflow: hidden;
@@ -31,7 +31,7 @@ export default ({ caseStudy, card, detail, wide }) => {
           height: 100%;
           max-width: 560px;
           padding: 2rem 1rem 2rem ${wide ? 0 : 1}rem;
-          text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+          text-shadow: 0 2px 1rem rgba(0, 0, 0, 0.8);
         }
         .wrapper h2 {
           margin-bottom: 1rem;

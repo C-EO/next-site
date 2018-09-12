@@ -33,14 +33,6 @@ function getData(category) {
 let dataCategory = 'All'
 let dataSource = getData('all')
 
-function changeRoute(item) {
-  if (!item) {
-    Router.router.push('/showcase', '/showcase', { shallow: true })
-  } else {
-    Router.router.push('/showcase?item=' + item, '/showcase/' + item, { shallow: true })
-  }
-}
-
 const getRowHeight = ({index}, columnCount) => {
   if (columnCount < 3) {
     // no highlighted
@@ -61,177 +53,98 @@ const SitePreviewPlaceholder = () => <div style={{
 }} />
 
 const SitePreview = withRouter(class extends PureComponent {
-  state = { open: false }
-  loadDetail = () => {
-    changeRoute(this.props.siteData.internalUrl)
-    this.setState({ open: true })
-  }  
-  closeDetail = () => {
-    changeRoute()
-    this.setState({ open: false })
+  state = {
+    open: false
   }
-  getSlugPosition = () => {
-    if (!this.previewEl) {
-      return {}
-    }
-    if (this.state.open) {
-      let { top, left, bottom, right } = this.previewEl.getBoundingClientRect()
-      let margin = 32
-      return { 
-        opacity: 1,
-        top: -top + margin,
-        left: -left + margin, 
-        right: right - window.innerWidth + margin, 
-        bottom: bottom - window.innerHeight + margin 
-      }
-    } else {
-      return {}
-    }
+  loadDetail = () => {
+    let item = this.props.siteData.internalUrl
+    Router.router.push('/showcase?from=click&item=' + item, '/showcase/' + item, { shallow: true })
   }
   componentWillReceiveProps(newProps) {
-    let open = newProps.router.query.item === this.props.siteData.internalUrl
-    if (open !== this.state.open) {
-      this.setState({ open })
-    }
+    console.log(newProps.router)
   }
   render () {
-    const { siteData, flex, isVisible, isScrolling, isTablet } = this.props
-    let { open } = this.state
-
-    if (isScrolling && open) {
-      open = false
-      this.closeDetail()
-    }
-    // const { height, width, top, left, outerWidth, outerHeight } = this.state
+    const { siteData, flex, isVisible, isTablet } = this.props
 
     let src = siteData.src.replace('/showcases/', '/showcase-thumbnails/')
 
     return <div className={`no-tap-highlight site-container${siteData.highlighted && !isTablet ? ' highlighed' : ''}`} key={`site-${siteData.internalUrl}`}>
-        <Spring native from={{
-          opacity: 1,
-          top: 24,
-          left: 24,
-          right: 24,
-          bottom: 24,
-        }}
-        to={this.getSlugPosition()}
-        config={{ ...config.default, restSpeedThreshold: 1, restDisplacementThreshold: 0.1 }}>
-          {styles => <animated.div className={classNames('slug', { open })} style={{
-            ...styles,
-            position: 'absolute',
-            backgroundColor: '#ccc',
-            backgroundImage: `url(${src})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center top',
-            backgroundRepeat: 'no-repeat',
-            zIndex: open ? 1001 : 0,
-            pointerEvents: 'none',
-            borderRadius: 7,
-            boxShadow: `0 4px 12px 0 rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.02)`
-            // border: '1px solid'
-            // boxShadow: `rgba(0, 0, 0, 0.15) 0px 10px 40px 10px, rgba(0, 0, 0, 0.02) 0px 0px 0px 1px`
-          }}/>}
-        </Spring>
-        <div className='content' ref={el => this.previewEl = el}>
-          <Fade show={isVisible}>
-            <div className={classNames('preview', { open })} onClick={this.loadDetail}>
-              <div className='shadow'>
-                <div className='info'>
-                  <h3 className={siteData.highlighted && !isTablet ? 'f2' : 'f4'}>{siteData.title}</h3>
-                  <Link href={siteData.link}><a className='f5'>{siteData.link}</a></Link>
-                </div>
+      <div className='content' ref={el => this.previewEl = el}>
+        <Fade show={isVisible}>
+          <div className={classNames('preview', { open })} onClick={this.loadDetail}>
+            <div className='shadow'>
+              <div className='info'>
+                <h3 className={siteData.highlighted && !isTablet ? 'f2' : 'f4'}>{siteData.title}</h3>
+                <Link href={siteData.link}><a className='f5'>{siteData.link}</a></Link>
               </div>
             </div>
-          </Fade>
-        </div>
-        <style jsx>{`
-        .site-container {
-          position: relative;
-          flex: ${flex || 1};
-          height: ${isTablet ? 'unset' : '100%'};
-        }
-        .content {
-          position: relative;
-          width: 100%;
-          height: 100%;
-          // padding: ${GAP_Y / 2}px ${GAP_X / 2}px ${GAP_Y / 2} ${GAP_X / 2}px;
-        }
-        .preview {
-          position: absolute;
-          // width: 100%;
-          // height: 100%;
-          top: ${GAP_Y / 2}px;
-          bottom: ${GAP_Y / 2}px;
-          left: ${GAP_X / 2}px;
-          right: ${GAP_X / 2}px;
-          background-image: url(${src});
-          background-size: cover;
-          background-position: center top;
-          background-repeat: no-repeat;
-          box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.02);
-          border-radius: 7px;
-          text-align: center;
-          overflow: hidden;
-          background-color: #FFFFFF;
-          // transition: all .2s ease;
-          cursor: zoom-in;
-        }
-        .preview .shadow {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: flex-end;
-          height: 100%;
-          color: white;
-          text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
-          background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
-          transition: opacity .2s ease;
-          opacity: 0;
-        }
-        .info {
-          width: 100%;
-          padding: 1.5rem;
-          background: rgba(0, 0, 0, 0.8);
-          text-align: center;
-          transition: opacity .6s ease;
-          opacity: 0;
-        }
-        .preview:hover {
-          // transform: translateY(-5px);
-          box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.12);
-        }
-        .preview:hover .shadow {
-          opacity: 1;
-        }
-        .preview:hover .info {
-          opacity: 1;
-        }
-        .preview {
-          transition: all 10ms ease 1s;
-        }
-        .preview.open {
-          visibility: hidden;
-          transition: none;
-        }
-        .slug {
-          position: absolute;
-          left: 24px;
-          top: 24px;
-          right: 24px;
-          bottom: 24px;
-          background: #ccc;
-          z-index: 1;
-          pointer-events: none;
-          background-image: url(${src});
-          background-size: cover;
-          background-position: center top;
-          background-repeat: no-repeat;
-        }
-        .slug.open {
-          z-index: 1001;
-        }
-      `}</style>
+          </div>
+        </Fade>
       </div>
+      <style jsx>{`
+      .site-container {
+        position: relative;
+        flex: ${flex || 1};
+        height: ${isTablet ? 'unset' : '100%'};
+      }
+      .content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        // padding: ${GAP_Y / 2}px ${GAP_X / 2}px ${GAP_Y / 2} ${GAP_X / 2}px;
+      }
+      .preview {
+        position: absolute;
+        // width: 100%;
+        // height: 100%;
+        top: ${GAP_Y / 2}px;
+        bottom: ${GAP_Y / 2}px;
+        left: ${GAP_X / 2}px;
+        right: ${GAP_X / 2}px;
+        background-image: url(${src});
+        background-size: cover;
+        background-position: center top;
+        background-repeat: no-repeat;
+        box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.02);
+        border-radius: 7px;
+        text-align: center;
+        overflow: hidden;
+        background-color: #FFFFFF;
+        // transition: all .2s ease;
+        cursor: zoom-in;
+      }
+      .preview .shadow {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        height: 100%;
+        color: white;
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
+        transition: opacity .2s ease;
+        opacity: 0;
+      }
+      .info {
+        width: 100%;
+        padding: 1.5rem;
+        background: rgba(0, 0, 0, 0.8);
+        text-align: center;
+        transition: opacity .6s ease;
+        opacity: 0;
+      }
+      .preview:hover {
+        // transform: translateY(-5px);
+        box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.12);
+      }
+      .preview:hover .shadow {
+        opacity: 1;
+      }
+      .preview:hover .info {
+        opacity: 1;
+      }
+    `}</style>
+    </div>
   }
 })
 
@@ -341,7 +254,7 @@ export default class extends Component {
     }
   }
   render() {
-    return <Container wide gray center overflow><MediaQueryConsumer>{({isMobile, isTablet}) =>
+    return <Container wide gray center><MediaQueryConsumer>{({isMobile, isTablet}) =>
       <div className='container'>
         <style jsx>{`
           .container {
@@ -351,11 +264,7 @@ export default class extends Component {
             margin: 2rem 0;
           }
           .icon-label {
-            // vertical-align: middle;
             margin-right: .625rem;
-          }
-          :global(.ReactVirtualized__Grid__innerScrollContainer) {
-            overflow: visible !important;
           }
         `}</style>
         <WindowScroller>
@@ -375,8 +284,7 @@ export default class extends Component {
               overscanIndicesGetter={(args) => this.overscanIndicesGetter(args, isTablet)}
               style={{
                 willChange: '',
-                margin: 'auto',
-                overflow: 'visible'
+                margin: 'auto'
               }}
               ref={list => {
                 let columnCount = (isMobile ? 1 : isTablet ? 2 : 3)
@@ -390,9 +298,13 @@ export default class extends Component {
           )}
         </WindowScroller>
         <div>
-          <Button href="#" onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}><span className='icon-label'>Back to Top</span><ArrowUpIcon color='#FD3B47' /></Button>
+          <Button href="#" onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}>
+            <span className='icon-label' style={{ verticalAlign: 'middle' }}>Back to Top</span><ArrowUpIcon color='#FD3B47' />
+          </Button>
         </div>
-        <Button href={SUBMIT_URL} invert><span className='icon-label'>Share Your Website</span><HeartIcon color="white" /></Button>
+        <Button href={SUBMIT_URL} invert>
+          <span className='icon-label'>Share Your Website</span><HeartIcon color="white" />
+        </Button>
       </div>
     }</MediaQueryConsumer></Container>  
   }

@@ -37,6 +37,7 @@ export default withMediaQuery(({ isMobile, title, children }) => (
         font-size: var(--text-base-size);
         font-weight: 400;
         min-width: 320px;
+        scroll-behavior: smooth;
       }
       html, body {
         background-color: #FFF;
@@ -267,6 +268,15 @@ export default withMediaQuery(({ isMobile, title, children }) => (
           display: none;
       }
     `}</style>
-    <Fade config={{ tension: 180, friction: 12 }}>{children}</Fade>
+    <noscript>
+      <style>{`
+        .fade-reset {
+          opacity: 1 !important;
+        }
+      `}</style>
+    </noscript>
+    <Fade config={{ tension: 180, friction: 12 }}>
+      <div className="fade-reset">{children}</div>
+    </Fade>
   </div>
 ))
