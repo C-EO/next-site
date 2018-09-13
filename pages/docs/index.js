@@ -4,10 +4,13 @@ import Navbar from '../../components/navbar'
 import Notification from '../../components/notification'
 import Container from '../../components/container'
 import { MediaQueryConsumer } from '../../components/media-query'
+import withPure from '../../components/pure'
 import Footer from '../../components/footer'
 
 import Markdown, { meta } from './index.mdx'
 import Documentation, { components } from '../../components/docs/documentation'
+
+const Content = withPure(() => <Markdown components={components} />)
 
 export default () => (
   <Page>
@@ -21,7 +24,7 @@ export default () => (
     }</MediaQueryConsumer>
     <Container>
       <Documentation meta={meta}>
-        <Markdown components={components} />
+        <Content/>
       </Documentation>
     </Container>
   </Page>

@@ -1,10 +1,11 @@
-import { Fragment, Component } from 'react'
+import { PureComponent, Component } from 'react'
 import { Code } from './text/code'
 import _scrollIntoViewIfNeeded from 'scroll-into-view-if-needed'
 import slugify from '@sindresorhus/slugify'
 
 import Header from '../header'
 import Container from '../container'
+import ArrowRight from '../icons/arrow-right'
 
 const navElements = [
   "Setup",
@@ -132,7 +133,7 @@ export class SidebarNavItem extends Component {
   }
 }
 
-export default class Sidebar extends React.Component {
+export default class Sidebar extends PureComponent {
   state = {
     dropdown: false
   }
@@ -154,7 +155,12 @@ export default class Sidebar extends React.Component {
           <Header height={48} zIndex={999} offset={64 + 32 + 32} distance={1} defaultActive shadow>
             <div className="docs-select f5 fw6" onClick={this.toggleDropdown}>
               <Container>
-                <img alt="→" src='/static/icons/arrow-right.svg'/> {currentItem}
+              <span style={{ 
+                verticalAlign: 'middle',
+                marginRight: '0.2rem',
+                display: 'inline-block',
+                lineHeight: '1rem'
+              }}><ArrowRight/></span>{currentItem}
               </Container>
             </div>
             <div className={`documentation__sidebar docs-dropdown ${dropdown ? '' : ' docs-closed'}`}>
@@ -171,7 +177,8 @@ export default class Sidebar extends React.Component {
                             this.updateSelected(`#${slugify(item)}`)
                           } 
                           isActive={this.props.currentSelection === `#${slugify(item)}`} 
-                          isMobile={true} />
+                          isMobile={true}
+                        />
                       ))
                     }
                   </ul>
@@ -179,54 +186,54 @@ export default class Sidebar extends React.Component {
               </Container>
             </div>
           </Header>
+          <style jsx>{`
+            .docs-select {
+              height: 3rem;
+              width: 100%;
+              border-top: 1px solid #f5f5f5;
+              line-height: 3rem;
+              text-align: left;
+              cursor: pointer;
+            }
+            .docs-select img {
+              vertical-align: middle;
+              margin-top: -2px;
+            }
+            .docs-dropdown {
+              position: absolute;
+              left: 0;
+              right: 0;
+              top: 100%;
+              bottom: -50vh;
+              background: white;
+              box-shadow: 0 10px 20px rgba(0, 0, 0, .1);
+              transition: bottom .5s ease;
+              overflow-y: auto;
+              -webkit-overflow-scrolling: touch;
+            }
+            .docs-dropdown.docs-closed {
+              bottom: 100%;
+            }
+            .documentation__sidebar nav {
+              padding-left: 24px;
+            }
+            .documentation__sidebar nav ul {
+              margin: 0;
+              padding: 0;
+            }
+            .documentation__sidebar-heading {
+              display: inline-block;
+              margin-top: 1rem;
+              margin-bottom: 12px;
+              margin-left: 3px;
+              color: #999999;
+              text-transform: uppercase;
+            }
+            .negative-spacer {
+              margin: 0 -1rem;
+            }
+          `}</style>
         </div>
-        <style jsx>{`
-          .docs-select {
-            height: 3rem;
-            width: 100%;
-            border-top: 1px solid #f5f5f5;
-            line-height: 3rem;
-            text-align: left;
-            cursor: pointer;
-          }
-          .docs-select img {
-            vertical-align: middle;
-            margin-top: -2px;
-          }
-          .docs-dropdown {
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 100%;
-            bottom: -50vh;
-            background: white;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, .1);
-            transition: bottom .5s ease;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-          }
-          .docs-dropdown.docs-closed {
-            bottom: 100%;
-          }
-          .documentation__sidebar nav {
-            padding-left: 24px;
-          }
-          .documentation__sidebar nav ul {
-            margin: 0;
-            padding: 0;
-          }
-          .documentation__sidebar-heading {
-            display: inline-block;
-            margin-top: 1rem;
-            margin-bottom: 12px;
-            margin-left: 3px;
-            color: #999999;
-            text-transform: uppercase;
-          }
-          .negative-spacer {
-            margin: 0 -1rem;
-          }
-        `}</style>
         <style jsx global>{`
           :global(.target.docs-anchor-target) {
             margin-top: -208px;

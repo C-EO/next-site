@@ -1,6 +1,5 @@
-import { Component, Fragment } from 'react'
+import { Component } from 'react'
 import Router from 'next/router'
-import Link from 'next/link'
 import { format, parse } from 'url'
 import Head from './head'
 import Sidebar from './sidebar'
@@ -10,7 +9,6 @@ import { InlineCode, Code } from './text/code'
 import { GenericLink } from './text/link'
 import Heading from './heading'
 
-import Container from '../container'
 import { MediaQueryConsumer } from '../media-query'
 
 if (typeof window !== 'undefined') {
@@ -60,11 +58,18 @@ export default class Documentation extends Component {
 
       if (!intersectingTargets.size) return
 
-      const sorted = [...intersectingTargets].sort(
-        (a, b) => nodes.indexOf(a) - nodes.indexOf(b)
-      )
+      let minIndex = Infinity
+      let id = ''
 
-      const hash = '#' + (sorted[0].id || '')
+      for (let target of intersectingTargets.values()) {
+        let index  = nodes.indexOf(target)
+        if (index < minIndex) {
+          minIndex = index
+          id = target.id
+        }
+      }
+
+      const hash = '#' + (id || '')
       if (location.hash !== hash) {
         changeHash(hash)
         this.updateSelected(hash)
