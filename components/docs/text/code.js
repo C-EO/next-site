@@ -4,20 +4,17 @@ export const Code = ({ children, syntax }) => (
     <style jsx>
       {`
         pre {
-          border: 1px solid #eaeaea;
           padding: 1.25rem;
           margin: 40px 0;
+          border: 1px solid #eaeaea;
           white-space: pre;
           overflow: auto;
           -webkit-overflow-scrolling: touch;
         }
 
         code {
-          color: #000000;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace,
-            serif;
-          font-size: 13px;
+          color: #313131;
+          font-size: 14px;
           line-height: 20px;
         }
       `}
@@ -32,10 +29,7 @@ export const InlineCode = ({ children, noWrap }) => (
       {`
         code {
           color: #313131;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace,
-            serif;
-          font-size: 0.9em;
+          font-size: 14px;
           white-space: pre-wrap;
         }
 

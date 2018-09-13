@@ -128,6 +128,7 @@ export default class Documentation extends Component {
 
             .documentation__container {
               flex: 1;
+              padding-bottom: 5rem;
               overflow: hidden;
             }
 
@@ -167,7 +168,7 @@ const DocH3 = ({ children }) => (
     </Heading>
     <style jsx>{`
       div {
-        margin: 30px 0 0 0;
+        margin: 2rem 0 0 0;
       }
     `}</style>
   </div>

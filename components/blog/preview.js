@@ -72,7 +72,7 @@ export default ({ caseStudy, card, detail, wide }) => {
         }
       `}</style>
       <Container>
-        <Link href={{ pathname: '/blog/posts', query: { post: 'example' }, asPath: '/blog/example' }}><h3 className='f3 title'>Next.js on ReactConf</h3></Link>
+        <Link href={{ pathname: '/blog/posts', query: { post: 'example' } }} as='/blog/example'><h3 className='f3 title'>Next.js on ReactConf</h3></Link>
         <p className='f6 date mute'>Thursday, June 28th 2018 (2 months ago)</p>
         {detail && <p className='content'>
           {`We're excited to announce that nextjs.org is now open source so that it can serve as a reference Nextjs implementation and issues/improvements can be filed directly on the project.`}

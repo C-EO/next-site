@@ -2,9 +2,9 @@ import Link from 'next/link'
 
 import withPure from './pure'
 
-export default withPure(({children, invert, href, className, ...props }) => (
-  <Link href={href}>
-    <a className={`${invert ? `invert` : ''} fw4`} {...props}>
+export default withPure(({children, invert, href, as, className, ...props }) => (
+  <Link href={href} as={as}>
+    <a className={(className || '') + `${invert ? `invert` : ''} fw4`} {...props}>
       {children}
       <style jsx>{`
         a {
@@ -21,6 +21,7 @@ export default withPure(({children, invert, href, className, ...props }) => (
           background: var(--theme-color-transparent-near-white);
         }
         a.invert {
+          margin: 0;
           padding: 0 2rem;
           height: 2.5rem;
           line-height: 2.5rem;

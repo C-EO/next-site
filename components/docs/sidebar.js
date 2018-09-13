@@ -200,9 +200,9 @@ export default class Sidebar extends React.Component {
             top: 100%;
             bottom: -50vh;
             background: white;
-            overflow-y: scroll;
             box-shadow: 0 10px 20px rgba(0, 0, 0, .1);
             transition: bottom .5s ease;
+            overflow-y: auto;
             -webkit-overflow-scrolling: touch;
           }
           .docs-dropdown.docs-closed {
