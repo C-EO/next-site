@@ -148,14 +148,14 @@ export default withMediaQuery(({ isMobile, title, children }) => (
       }
       .no-tap-highlight, a {
         -webkit-user-select: none;
-          -moz-user-select: none;
-            -ms-user-select: none;
-                user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
     
         -webkit-touch-callout: none;
         -khtml-user-select: none;
         -ms-touch-action: pan-y;
-            touch-action: pan-y;
+        touch-action: pan-y;
         -webkit-tap-highlight-color: transparent;
       }
     `}</style>

@@ -17,7 +17,7 @@ export default () => <Container padding>
   </h2>
   <style jsx>{`
     h1 {
-      text-align: center;
+      text-align: left;
     }
     .slider-prefix {
       margin-right: .5rem;
