@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import withPure from '../lib/pure'
 
-export default withPure(({children, invert, href, as, className, ...props }) => {
+export default withPure(({children, invert, href, as, className, prefetch, ...props }) => {
   let a = 
     <a className={(className || '') + `${invert ? `invert` : ''} fw4`} role='button' {...props}>
       {children}
@@ -39,7 +39,7 @@ export default withPure(({children, invert, href, as, className, ...props }) => 
     </a>
 
   if (href) {
-    return <Link href={href} as={as}>{a}</Link>
+    return <Link href={href} as={as} prefetch={prefetch}>{a}</Link>
   }
   return a
 })

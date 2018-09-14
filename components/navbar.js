@@ -186,18 +186,18 @@ export default withRouter(({ isMobile, router }) => {
         <div className="links">
           <Link href="/docs"><a className={classNames('mute', { selected: route.startsWith('/docs') })} title='Documentation' role='button'>Docs</a></Link>
           <Link href="/learn"><a className={classNames('mute', { selected: route.startsWith('/learn') })} title='Learn' role='button'>Learn</a></Link>
-          <Link href="/showcase"><a className={classNames('mute', { selected: route.startsWith('/showcase') })} title='Showcase' role='button'>Showcase</a></Link>
+          <Link href="/showcase" prefetch><a className={classNames('mute', { selected: route.startsWith('/showcase') })} title='Showcase' role='button'>Showcase</a></Link>
         </div>
         <div className="logo">
-          <Link href="/">
+          <Link href="/" prefetch>
             <a aria-label="Next.js">
               <NextLogo/>
             </a>
           </Link>
         </div>
         <div className="links">
-          <Link href="/blog"><a className={classNames('mute', { selected: route.startsWith('/blog') })} role='button'>Blog</a></Link>
-          <Link href="/enterprise"><a className={classNames('mute', { selected: route.startsWith('/enterprise') })} role='button'>Enterprise</a></Link>
+          <Link href="/blog" prefetch><a className={classNames('mute', { selected: route.startsWith('/blog') })} role='button'>Blog</a></Link>
+          <Link href="/enterprise" prefetch><a className={classNames('mute', { selected: route.startsWith('/enterprise') })} role='button'>Enterprise</a></Link>
           <div className="icons">
             <Link href="https://github.com/zeit"><a><img alt="GitHub" src="/static/icons/github.svg"/></a></Link>
             <Popover content={<div style={{ whiteSpace: 'nowrap' }}>Join <strong className="fw6">Next.js</strong> on <strong className="fw6">Spectrum</strong></div>}>
