@@ -3,9 +3,8 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import Navbar from '../components/navbar'
 import Screen from '../components/screen'
-import Container from '../components/container'
 
-import Slogan from '../components/enterprise/slogan'
+import Campaign from '../components/enterprise/campaign'
 import Contact from '../components/enterprise/contact'
 
 export default () => {
@@ -14,7 +13,7 @@ export default () => {
       <Navbar/>
     </Header>
     <Screen offset={64 + 150}>
-      <Slogan/>
+      <Campaign/>
       <Contact/>
     </Screen>
     <Footer/>

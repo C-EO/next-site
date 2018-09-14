@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import classNames from 'classnames'
 
 export default class extends PureComponent {
   state = {
@@ -30,6 +31,11 @@ export default class extends PureComponent {
     const { height, offset, shadow, zIndex, background, defaultActive, children } = this.props
 
     return <header>
+      <div className={classNames('fixed-container', {
+        scrolled, fixed, active: active || defaultActive
+      })}>
+        {children}
+      </div>
       <style jsx>{`
         header {
           left: 0;
@@ -61,9 +67,6 @@ export default class extends PureComponent {
           ${shadow ? `box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.06);` : ''}
         }
       `}</style>
-      <div className={`fixed-container${scrolled ? ' scrolled' : ''}${fixed ? ' fixed' : ''}${active || defaultActive ? ' active' : ''}`}>
-        {children}
-      </div>
     </header>
   }
 }

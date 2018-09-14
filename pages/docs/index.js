@@ -4,7 +4,7 @@ import Navbar from '../../components/navbar'
 import Notification from '../../components/notification'
 import Container from '../../components/container'
 import { MediaQueryConsumer } from '../../components/media-query'
-import withPure from '../../components/pure'
+import withPure from '../../lib/pure'
 import Footer from '../../components/footer'
 
 import Markdown, { meta } from './index.mdx'
