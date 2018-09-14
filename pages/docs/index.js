@@ -7,7 +7,7 @@ import { MediaQueryConsumer } from '../../components/media-query'
 import withPure from '../../lib/pure'
 import Footer from '../../components/footer'
 
-import Markdown, { meta } from './index.mdx'
+import Markdown, { meta } from './docs.mdx'
 import Documentation, { components } from '../../components/docs/documentation'
 
 const Content = withPure(() => <Markdown components={components} />)
