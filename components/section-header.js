@@ -1,4 +1,4 @@
-import withPure from './pure'
+import withPure from '../lib/pure'
 
 export default withPure(({id, title, description}) => <div>
   <style jsx>{`

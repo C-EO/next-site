@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import withPure from './pure'
+import withPure from '../lib/pure'
 
 export default withPure(({children, invert, href, as, className, ...props }) => {
   let a = 

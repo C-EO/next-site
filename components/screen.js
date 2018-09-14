@@ -1,4 +1,4 @@
-import withPure from './pure'
+import withPure from '../lib/pure'
 
 export default withPure(({id, offset, children}) => {
   return (
