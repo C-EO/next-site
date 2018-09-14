@@ -29,7 +29,7 @@ export const InlineCode = ({ children, noWrap }) => (
       {`
         code {
           color: #313131;
-          font-size: 14px;
+          font-size: .875em;
           white-space: pre-wrap;
         }
 

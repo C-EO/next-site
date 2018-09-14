@@ -120,6 +120,9 @@ export default withMediaQuery(({ isMobile, title, children }) => (
       .mute {
         color: #aaa;
       }
+      .tc {
+        text-align: center;
+      }
       .row {
         display: flex;
         align-items: center;

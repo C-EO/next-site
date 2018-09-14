@@ -66,13 +66,12 @@ export default props => {
       <style jsx>
         {`
           a {
-            border-bottom: 1px solid transparent;
             color: inherit;
-            text-decoration: none;
           }
 
           a:hover {
-            border-bottom-color: inherit;
+            color: inherit;
+            text-decoration: underline;
           }
 
           :global(h1[data-components-heading]) a::before {

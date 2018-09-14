@@ -189,4 +189,3 @@ export const components = {
   inlineCode: InlineCode,
   a: GenericLink
 }
-

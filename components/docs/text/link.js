@@ -40,11 +40,11 @@ export const AnchorLink = ({ href, onClick, children }) => (
     <style jsx>
       {`
         a {
-          text-decoration: none;
           font-size: inherit;
         }
 
         a:hover {
+          color: unset;
           text-decoration: underline;
         }
       `}
@@ -65,10 +65,6 @@ export const ExternalLink = ({ href, children }) => (
         a {
           text-decoration: none;
           font-size: inherit;
-        }
-
-        a:hover {
-          text-decoration: underline;
         }
       `}
     </style>

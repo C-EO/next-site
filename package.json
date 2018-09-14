@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@mdx-js/mdx": "^0.15.0",
+    "@mdx-js/tag": "^0.15.0",
     "@sindresorhus/slugify": "^0.3.0",
     "@zeit/next-mdx": "^1.1.0",
     "classnames": "^2.2.6",

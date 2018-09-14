@@ -44,7 +44,7 @@ export default ({}) => {
                   <br/>
                   <strong className="fw6">static</strong> and <strong className="fw6">server‑rendered</strong> Apps
                 </h2> : 
-                <h2 className="f1 fw3">
+                <h2 className="f0 fw3">
                   a lightweight framework
                   <br/>
                   for <strong className="fw6">static</strong> and <strong className="fw6">server‑rendered</strong> applications
