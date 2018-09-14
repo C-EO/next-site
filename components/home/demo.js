@@ -5,7 +5,7 @@ import Editor from '../editor'
 import Browser from '../browser'
 import { MediaQueryConsumer } from '../media-query'
 
-import TabButton from './tabButton'
+import TabButton from './tab-button'
 
 const DEMO_DATA = {
   'File-System Routing': require('./demos/file-system-routing').default,

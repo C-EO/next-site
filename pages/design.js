@@ -10,7 +10,7 @@ import SectionHeader from '../components/section-header'
 import Button from '../components/button'
 import Popover from '../components/popover'
 import Tabs from '../components/tabs'
-import TabButton from '../components/home/tabButton'
+import TabButton from '../components/home/tab-button'
 
 const ComponentTitle = ({children}) => <h3 className="fw8 f4">
   <style jsx>{`

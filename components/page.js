@@ -1,7 +1,6 @@
 import Head from 'next/head'
 
 import { withMediaQuery } from './media-query'
-import Fade from './fade'
 
 export default withMediaQuery(({ isMobile, title, children }) => (
   <div className={isMobile ? 'is-mobile' : ''}>
@@ -59,6 +58,10 @@ export default withMediaQuery(({ isMobile, title, children }) => (
       a {
         color: #2195ff;
         text-decoration: none;
+        transition: color .2s ease;
+      }
+      a:hover {
+        color: #68b5fb;
       }
       code {
         font-size: .9em;
@@ -153,16 +156,6 @@ export default withMediaQuery(({ isMobile, title, children }) => (
         -webkit-tap-highlight-color: transparent;
       }
     `}</style>
-    <noscript>
-      <style>{`
-        // still show the page when JavaScript disabled
-        .fade-reset {
-          opacity: 1 !important;
-        }
-      `}</style>
-    </noscript>
-    <Fade config={{ tension: 180, friction: 12 }}>
-      <div className="fade-reset">{children}</div>
-    </Fade>
+    {children}
   </div>
 ))

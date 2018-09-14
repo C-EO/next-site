@@ -4,12 +4,12 @@ import WordSlider from '../word-slider'
 export default () => <Container padding>
   <h1 className='f0 fw6'>
     <WordSlider prefix={<span className='fw3 slider-prefix'>React for</span>} duration={2000}>
-      <span>static websites</span>
-      <span>server-rendered Apps</span>
-      <span>production</span>
-      <span>the enterprise</span>
-      <span>the desktop</span>
-      <span>the mobile web</span>
+      <span>Static Websites</span>
+      <span>Server-Rendered Apps</span>
+      <span>Production</span>
+      <span>the Enterprise</span>
+      <span>the Desktop</span>
+      <span>the Mobile Web</span>
     </WordSlider>
   </h1>
   <style jsx>{`

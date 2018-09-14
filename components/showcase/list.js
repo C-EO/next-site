@@ -49,6 +49,15 @@ const getRowHeight = ({index}, columnCount) => {
   return height
 }
 
+const SitePreviewPlaceholder = () => <div style={{
+  flex: 1,
+  height: '100%'
+}} />
+
+const scrollTo = (top) => {
+  window.scrollTo({ top, left: 0, behavior: 'smooth' })
+}
+
 const getRowRender = columnCount => ({
   index,
   isScrolling,
@@ -122,6 +131,9 @@ export default class extends Component {
     if (category !== dataCategory) {
       dataCategory = category
       dataSource = getData(category.toLowerCase())
+      if (window.scrollY > 16 * 12) {
+        scrollTo(16 * 12)
+      }
     }
   }
   componentDidMount () {
@@ -199,7 +211,7 @@ export default class extends Component {
           )}
         </WindowScroller>
         <div>
-          <Button href="#" onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}>
+          <Button onClick={() => scrollTo(0)}>
             <span className='icon-label' style={{ verticalAlign: 'middle' }}>Back to Top</span><ArrowUpIcon color='#FD3B47' />
           </Button>
         </div>

@@ -14,6 +14,7 @@ export default ({isMobile, light, invert, selected, onClick, children}) => (
         transition: all .2s ease;
       }
       a:hover {
+        // color;
         ${light ? '' : invert ? 'background-color: rgba(255, 255, 255, .05)' : 'background-color: rgba(0, 0, 0, .05)'};
       }
       a.selected {

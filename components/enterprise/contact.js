@@ -3,6 +3,6 @@ import Button from '../button'
 
 export default () => (
   <Container center padding>
-    <Button invert>Get in touch</Button>
+    <Button invert>Get in Touch</Button>
   </Container>
 )

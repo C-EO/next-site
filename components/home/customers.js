@@ -7,7 +7,7 @@ import Preview from '../blog/preview'
 
 export default () => <Container gray wide center padding>
   <Container center>
-    <SectionHeader id="showcases" title='Who’s using Next.js?' description='We’re honored some of the most talented creatives out there build with Next.js'/>
+    <SectionHeader id="showcases" title='Who’s Using Next.js?' description='We’re honored some of the most talented creatives out there build with Next.js'/>
     <div>
       <style jsx>{`
         div {

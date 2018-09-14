@@ -1,5 +1,10 @@
+
 const mapping = {
   example: {
+    type: 'post',
+
+  },
+  hello: {
     type: 'post'
   }
 }

@@ -48,6 +48,8 @@ export default class NextSite extends App {
             --theme-color-transparent-light: ${transparentize(1 - 0.23, themeColor)};
             --theme-color-transparent-near-white: ${transparentize(1 - 0.1, themeColor)};
 
+            --theme-color-hover: ${transparentize(0.1, themeColor)};
+
             --gray-background: #f6f6f6;
             
             /* set base values */

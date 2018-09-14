@@ -1,4 +1,5 @@
 import { PureComponent } from 'react'
+import dynamic from 'next/dynamic'
 
 import Header from '../../../components/header'
 import Footer from '../../../components/footer'
@@ -7,15 +8,25 @@ import Page from '../../../components/page'
 import Container from '../../../components/container'
 import { MediaQueryConsumer } from '../../../components/media-query'
 
-import Markdown, { meta } from './example.mdx'
 import { components } from '../../../components/blog/post'
+
+let Example = dynamic(import('./example.mdx'))
+let Hello = dynamic(import('./hello.mdx'))
+const Post = ({name}) => {
+  switch (name) {
+    case 'hello': return <Hello components={components}/>
+    case 'example': return <Example components={components}/>
+    default: return <Example components={components}/>
+  }
+}
 
 export default class extends PureComponent {
   static async getInitialProps ({ query }) {
-    // console.log(query)
-    // console.log(require('./' + query.post + '.mdx'))
+    return { name: query.post }
   }
   render() {
+    let { name } = this.props
+    
     return <Page>
       <MediaQueryConsumer>{({isMobile}) => 
         <Header height={64 + (isMobile ? 32 : 0)} shadow defaultActive>
@@ -23,7 +34,7 @@ export default class extends PureComponent {
         </Header>
       }</MediaQueryConsumer>
       <Container padding>
-        <Markdown components={components}/>
+        <Post name={name}/>
       </Container>
       <Footer/>
     </Page>

@@ -1,10 +1,13 @@
 import { PureComponent } from 'react'
-import { withRouter } from 'next/router'
+import Router, { withRouter } from 'next/router'
+import Link from 'next/link'
+import classNames from 'classnames'
 
-const SitePreviewPlaceholder = () => <div style={{
-  flex: 1,
-  height: '100%'
-}} />
+import Fade from '../fade'
+
+const GAP_X = 48
+const GAP_Y = 48
+const ROW_HEIGHT = 250 + GAP_Y
 
 export default withRouter(class extends PureComponent {
   state = {

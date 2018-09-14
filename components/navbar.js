@@ -97,12 +97,12 @@ export default withRouter(({ isMobile, router }) => {
               <Link href={links.spectrum}><a className="no-margin"><img alt="Spectrum" src="/static/icons/spectrum.svg"/><span className="badge"/></a></Link>
             </div>
           </div>
-          <div className="links dropdown">
-            <Link href="/docs"><a className={classNames({ selected: route.startsWith('/docs') })} title='Documentation'>Docs</a></Link>
-            <Link href="/learn"><a className={classNames({ selected: route.startsWith('/learn') })} title='Learn'>Learn</a></Link>
-            <Link href="/showcase"><a className={classNames({ selected: route.startsWith('/showcase') })} title='Showcase'>Showcase</a></Link>
-            <Link href="/blog"><a className={classNames({ selected: route.startsWith('/blog') })}>Blog</a></Link>
-            <Link href="/enterprise"><a className={classNames({ selected: route.startsWith('/enterprise') })}>Enterprise</a></Link>
+          <div className="links mute dropdown">
+            <Link href="/docs"><a className={classNames({ selected: route.startsWith('/docs') })} title='Documentation' role='button'>Docs</a></Link>
+            <Link href="/learn"><a className={classNames({ selected: route.startsWith('/learn') })} title='Learn' role='button'>Learn</a></Link>
+            <Link href="/showcase"><a className={classNames({ selected: route.startsWith('/showcase') })} title='Showcase' role='button'>Showcase</a></Link>
+            <Link href="/blog"><a className={classNames({ selected: route.startsWith('/blog') })} title='Blog' role='button'>Blog</a></Link>
+            <Link href="/enterprise"><a className={classNames({ selected: route.startsWith('/enterprise') })} title='Enterprise' role='button'>Enterprise</a></Link>
           </div>
         </nav>
       </Container>
@@ -130,8 +130,11 @@ export default withRouter(({ isMobile, router }) => {
             padding: 5px;
             margin-left: -5px;
             margin-right: 2rem;
-            color: inherit;
             text-decoration: none;
+            transition: color .2s ease;
+          }
+          nav .links a:hover {
+            color: #111;
           }
           nav .links a.selected {
             color: var(--theme-color);
@@ -181,9 +184,9 @@ export default withRouter(({ isMobile, router }) => {
           }
         `}</style>
         <div className="links">
-          <Link href="/docs"><a className={classNames({ selected: route.startsWith('/docs') })} title='Documentation'>Docs</a></Link>
-          <Link href="/learn"><a className={classNames({ selected: route.startsWith('/learn') })} title='Learn'>Learn</a></Link>
-          <Link href="/showcase"><a className={classNames({ selected: route.startsWith('/showcase') })} title='Showcase'>Showcase</a></Link>
+          <Link href="/docs"><a className={classNames('mute', { selected: route.startsWith('/docs') })} title='Documentation' role='button'>Docs</a></Link>
+          <Link href="/learn"><a className={classNames('mute', { selected: route.startsWith('/learn') })} title='Learn' role='button'>Learn</a></Link>
+          <Link href="/showcase"><a className={classNames('mute', { selected: route.startsWith('/showcase') })} title='Showcase' role='button'>Showcase</a></Link>
         </div>
         <div className="logo">
           <Link href="/">
@@ -193,8 +196,8 @@ export default withRouter(({ isMobile, router }) => {
           </Link>
         </div>
         <div className="links">
-          <Link href="/blog"><a className={classNames({ selected: route.startsWith('/blog') })}>Blog</a></Link>
-          <Link href="/enterprise"><a className={classNames({ selected: route.startsWith('/enterprise') })}>Enterprise</a></Link>
+          <Link href="/blog"><a className={classNames('mute', { selected: route.startsWith('/blog') })} role='button'>Blog</a></Link>
+          <Link href="/enterprise"><a className={classNames('mute', { selected: route.startsWith('/enterprise') })} role='button'>Enterprise</a></Link>
           <div className="icons">
             <Link href="https://github.com/zeit"><a><img alt="GitHub" src="/static/icons/github.svg"/></a></Link>
             <Popover content={<div style={{ whiteSpace: 'nowrap' }}>Join <strong className="fw6">Next.js</strong> on <strong className="fw6">Spectrum</strong></div>}>
