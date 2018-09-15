@@ -152,7 +152,7 @@ export default class Sidebar extends PureComponent {
       const currentItem = navElements.filter(item => this.props.currentSelection === `#${slugify(item)}`)[0]
       return <>
         <div className='negative-spacer'>
-          <Header height={48} zIndex={999} offset={64 + 32 + 32} distance={1} defaultActive shadow>
+          <Header height={48} zIndex={999} offset={64 + 32} distance={1} defaultActive shadow>
             <div className="docs-select f5 fw6" onClick={this.toggleDropdown}>
               <Container>
               <span style={{ 

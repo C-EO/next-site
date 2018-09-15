@@ -47,6 +47,9 @@ export default withRouter(({ isMobile, router }) => {
               color: inherit;
               text-decoration: none;
             }
+            nav .links a.active {
+              color: var(--theme-color);
+            }
             nav .links a.selected {
               color: var(--theme-color);
               font-weight: 600;
@@ -149,16 +152,8 @@ export default withRouter(({ isMobile, router }) => {
             font-size: 0;
             text-align: center;
             overflow: hidden;
-            // transform: translate3d(0, 30%, 0);
-            // opacity: 0;
-            // pointer-events: none;
             transition: all .2s ease;
           }
-          // :global(.active) nav .logo {
-          //   transform: translate3d(0, 0, 0);
-          //   opacity: 1;
-          //   pointer-events: unset;
-          // }
           nav .logo a {
             display: inline-block;
           }

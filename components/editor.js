@@ -21,6 +21,7 @@ export default ({ data, children }) => {
         height: 2rem;
         line-height: 2rem;
         text-align: left;
+        overflow: hidden;
         background-color: #212121;
       }
       .button-group {
@@ -50,7 +51,7 @@ export default ({ data, children }) => {
         color: #969696;
         cursor: pointer;
       }
-      .tab:hover {
+      .tab:hover, .tab:active {
         background: #272727;
       }
       .tab.selected {
