@@ -1,10 +1,11 @@
 import Link from 'next/link'
+import classNames from 'classnames'
 
 import withPure from '../lib/pure'
 
 export default withPure(({children, invert, href, as, className, prefetch, ...props }) => {
   let a = 
-    <a className={(className || '') + `${invert ? `invert` : ''} fw4`} role='button' {...props}>
+    <a className={classNames(className, 'fw4 no-drag', { invert })} role='button' {...props}>
       {children}
       <style jsx>{`
         a {
@@ -34,6 +35,9 @@ export default withPure(({children, invert, href, as, className, prefetch, ...pr
         a.invert:hover {
           background: var(--theme-color-hover);
           box-shadow: 0 6px 20px var(--theme-color-transparent-light);
+        }
+        a.invert:active {
+          background: var(--theme-color-active);
         }
       `}</style>
     </a>

@@ -1,14 +1,16 @@
 import Highlight from 'react-highlight'
 
-export default ({children}) => <div className='f5 editor' style={{ padding: '1rem' }}>
+export default ({lang, children}) => <div className='f5 editor' style={{ padding: '1rem' }}>
   <style jsx global>{`
-    pre {
+    .editor pre {
       margin: 0;
+      white-space: pre-wrap;
+      color: #c3c3c3;
     }
     .editor .hljs {
       color: #c3c3c3;
     }
-    .editor .hljs .hljs-keyword, .editor .hljs .hljs-tag {
+    .editor .hljs .hljs-keyword, .editor .hljs .hljs-tag, .editor .hljs .hljs-attr {
       color: #f1f1f1;
       font-weight: 600;
     }
@@ -20,5 +22,9 @@ export default ({children}) => <div className='f5 editor' style={{ padding: '1re
       font-weight: 400;
     }
   `}</style>
-  <Highlight className='javascript'>{children}</Highlight>
+  {
+    lang === 'none' 
+    ? <pre className='hljs'><code>{children}</code></pre>
+    : <Highlight className={lang || 'javascript'}>{children}</Highlight>
+  }
 </div>

@@ -15,6 +15,7 @@ export default withRouter(({ isMobile, router }) => {
   return <MediaQueryConsumer>{media => {
     if (media.isMobile) {
       return <Container center>
+        <h1 className='visually-hidden'>Next.js</h1>
         <nav className='expand f5'>
           <style jsx>{`
             nav {
@@ -57,6 +58,7 @@ export default withRouter(({ isMobile, router }) => {
             }
             nav .logo a {
               display: inline-block;
+              padding-right: 4px;
             }
             nav .links .icons {
               display: flex;
@@ -100,15 +102,16 @@ export default withRouter(({ isMobile, router }) => {
           <div className="links mute dropdown">
             <Link href="/docs"><a className={classNames({ selected: route.startsWith('/docs') })} title='Documentation' role='button'>Docs</a></Link>
             <Link href="/learn"><a className={classNames({ selected: route.startsWith('/learn') })} title='Learn' role='button'>Learn</a></Link>
-            <Link href="/showcase"><a className={classNames({ selected: route.startsWith('/showcase') })} title='Showcase' role='button'>Showcase</a></Link>
-            <Link href="/blog"><a className={classNames({ selected: route.startsWith('/blog') })} title='Blog' role='button'>Blog</a></Link>
-            <Link href="/enterprise"><a className={classNames({ selected: route.startsWith('/enterprise') })} title='Enterprise' role='button'>Enterprise</a></Link>
+            <Link href="/showcase" prefetch><a className={classNames({ selected: route.startsWith('/showcase') })} title='Showcase' role='button'>Showcase</a></Link>
+            <Link href="/blog" prefetch><a className={classNames({ selected: route.startsWith('/blog') })} title='Blog' role='button'>Blog</a></Link>
+            <Link href="/enterprise" prefetch><a className={classNames({ selected: route.startsWith('/enterprise') })} title='Enterprise' role='button'>Enterprise</a></Link>
           </div>
         </nav>
       </Container>
     }
 
     return <Container center>
+      <h1 className='visually-hidden'>Next.js</h1>
       <nav className='f-reset'>
         <style jsx>{`
           nav {
@@ -146,16 +149,16 @@ export default withRouter(({ isMobile, router }) => {
             font-size: 0;
             text-align: center;
             overflow: hidden;
-            transform: translateY(30%);
-            opacity: 0;
-            pointer-events: none;
+            // transform: translate3d(0, 30%, 0);
+            // opacity: 0;
+            // pointer-events: none;
             transition: all .2s ease;
           }
-          :global(.active) nav .logo {
-            transform: translateY(0);
-            opacity: 1;
-            pointer-events: unset;
-          }
+          // :global(.active) nav .logo {
+          //   transform: translate3d(0, 0, 0);
+          //   opacity: 1;
+          //   pointer-events: unset;
+          // }
           nav .logo a {
             display: inline-block;
           }

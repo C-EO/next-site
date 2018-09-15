@@ -18,7 +18,7 @@ export default () => <MediaQueryConsumer>{({isMobile, isTablet}) => {
       <style jsx>{`
         .showcase-container {
           position: relative;
-          margin: 4rem 0 -2rem;
+          margin: 3rem 0 -2rem;
           pointer-events: none;
           line-height: 0;
         }
@@ -41,7 +41,7 @@ export default () => <MediaQueryConsumer>{({isMobile, isTablet}) => {
           left: 0;
           right: 0;
           bottom: -1rem;
-          background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), #f6f6f6 80%);
+          background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 30%, #f6f6f6 85%);
         }
       `}</style>
       <div className="overlay"></div>
@@ -55,18 +55,6 @@ export default () => <MediaQueryConsumer>{({isMobile, isTablet}) => {
     </div>
   }
   return <div className="showcase-container">
-  {/*
-    <BackgroundSlider duration={30}>
-      <div>{DATA.map((item, i) => {
-        return <img key={`showcase-${i}`} src={item.src.replace('/showcases/', '/showcase-thumbnails/')} alt={`Showcase ${i}`} style={{
-          height: 200,
-          margin: '1rem',
-          borderRadius: 7,
-          boxShadow: '0 5px 12px rgba(0, 0, 0, .08)',
-        }}/>
-      })}</div>
-    </BackgroundSlider>
-  */}
     <style jsx>{`
       .showcase-container {
         margin: 4rem 0 2rem;
@@ -146,7 +134,7 @@ export default () => <MediaQueryConsumer>{({isMobile, isTablet}) => {
             transform: `scale(${1 + Math.sin(z / 9)}) translate3d(${-Math.sin(offset) * 30}px, ${top}px, 0)`,
             // filter: `brightness(${z === 0 ? 1 : 0.8})`
           }}>
-            <img src={item.src.replace('/showcases/', '/showcase-thumbnails/')} alt={item.title} style={{
+            <img className='no-drag' src={item.src.replace('/showcases/', '/showcase-thumbnails/')} alt={item.title} style={{
               opacity: z === 0 ? 1 : 0.8
             }}/>
             <div className='info'>

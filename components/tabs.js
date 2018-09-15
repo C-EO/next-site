@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import { PureComponent } from 'react'
 
 import withPure from '../lib/pure'
 
@@ -20,14 +20,25 @@ export default class Tabs extends PureComponent {
       selected: id
     })
   }
+  componentDidUpdate(prevProps) {
+    if (this.props.data !== prevProps.data) {
+      this.setState({
+        selected: this.props.data[0]
+      })
+    }
+  }
   render () {
     const { data, children } = this.props
-    const { selected } = this.state
+    let { selected } = this.state
+    let index = data.indexOf(selected)
+    if (index === -1) {
+      selected = data[0]
+    }
 
     if (typeof children !== 'function') {
       return null
     }
-    return children(this.onSelect, selected, data.indexOf(selected))
+    return children(this.onSelect, selected, index)
   }
 }
 

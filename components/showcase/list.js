@@ -1,17 +1,13 @@
+import { Component, PureComponent } from 'react'
 import Link from 'next/link'
 import Router, { withRouter } from 'next/router'
 import classNames from 'classnames'
-
 import { format, parse } from 'url'
-import { Component, PureComponent } from 'react'
 import { List, WindowScroller, defaultCellRangeRenderer } from 'react-virtualized'
 import { directionalProperty } from 'polished'
-import { Spring, animated, Transition, config } from 'react-spring'
-import Measure from 'react-measure'
 
 import Button from '../button'
 import Container from '../container'
-import Fade from '../fade'
 import { MediaQueryConsumer } from '../media-query'
 import SitePreview from './site-preview'
 
@@ -116,7 +112,7 @@ const MobileRow = getRowRender(1)
 
 export default class extends Component {
   state = {
-    width: 0
+    width: 1
   }
   stopCachedIndex = 0
   startCachedIndex = Infinity
@@ -173,14 +169,19 @@ export default class extends Component {
           .container {
             margin: 1rem 0 6rem;
           }
-          div {
-            margin: 2rem 0;
+          .spacer {
+            margin-top: 2rem;
           }
           .icon-label {
             margin-right: .625rem;
           }
+          .flex-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
         `}</style>
-        <WindowScroller>
+        <WindowScroller serverHeight={800}>
           {({ height, isScrolling, onChildScroll, scrollTop }) => (
             <List
               autoHeight
@@ -210,11 +211,13 @@ export default class extends Component {
             />
           )}
         </WindowScroller>
-        <div>
-          <Button onClick={() => scrollTo(0)}>
-            <span className='icon-label' style={{ verticalAlign: 'middle' }}>Back to Top</span><ArrowUpIcon color='#FD3B47' />
-          </Button>
-        </div>
+        <div className='spacer'/>
+        <Button onClick={() => scrollTo(0)}>
+          <div className='flex-center'>
+            <span className='icon-label'>Back to Top</span><ArrowUpIcon color='var(--theme-color)' />
+          </div>
+        </Button>
+        <div className='spacer'/>
         <Button href={SUBMIT_URL} invert>
           <span className='icon-label'>Share Your Website</span><HeartIcon color="white" />
         </Button>

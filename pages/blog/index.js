@@ -9,7 +9,7 @@ import Preview from '../../components/blog/preview'
 import List from '../../components/blog/list'
 
 export default () =>
-  <Page>
+  <Page title='Blog - Next.js'>
     <MediaQueryConsumer>{({isMobile}) => 
       <Header height={64 + (isMobile ? 32 : 0)} shadow defaultActive>
         <Navbar/>

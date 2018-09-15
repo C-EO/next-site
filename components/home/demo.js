@@ -10,14 +10,14 @@ import TabButton from './tab-button'
 const DEMO_DATA = {
   'File-System Routing': require('./demos/file-system-routing').default,
   'Automatic Code Splitting': require('./demos/file-system-routing').default,
-  'Server Side Rendering': require('./demos/file-system-routing').default,
-  'Zones': require('./demos/file-system-routing').default,
+  'Server Side Rendering': require('./demos/ssr').default,
+  'Static Exporting': require('./demos/static-exporting').default,
   'More...': require('./demos/file-system-routing').default,
 }
 
 export default () => {
   return (
-    <MediaQueryConsumer>{({isMobile}) => 
+    <MediaQueryConsumer>{({isMobile, isTablet}) => 
       <Container center dark wide>
         <Container center>
           <Tabs data={Object.keys(DEMO_DATA)}>{
@@ -46,8 +46,11 @@ export default () => {
                     align-items: center;
                   }
                   .note {
-                    max-width: 480px;
+                    max-width: 620px;
                     text-align: left;
+                  }
+                  .note :global(p) {
+                    margin-top: 0;
                   }
                   .indicator {
                     margin-top: 2rem;
@@ -71,37 +74,43 @@ export default () => {
                   }
                 </div>
                 <div className="demo-body row">
-                  {isMobile && <div className="column">
-                    <Tabs data={['editor', 'browser']}>{
+                  {isTablet && <div className="column">
+                    <Tabs data={['A', 'B']}>{
                       (onSelect, _selectedId, selectedIndex) => {
                         let content = null
-                        if (_selectedId === 'editor') {
-                          content = <Editor data={DEMO_DATA[selectedId]}/>
+                        let data = DEMO_DATA[selectedId]
+                        if (_selectedId === 'A') {
+                          content = data.type[0] === 'editor' ? <Editor data={data.editor1}/> : <Browser data={data.browser1}/>
                         } else {
-                          content = <Browser data={DEMO_DATA[selectedId]}/>
+                          content = data.type[1] === 'editor' ? <Editor data={data.editor2}/> : <Browser data={data.browser2}/>
                         }
                         return <div>
                           {content}
                           <br/>
-                          <TabButton invert light isMobile={true} selected={_selectedId === 'editor'} onClick={() => onSelect('editor')}>Code</TabButton>
-                          <TabButton invert light isMobile={true} selected={_selectedId === 'browser'} onClick={() => onSelect('browser')}>Website</TabButton>
+                          <TabButton invert light isMobile={true} selected={_selectedId === 'A'} onClick={() => onSelect('A')}>{data.tabs[0]}</TabButton>
+                          <TabButton invert light isMobile={true} selected={_selectedId === 'B'} onClick={() => onSelect('B')}>{data.tabs[1]}</TabButton>
                         </div>
                       }
                     }</Tabs></div>
                   }
-                  {!isMobile && <>
-                    <div className="column">
-                      <Editor data={DEMO_DATA[selectedId]}/>
-                    </div>
-                    <div className="column">
-                      <Browser data={DEMO_DATA[selectedId]}/>
-                    </div>
-                  </>}
+                  {!isTablet && (() => {
+                    let data = DEMO_DATA[selectedId]
+                    let content1 = data.type[0] === 'editor' ? <Editor data={data.editor1}/> : <Browser data={data.browser1}/>
+                    let content2 = data.type[1] === 'editor' ? <Editor data={data.editor2}/> : <Browser data={data.browser2}/>
+
+                    return <>
+                      <div className="column">
+                        {content1}
+                      </div>
+                      <div className="column">
+                        {content2}
+                      </div>
+                    </>
+                  })()}
                 </div>
                 <div className="demo-footer">
                   <div className="note">
-                    <p>Next will serve each file in <code>`/pages`</code> under a pathname matching the filename.</p>
-                    <p>For example, <code>`/pages/some-file.js`</code> is served at <code>`site.com/some-file`</code>.</p>
+                    {DEMO_DATA[selectedId].note}
                   </div>
                   <div className="indicator">
                     {

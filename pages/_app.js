@@ -1,7 +1,7 @@
 import App, { Container } from 'next/app'
 import Head from 'next/head'
 import React from 'react'
-import { transparentize, modularScale } from 'polished'
+import { transparentize, darken, modularScale } from 'polished'
 
 // if (typeof window !== 'undefined') {
 //   if (!Object.entries) {
@@ -22,7 +22,7 @@ export default class NextSite extends App {
     if (theme) {
       theme = theme[1] 
     } else {
-      theme = 'FF2A37' // || 'FF4954'
+      theme = '0076ff' // 'FF2A37' // || 'FF4954'
     }
     
     return {pageProps, theme}
@@ -49,6 +49,7 @@ export default class NextSite extends App {
             --theme-color-transparent-near-white: ${transparentize(1 - 0.1, themeColor)};
 
             --theme-color-hover: ${transparentize(0.1, themeColor)};
+            --theme-color-active: ${darken(0.05, themeColor)};
 
             --gray-background: #f6f6f6;
             

@@ -13,7 +13,7 @@ export default ({ data, children }) => {
         box-shadow: 0 14px 50px 0 rgba(0, 0, 0, 0.38), 0 2px 10px 0 rgba(0, 0, 0, 0.48);
         border-radius: 7px;
         width: 100%;
-        height: 326px;
+        height: 352px;
         overflow: hidden;
       }
       .header {
@@ -40,6 +40,9 @@ export default ({ data, children }) => {
       .title {
         display: inline-block;
         flex: 1;
+        white-space: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
       }
       .tab {
         display: inline-block;
@@ -57,6 +60,7 @@ export default ({ data, children }) => {
       .content {
         flex: 1;
         text-align: left;
+        line-height: 1.3rem;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
       }
@@ -69,7 +73,7 @@ export default ({ data, children }) => {
             <span className='button' />
             <span className='button' />
           </div>
-          <div className='title f6'>
+          <div className='title f6 no-drag'>
             {data.editorTabs.map(file => 
               <span
                 key={file} 

@@ -12,6 +12,10 @@ export const Blockquote = ({ children, ...props }) => (
       blockquote :global(p) {
         margin: 0;
       }
+
+      blockquote :global(pre) {
+        background: white;
+      }
     `}</style>
   </blockquote>
 )

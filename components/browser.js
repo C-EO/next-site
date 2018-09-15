@@ -1,5 +1,7 @@
 import Tabs from './tabs'
 
+import { ellipsis } from 'polished'
+
 export default ({ data, children }) => (
   <div className='browser'>
     <style jsx>{`
@@ -11,7 +13,7 @@ export default ({ data, children }) => (
         box-shadow: 0 14px 50px 0 rgba(0,0,0,0.38), 0 2px 10px 0 rgba(0,0,0,0.48);
         border-radius: 7px;
         width: 100%;
-        height: 326px;
+        height: 352px;
         overflow: hidden;
       }
       .header {
@@ -20,6 +22,7 @@ export default ({ data, children }) => (
         line-height: 2rem;
         text-align: left;
         position: relative;
+        box-shadow: 0 0 0 1px #ccc;
         background-image: linear-gradient(-180deg, #F5F5F5 2%, #E8E8E8 99%);
       }
       .button-group {
@@ -60,13 +63,13 @@ export default ({ data, children }) => (
     `}</style>
     <Tabs data={data.browserTabs}>{
       (onSelect, selectedTab, selectedIndex) => <>
-        <div className='header'>
+        <div className='header' title={selectedTab}>
           <div className='button-group'>
             <span className='button' />
             <span className='button' />
             <span className='button' />
           </div>
-          <div className='title f6'>
+          <div className='title f6' style={ellipsis()}>
             {selectedTab}
           </div>
         </div>

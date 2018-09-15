@@ -2,7 +2,7 @@ import Container from '../container'
 import Button from '../button'
 import SectionHeader from '../section-header'
 
-export default () => <Container center padding>
+export default () => <Container center padding wide>
   <SectionHeader title='Learn Next.js'/>
   <div className='learn-intro'>
     <p>Tutorials, examples and quizzes. <br className='display-mobile'/>Learn Next.js step-by-step and earn points ✨.</p>
@@ -11,12 +11,14 @@ export default () => <Container center padding>
       .learn-intro {
         position: relative;
         height: 450px;
-        background: url(/static/images/learn-2.png);
+        max-width: 1024px;
+        margin: auto;
+        background: url(/static/images/learn.png);
         background-size: 100% auto;
         background-position: 0 2rem;
         background-repeat: no-repeat;
       }
-      :global(.is-mobile) .learn-intro {
+      :global(.is-tablet) .learn-intro {
         background-position: 0 3.5rem;
         background-size: 160% auto;
       }

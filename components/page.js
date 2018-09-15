@@ -1,9 +1,10 @@
 import Head from 'next/head'
+import classNames from 'classnames'
 
 import { withMediaQuery } from './media-query'
 
-export default withMediaQuery(({ isMobile, title, children }) => (
-  <div className={isMobile ? 'is-mobile' : ''}>
+export default withMediaQuery(({ isMobile, isTablet, title, children }) => (
+  <div className={classNames({'is-mobile': isMobile, 'is-tablet': isTablet})}>
     <Head>
       {title && <title>{title}</title>}
     </Head>
@@ -28,14 +29,16 @@ export default withMediaQuery(({ isMobile, title, children }) => (
         position: relative;
         min-height: 100%;
         margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
         line-height: 1.65;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
         font-size: var(--text-base-size);
         font-weight: 400;
         min-width: 320px;
+        direction: ltr;
+        font-feature-settings: 'kern';
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
         scroll-behavior: smooth;
       }
       html, body {
@@ -66,6 +69,18 @@ export default withMediaQuery(({ isMobile, title, children }) => (
       code {
         font-size: .9em;
         font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+      }
+      code:before, code:after {
+        content: '\`';
+      }
+      pre code:before, pre code:after {
+        content: '';
+      }
+      .demo-footer .note code {
+        background: rgba(0, 0, 0, 0.2);
+        padding: .2rem;
+        margin: 0 .1rem;
+        border-radius: 2px;
       }
       iframe {
         width: 100%;
@@ -115,10 +130,10 @@ export default withMediaQuery(({ isMobile, title, children }) => (
         font-weight: 600;
       }
       .subtitle {
-        color: #BCBCBC;
+        color: #9c9c9c;
       }
       .mute {
-        color: #aaa;
+        color: #757575;
       }
       .tc {
         text-align: center;
@@ -146,17 +161,36 @@ export default withMediaQuery(({ isMobile, title, children }) => (
       .is-mobile .display-mobile {
         display: unset;
       }
-      .no-tap-highlight, a {
+      a[role=button] {
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
-        user-select: none;
-    
-        -webkit-touch-callout: none;
         -khtml-user-select: none;
+        user-select: none;
+      }
+      .no-tap-highlight, a {
+        -webkit-touch-callout: none;
         -ms-touch-action: pan-y;
         touch-action: pan-y;
         -webkit-tap-highlight-color: transparent;
+      }
+      .no-drag {
+        user-drag: none; 
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+      }
+      .visually-hidden {
+        clip: rect(0 0 0 0);
+        height: 1px;
+        width: 1px;
+        margin: -1px;
+        padding: 0;
+        border: 0;
+        overflow: hidden;
+        position: absolute;
       }
     `}</style>
     {children}

@@ -16,7 +16,7 @@ export default ({ caseStudy, card, detail, wide }) => {
           align-items: center;
           min-height: ${wide ? '20rem' : '200px'};
           text-align: left;
-          background-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) ${card ? '1100px' : '110%'}), url(/static/images/showcases/marvel.png);
+          background-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) ${card ? '1100px' : '110%'}), url(/static/images/showcases/marvel.jpg);
           background-size: cover;
           background-position: center top;
           overflow: hidden;
@@ -40,13 +40,16 @@ export default ({ caseStudy, card, detail, wide }) => {
           margin-top: 0;
           margin-bottom: 2rem;
         }
+        .remove-shadow { 
+          text-shadow: none;
+        }
       `}</style>
       <Container>
         <div className="wrapper">
           {wide && <h3 className='f-reset'>Case Study</h3>}
           {wide ? <h2 className='f1 fw6'>Marvel</h2> : <h2 className='f2 fw6'>Case study: Marvel</h2>}
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae neque quis augue congue rutrum non in leo. Praesent eu orci convallis nisl eleifend sollicitudin. Aliquam laoreet ac ex sed gravida. Proin et ex in elit luctus gravida non quis turpis.</p>
-          <Button href="/blog">Read More</Button>
+          <div className='remove-shadow'><Button href="/blog/example" invert>Read More</Button></div>
         </div>
       </Container>
     </div>

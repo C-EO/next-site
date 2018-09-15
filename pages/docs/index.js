@@ -15,10 +15,7 @@ const Content = withPure(() => <Markdown components={components} />)
 export default () => (
   <Page>
     <MediaQueryConsumer>{({isMobile}) => 
-      <Header height={64 + 32 + (isMobile ? 32 : 0)} shadow={!isMobile} defaultActive>
-        <Notification title="Next 6 is out!">
-          Next 6 is out! — Babel 7, App Component, Improved stacktraces, Improved static export. Saturday, April 28th 2018
-        </Notification>
+      <Header height={64 + (isMobile ? 32 : 0)} shadow={!isMobile} defaultActive>
         <Navbar/>
       </Header>
     }</MediaQueryConsumer>
