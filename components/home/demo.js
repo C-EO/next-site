@@ -35,13 +35,13 @@ export default () => {
                   .demo-footer {
                     display: flex;
                     margin: 2rem 0;
-                    align-items: flex-end;
+                    align-items: flex-start;
                     justify-content: space-between;
                   }
-                  :global(.is-mobile) .demo-header {
+                  :global(.is-tablet) .demo-header {
                     flex-wrap: wrap;
                   }
-                  :global(.is-mobile) .demo-footer {
+                  :global(.is-tablet) .demo-footer {
                     flex-direction: column;
                     align-items: center;
                   }
@@ -52,9 +52,14 @@ export default () => {
                   .note :global(p) {
                     margin-top: 0;
                   }
+                  .note :global(p):last-of-type {
+                    margin-bottom: 0;
+                  }
                   .indicator {
-                    margin-top: 2rem;
                     white-space: nowrap;
+                  }
+                  :global(.is-tablet) .indicator {
+                    margin-top: 2rem;
                   }
                 `}</style>
                 <div className="demo-header">

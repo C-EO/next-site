@@ -1,4 +1,4 @@
-export default ({center, dark, gray, wide, padding, overflow, children, ...props}) => {
+export default ({center, vCenter, dark, gray, wide, padding, overflow, minHeight, children, ...props}) => {
   return <div {...props}>
     <style jsx>{`
       {
@@ -11,6 +11,8 @@ export default ({center, dark, gray, wide, padding, overflow, children, ...props
         ${dark ? `color: #f1f1f1;` : ''}
         ${gray ? `background-color: var(--gray-background);` : ''}
         ${wide && !overflow ? 'overflow: hidden;' : ''}
+        ${minHeight ? 'min-height: ' + minHeight + 'px;' : ''}
+        ${vCenter ? `display: flex; align-items: center;` : ''}
       }
       :after {
         // BFC

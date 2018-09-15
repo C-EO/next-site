@@ -147,14 +147,6 @@ export default withMediaQuery(({ isMobile, isTablet, title, children }) => (
         flex: 1;
         padding: 0 1.5rem;
       }
-      .is-mobile .row {
-        flex-direction: column;
-        margin: -1.5rem 0;
-      }
-      .is-mobile .column {
-        width: 100%;
-        padding: 1.5rem 0;
-      }
       .display-mobile {
         display: none;
       }

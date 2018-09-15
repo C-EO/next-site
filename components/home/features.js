@@ -27,9 +27,17 @@ export default () => <Container wide>
       .column {
         text-align: left;
       }
-      :global(.is-mobile) .column {
+      :global(.is-tablet) .column {
         text-align: center;
-        max-width: 400px;
+        max-width: 350px;
+      }
+      :global(.is-tablet) .row {
+        flex-direction: column;
+        margin: -1.5rem 0;
+      }
+      :global(.is-tablet) .column {
+        width: 100%;
+        padding: 1.5rem 0;
       }
     `}</style>
   </Container>

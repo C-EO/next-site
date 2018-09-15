@@ -2,9 +2,9 @@ import { PureComponent } from 'react'
 import { Spring } from 'react-spring'
 
 const ANIMATION_STAGES = [
-  { opacity: 0, y: -100 },
+  { opacity: 0, y: -60 },
   { opacity: 1, y: 0 },
-  { opacity: 0, y: 100 },
+  { opacity: 0, y: 50 },
 ]
 
 export default class extends PureComponent {

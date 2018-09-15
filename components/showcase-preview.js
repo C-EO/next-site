@@ -10,6 +10,7 @@ const DATA = sortOrder.slice(0, 7).map(id => {
 })
 
 const imgWidth = 330
+const imgHeight = 185
 const margin = 30
 
 export default () => <MediaQueryConsumer>{({isMobile, isTablet}) => {
@@ -57,7 +58,7 @@ export default () => <MediaQueryConsumer>{({isMobile, isTablet}) => {
   return <div className="showcase-container">
     <style jsx>{`
       .showcase-container {
-        margin: 4rem 0 2rem;
+        margin: 4rem auto 2rem auto;
       }
       .slides {
         display: flex;
@@ -98,7 +99,7 @@ export default () => <MediaQueryConsumer>{({isMobile, isTablet}) => {
       }
       .slide {
         width: ${imgWidth}px;
-        height: 185px;
+        height: ${imgHeight}px;
         margin: 0 calc(${50 / DATA.length}vw - ${imgWidth / 2}px);
         border-radius: 7px;
         box-shadow: 0 10px 20px rgba(0, 0, 0, .08), 0 5px 12px rgba(0, 0, 0, .1);

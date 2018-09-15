@@ -19,7 +19,7 @@ export default class Popover extends PureComponent {
       left = bounding.left
     }
 
-    this.setState({ show: true, left: right < 100, right: left < 100, bottom: top < 150 })
+    this.setState({ show: true, left: right < 100, right: left < 100, bottom: top < 100 })
   }
   onMouseLeave = () => {
     this.setState({ show: false })
