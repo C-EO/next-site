@@ -35,6 +35,7 @@ export default ({ caseStudy, card, detail, wide }) => {
         }
         .wrapper h2 {
           margin-bottom: 1rem;
+          cursor: pointer;
         }
         .wrapper p {
           margin-top: 0;
@@ -47,7 +48,9 @@ export default ({ caseStudy, card, detail, wide }) => {
       <Container>
         <div className="wrapper">
           {wide && <h3 className='f-reset'>Case Study</h3>}
-          {wide ? <h2 className='f1 fw6'>Marvel</h2> : <h2 className='f2 fw6'>Case study: Marvel</h2>}
+          <Link href='/blog/example'>
+            {wide ? <h2 className='f1 fw6'>Marvel</h2> : <h2 className='f2 fw6'>Case study: Marvel</h2>}
+          </Link>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae neque quis augue congue rutrum non in leo. Praesent eu orci convallis nisl eleifend sollicitudin. Aliquam laoreet ac ex sed gravida. Proin et ex in elit luctus gravida non quis turpis.</p>
           <div className='remove-shadow'><Button href="/blog/example" invert>Read More</Button></div>
         </div>

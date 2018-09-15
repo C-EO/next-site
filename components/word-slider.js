@@ -81,6 +81,7 @@ export default class extends PureComponent {
         br {
           display: block;
           font-size: 0;
+          line-height: 0;
           visibility: hidden;
         }
       `}</style>

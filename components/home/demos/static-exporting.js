@@ -57,7 +57,7 @@ const AboutPage = withBrowser(({A}) =>
 
 export default {
   type: ['editor', 'browser'],
-  tabs: ['Code', 'Website'],
+  tabs: ['Terminal', 'Website'],
   editor1: {
     editorTabs: ['$ ~/my-site', 'package.json'],
     editorMapping: {

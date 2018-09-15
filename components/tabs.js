@@ -29,6 +29,10 @@ export default class Tabs extends PureComponent {
   }
   render () {
     const { data, children } = this.props
+    if (!data.length) {
+      return null
+    }
+    
     let { selected } = this.state
     let index = data.indexOf(selected)
     if (index === -1) {

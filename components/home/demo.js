@@ -9,10 +9,10 @@ import TabButton from './tab-button'
 
 const DEMO_DATA = {
   'File-System Routing': require('./demos/file-system-routing').default,
-  'Automatic Code Splitting': require('./demos/file-system-routing').default,
+  'Automatic Code Splitting': require('./demos/code-splitting').default,
   'Server Side Rendering': require('./demos/ssr').default,
   'Static Exporting': require('./demos/static-exporting').default,
-  'More...': require('./demos/file-system-routing').default,
+  'More...': require('./demos/more').default,
 }
 
 export default () => {
@@ -75,11 +75,11 @@ export default () => {
                 </div>
                 <div className="demo-body row">
                   {isTablet && <div className="column">
-                    <Tabs data={['A', 'B']}>{
+                    <Tabs data={DEMO_DATA[selectedId].tabs}>{
                       (onSelect, _selectedId, selectedIndex) => {
                         let content = null
                         let data = DEMO_DATA[selectedId]
-                        if (_selectedId === 'A') {
+                        if (_selectedId === data.tabs[0]) {
                           content = data.type[0] === 'editor' ? <Editor data={data.editor1}/> : <Browser data={data.browser1}/>
                         } else {
                           content = data.type[1] === 'editor' ? <Editor data={data.editor2}/> : <Browser data={data.browser2}/>
@@ -87,14 +87,18 @@ export default () => {
                         return <div>
                           {content}
                           <br/>
-                          <TabButton invert light isMobile={true} selected={_selectedId === 'A'} onClick={() => onSelect('A')}>{data.tabs[0]}</TabButton>
-                          <TabButton invert light isMobile={true} selected={_selectedId === 'B'} onClick={() => onSelect('B')}>{data.tabs[1]}</TabButton>
+                          <TabButton invert light isMobile={true} selected={_selectedId === data.tabs[0]} onClick={() => onSelect(data.tabs[0])}>{data.tabs[0]}</TabButton>
+                          <TabButton invert light isMobile={true} selected={_selectedId === data.tabs[1]} onClick={() => onSelect(data.tabs[1])}>{data.tabs[1]}</TabButton>
                         </div>
                       }
                     }</Tabs></div>
                   }
                   {!isTablet && (() => {
                     let data = DEMO_DATA[selectedId]
+                    if (!data.type.length) {
+                      return null
+                    }
+
                     let content1 = data.type[0] === 'editor' ? <Editor data={data.editor1}/> : <Browser data={data.browser1}/>
                     let content2 = data.type[1] === 'editor' ? <Editor data={data.editor2}/> : <Browser data={data.browser2}/>
 
