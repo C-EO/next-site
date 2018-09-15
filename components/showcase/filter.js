@@ -111,7 +111,7 @@ export default class extends PureComponent {
         { 
           !isMobile && <Popover content={<div style={{ whiteSpace: 'nowrap' }}>Share your website!</div>} >
             <Link href={SUBMIT_URL}>
-              <a>
+              <a aria-label='Submit Your Website'>
                 <span className='tab f5' style={{ verticalAlign: 'top' }}>
                   <HeartIcon />
                 </span>

@@ -17,5 +17,7 @@ export default withPure(({id, title, description}) => <div>
   `}</style>
   { id && <span id={id} className='anchor'/>}
   <h2 className="f0 fw6">{title}</h2>
-  <h3 className="f-reset subtitle fw4">{description}</h3>
+  {
+    description && <h3 className="f-reset subtitle fw4">{description}</h3>
+  }
 </div>)

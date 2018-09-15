@@ -7,6 +7,9 @@ import NextLogo from './logo'
 import Container from './container'
 import Popover from './popover'
 
+import GitHubLogo from './icons/github'
+import SpectrumLogo from './icons/spectrum'
+
 import { links } from '../site-manifest'
 
 export default withRouter(({ isMobile, router }) => {
@@ -98,8 +101,8 @@ export default withRouter(({ isMobile, router }) => {
           </div>
           <div className="links">
             <div className="icons">
-              <Link href="https://github.com/zeit"><a><img alt="GitHub" src="/static/icons/github.svg"/></a></Link>
-              <Link href={links.spectrum}><a className="no-margin"><img alt="Spectrum" src="/static/icons/spectrum.svg"/><span className="badge"/></a></Link>
+              <Link href="https://github.com/zeit/next.js"><a aria-label='Next.js on GitHub'><GitHubLogo/></a></Link>
+              <Link href={links.spectrum}><a aria-label='Next.js on Spectrum' className="no-margin"><SpectrumLogo/><span className="badge"/></a></Link>
             </div>
           </div>
           <div className="links mute dropdown">
@@ -206,9 +209,9 @@ export default withRouter(({ isMobile, router }) => {
           <Link href="/blog" prefetch><a className={classNames('mute', { selected: route.startsWith('/blog') })} role='button'>Blog</a></Link>
           <Link href="/enterprise" prefetch><a className={classNames('mute', { selected: route.startsWith('/enterprise') })} role='button'>Enterprise</a></Link>
           <div className="icons">
-            <Link href="https://github.com/zeit"><a><img alt="GitHub" src="/static/icons/github.svg"/></a></Link>
+            <Link href="https://github.com/zeit/next.js"><a aria-label='Next.js on GitHub'><GitHubLogo/></a></Link>
             <Popover content={<div style={{ whiteSpace: 'nowrap' }}>Join <strong className="fw6">Next.js</strong> on <strong className="fw6">Spectrum</strong></div>}>
-              <Link href={links.spectrum}><a className="no-margin"><img alt="Spectrum" src="/static/icons/spectrum.svg"/><span className="badge"/></a></Link>
+              <Link href={links.spectrum}><a aria-label='Next.js on Spectrum' className="no-margin"><SpectrumLogo/><span className="badge"/></a></Link>
             </Popover>
           </div>
         </div>

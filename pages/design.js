@@ -36,10 +36,7 @@ const PopoverText = () => <div style={{ whiteSpace: 'nowrap' }}>The tooltip will
 
 export default () => {
   return <Page title='Design'>
-    <Header height={64 + 32} shadow defaultActive>
-      <Notification title="Next 6 is out!">
-        Next 6 is out! — Babel 7, App Component, Improved stacktraces, Improved static export. Saturday, April 28th 2018
-      </Notification>
+    <Header height={64} shadow defaultActive>
       <Navbar/>
     </Header>
     <Container padding>
