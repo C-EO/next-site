@@ -18,7 +18,7 @@ export default withRouter(({ isMobile, router }) => {
   return <MediaQueryConsumer>{media => {
     if (media.isMobile) {
       return <Container center>
-        <h1 className='visually-hidden'>Next.js</h1>
+        <h1 className='visually-hidden' aria-hidden='true'>Next.js</h1>
         <nav className='expand f5'>
           <style jsx>{`
             nav {
@@ -117,7 +117,7 @@ export default withRouter(({ isMobile, router }) => {
     }
 
     return <Container center>
-      <h1 className='visually-hidden'>Next.js</h1>
+      <h1 className='visually-hidden' aria-hidden='true'>Next.js</h1>
       <nav className='f-reset'>
         <style jsx>{`
           nav {
@@ -132,6 +132,7 @@ export default withRouter(({ isMobile, router }) => {
             display: flex;
             align-items: center;
             z-index: 1;
+            pointer-events: auto;
           }
           nav .links a {
             display: inline-block;

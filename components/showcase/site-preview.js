@@ -15,7 +15,12 @@ export default withRouter(class extends PureComponent {
   render () {
     const { siteData, flex, isVisible, isTablet } = this.props
 
+    let useLargeThumbnail = siteData.highlighted && !isTablet
     let src = siteData.src.replace('/showcases/', '/showcase-thumbnails/')
+
+    if (useLargeThumbnail) {
+      src = src.replace(/\.(?<!(jpg|jpeg|png)$)/, '@2x.')
+    }
 
     return <div className={`no-tap-highlight site-container${siteData.highlighted && !isTablet ? ' highlighed' : ''}`} key={`site-${siteData.internalUrl}`}>
       <div className='content' ref={el => this.previewEl = el}>

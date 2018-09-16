@@ -18,7 +18,7 @@ const DEMO_DATA = {
 export default () => {
   return (
     <MediaQueryConsumer>{({isMobile, isTablet}) => 
-      <Container center dark wide>
+      <Container center dark wide role='region'>
         <Container center>
           <Tabs data={Object.keys(DEMO_DATA)}>{
             (onSelect, selectedId, selectedIndex) =>

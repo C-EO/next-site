@@ -39,8 +39,8 @@ export default () => {
     <Header height={64} shadow defaultActive>
       <Navbar/>
     </Header>
-    <Container padding>
-      <SectionHeader title='Design' description='Components for nextjs.org'/>
+    <Container padding role='design'>
+      <SectionHeader id='design' title='Design' description='Components for nextjs.org'/>
       <ComponentTitle>Typography</ComponentTitle>
       <ComponentModal title='Modular Scale'>
         <h1 className="f0">XXXL - Heading 0</h1>

@@ -1,6 +1,6 @@
 import withPure from '../lib/pure'
 
-export default withPure(({id, title, description}) => <div>
+export default withPure(({anchor, id, title, description}) => <div>
   <style jsx>{`
     h2 {
       margin-bottom: 1rem;
@@ -15,8 +15,8 @@ export default withPure(({id, title, description}) => <div>
       top: -9rem;
     }
   `}</style>
-  { id && <span id={id} className='anchor'/>}
-  <h2 className="f0 fw6">{title}</h2>
+  { anchor && <span id={anchor} className='anchor'/>}
+  <h2 id={id} className="f0 fw6">{title}</h2>
   {
     description && <h3 className="f-reset subtitle fw4">{description}</h3>
   }

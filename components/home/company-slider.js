@@ -55,10 +55,10 @@ export default () => (
         display: inline-block;
         padding: 0 2rem;
         vertical-align: middle;
-        opacity: .1;
+        opacity: .25;
         outline: none;
         cursor: default;
-        transition: opacity .5s ease;
+        transition: opacity .2s ease;
       }
       .company-logos-container > div:hover {
         opacity: .8;

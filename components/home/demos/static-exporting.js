@@ -73,7 +73,7 @@ export default {
     },
   },
   note: <>
-    <p>Export your Next.js website to static HTML, with zero code. The export app supports almost every feature of 
+    <p>Export your Next.js website to static HTML, with zero cost. The export app supports almost every feature of 
     Next.js including dynamic urls, prefetching, preloading and dynamic imports.</p>
     <p>
       With the <Link href='/docs#static-html-export'><a><code>exportPathMap</code></a></Link> configuration, 

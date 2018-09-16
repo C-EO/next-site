@@ -1,4 +1,5 @@
 import Page from '../components/page'
+import Screen from '../components/screen'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import Navbar from '../components/navbar'
@@ -10,7 +11,9 @@ export default () => {
     <Header height={64} shadow defaultActive>
       <Navbar/>
     </Header>
-    <Contact/>
+    <Screen offset={64 + 448}>
+      <Contact/>
+    </Screen>
     <Footer/>
   </Page>
 }

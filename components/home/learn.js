@@ -2,8 +2,8 @@ import Container from '../container'
 import Button from '../button'
 import SectionHeader from '../section-header'
 
-export default () => <Container center padding wide>
-  <SectionHeader title='Learn Next.js'/>
+export default () => <Container center padding wide role='region' aria-labelledby='learn'>
+  <SectionHeader id='learn' title='Learn Next.js'/>
   <div className='learn-intro'>
     <p>Tutorials, examples and quizzes. <br className='display-mobile'/>Learn Next.js step-by-step and earn points ✨.</p>
     <div className="overlay"></div>

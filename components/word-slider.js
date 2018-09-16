@@ -55,24 +55,27 @@ export default class extends PureComponent {
     // next      [A]        [C]        [B]
     // current   [B]   =>   [A]   =>   [C]    =>   ...
     // prev      [C]        [B]        [A]
-    
+
     let content = <div>
       <Spring from={ANIMATION_STAGES[0]} to={ANIMATION_STAGES[stage]}>{
-        ({ opacity, y }) => <div className='slug' style={{ transform: `translate3d(0, ${y + 100}%, 0)`, opacity }}>
-          {stage === 0 ? next : stage === 1 ? current : prev}
-        </div>
+        ({ opacity, y }) => 
+          <div className='slug' style={{ transform: `translate3d(0, ${y + 100}%, 0)`, opacity }}>
+            {stage === 0 ? next : stage === 1 ? current : prev}
+          </div>
       }</Spring>
       <br/>
       <Spring from={ANIMATION_STAGES[1]} to={ANIMATION_STAGES[(stage + 1) % 3]}>{
-        ({ opacity, y }) => <div className='slug' style={{ transform: `translate3d(0, ${y}%, 0)`, opacity }}>
-          {stage === 0 ? current : stage === 1 ? prev : next}
-        </div>
+        ({ opacity, y }) => 
+          <div className='slug' style={{ transform: `translate3d(0, ${y}%, 0)`, opacity }}>
+            {stage === 0 ? current : stage === 1 ? prev : next}
+          </div>
       }</Spring>
       <br/>
       <Spring from={ANIMATION_STAGES[2]} to={ANIMATION_STAGES[(stage + 2) % 3]}>{
-        ({ opacity, y }) => <div className='slug' style={{ transform: `translate3d(0, ${y - 100}%, 0)`, opacity }}>
-          {stage === 0 ? prev : stage === 1 ? next : current}
-        </div>
+        ({ opacity, y }) => 
+          <div className='slug' style={{ transform: `translate3d(0, ${y - 100}%, 0)`, opacity }}>
+            {stage === 0 ? prev : stage === 1 ? next : current}
+          </div>
       }</Spring>
       <style jsx>{`
         .slug {

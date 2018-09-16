@@ -1,4 +1,4 @@
-import Highlight from 'react-highlight'
+import Highlight from 'react-highlight/lib/optimized'
 
 export default ({lang, children}) => <div className='f5 editor' style={{ padding: '1rem' }}>
   <style jsx global>{`
@@ -25,6 +25,6 @@ export default ({lang, children}) => <div className='f5 editor' style={{ padding
   {
     lang === 'none' 
     ? <pre className='hljs'><code>{children}</code></pre>
-    : <Highlight className={lang || 'javascript'}>{children}</Highlight>
+    : <Highlight className={lang || 'javascript'} languages={['json', 'xml', 'javascript']}>{children}</Highlight>
   }
 </div>

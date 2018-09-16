@@ -11,27 +11,10 @@ import { transparentize, darken, modularScale } from 'polished'
 // }
 
 export default class NextSite extends App {
-  static async getInitialProps ({ Component, router, ctx }) {
-    let pageProps = {}
-
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx)
-    }
-
-    let theme = router.asPath.match(/\?theme=(.+)/)
-    if (theme) {
-      theme = theme[1] 
-    } else {
-      theme = '0076ff' // 'FF2A37' // || 'FF4954'
-    }
-    
-    return {pageProps, theme}
-  }
-
   render () {
-    const {Component, pageProps, theme} = this.props
+    const {Component} = this.props
     
-    const themeColor = '#' + theme
+    const themeColor = '#0076ff'
     const modularScaleRatio = 'majorSecond' 
 
     return <Container>
@@ -68,7 +51,7 @@ export default class NextSite extends App {
           }
         `}</style>
       </Head>
-      <Component {...pageProps} />
+      <Component />
     </Container>
   }
 }

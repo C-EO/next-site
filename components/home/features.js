@@ -3,9 +3,9 @@ import Button from '../button'
 import SectionHeader from '../section-header'
 import CompanySlider from './company-slider'
 
-export default () => <Container wide>
+export default () => <Container wide role='region' aria-labelledby='features'>
   <Container center padding>
-    <SectionHeader title='Why Next.js' description='The world’s leading companies use and love Next.js'/>
+    <SectionHeader id='features' title='Why Next.js' description='The world’s leading companies use and love Next.js'/>
     <div className="row">
       <div className="column">
         <h3 className="f3 fw6">Zero Setup</h3>

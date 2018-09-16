@@ -40,6 +40,9 @@ export default withPure(() => <Container wide dark padding>
         :global(.is-mobile) footer .column {
           flex: 1 1 120px;
         }
+        footer {
+          min-height: 320px;
+        }
       `}</style>
       <div className="row f5">
         <div className="column">

@@ -129,8 +129,17 @@ export default withMediaQuery(({ isMobile, isTablet, title, children }) => (
       .fw6 {
         font-weight: 600;
       }
+      .fw7 {
+        font-weight: 700;
+      }
+      .fw8 {
+        font-weight: 800;
+      }
+      .fw9 {
+        font-weight: 900;
+      }
       .subtitle {
-        color: #9c9c9c;
+        color: #999;
       }
       .mute {
         color: #757575;

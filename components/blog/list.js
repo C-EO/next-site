@@ -5,7 +5,6 @@ import Preview from './preview'
 
 export default () => (
   <Container padding wide>
-    <SectionHeader title='Blog' description=''/>
     <Preview detail/>
     <Preview/>
     <Preview/>

@@ -1,7 +1,7 @@
 import Container from '../container'
 import SectionHeader from '../section-header'
 
-export default ({ height }) => <Container center>
+export default ({ height }) => <Container center region='showcase'>
   <div className="showcase-title">
     <style jsx>{`
       .showcase-title {
@@ -13,6 +13,6 @@ export default ({ height }) => <Container center>
         justify-content: flex-end;
       }
     `}</style>
-    <SectionHeader title='Showcase' description={<span>Meet hundreds of beautiful websites <br className="display-mobile"/>powered by Next.js</span>} />
+    <SectionHeader id='showcase' title='Showcase' description={<span>Meet hundreds of beautiful websites <br className="display-mobile"/>powered by Next.js</span>} />
   </div>
 </Container>
