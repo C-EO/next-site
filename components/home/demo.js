@@ -55,12 +55,6 @@ export default () => {
                   .note :global(p):last-of-type {
                     margin-bottom: 0;
                   }
-                  .indicator {
-                    white-space: nowrap;
-                  }
-                  :global(.is-tablet) .indicator {
-                    margin-top: 2rem;
-                  }
                 `}</style>
                 <div className="demo-header">
                   {
@@ -120,17 +114,6 @@ export default () => {
                 <div className="demo-footer">
                   <div className="note">
                     {DEMO_DATA[selectedId].note}
-                  </div>
-                  <div className="indicator">
-                    {
-                      Object.keys(DEMO_DATA).map(id => 
-                        <Indicator
-                          key={`indicator-${id}`}
-                          selected={selectedId === id}
-                          onClick={() => onSelect(id)}
-                        />
-                      )
-                    }
                   </div>
                 </div>
               </div>
