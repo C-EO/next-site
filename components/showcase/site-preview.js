@@ -8,7 +8,10 @@ const GAP_Y = 48
 const ROW_HEIGHT = 250 + GAP_Y
 
 export default withRouter(class extends PureComponent {
-  loadDetail = () => {
+  loadDetail = (ev) => {
+    if (ev.target.nodeName === 'A') {
+      return
+    }
     let item = this.props.siteData.internalUrl
     Router.router.push('/showcase?from=click&item=' + item, '/showcase/' + item, { shallow: true })
   }
@@ -28,7 +31,7 @@ export default withRouter(class extends PureComponent {
           <div className='shadow'>
             <div className='info'>
               <h3 className={siteData.highlighted && !isTablet ? 'f2' : 'f4'}>{siteData.title}</h3>
-              <Link href={siteData.link}><a className='f5'>{siteData.link}</a></Link>
+              <Link href={siteData.link}><a className='f5' target='_blank'>{siteData.link}</a></Link>
             </div>
           </div>
         </div>

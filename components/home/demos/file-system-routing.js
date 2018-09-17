@@ -1,5 +1,5 @@
 import Code from './code'
-import withBrowser from './browser'
+import withFrame from './frame'
 
 const IndexFile = () => <Code>{
 `import Link from 'next/link'
@@ -39,14 +39,14 @@ const PackageFile = () => <Code lang='json'>{
 }
 `}</Code>
 
-const IndexPage = withBrowser(({A}) => 
+const IndexPage = withFrame(({A}) => 
   <div>
     <h1>Hello Next.js 👋</h1>
     <A tab='http://localhost:3000/about'>About</A>
   </div>
 )
 
-const AboutPage = withBrowser(({A}) => 
+const AboutPage = withFrame(({A}) => 
   <div>
     <p>This is the about page</p>
     <A tab='http://localhost:3000'>Go home</A>

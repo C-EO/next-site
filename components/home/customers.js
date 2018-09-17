@@ -1,7 +1,7 @@
 import Container from '../container'
 import Button from '../button'
 import SectionHeader from '../section-header'
-import ShowcasePreview from '../showcase-preview'
+import ShowcasePreview from './showcase-preview'
 
 import Preview from '../blog/preview'
 

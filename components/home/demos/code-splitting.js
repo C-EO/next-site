@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 import Code from './code'
-import withBrowser from './browser'
+import withFrame from './frame'
 
 const IndexFile = () => <Code>{
 `import Link from 'next/link'
@@ -32,7 +32,7 @@ export default () => <div>
 `
 }</Code>
 
-const IndexPage = withBrowser(({A}) => 
+const IndexPage = withFrame(({A}) => 
   <div>
     <h1>Hello, this is the homepage</h1>
     <p>{`I'm only 0.59 KB after gzipped.`}</p>
@@ -40,7 +40,7 @@ const IndexPage = withBrowser(({A}) =>
   </div>
 )
 
-const AboutPage = withBrowser(({A}) => 
+const AboutPage = withFrame(({A}) => 
   <div>
     <p>This page costs 29.8 KB after gzipped!</p>
     <pre>{

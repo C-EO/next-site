@@ -1,12 +1,9 @@
 import Document, { Head, Main, NextScript } from 'next/document'
 import { transparentize, darken, modularScale } from 'polished'
 
-export default class NextSite extends Document {
-  static async getInitialProps(ctx) {
-    const initialProps = await Document.getInitialProps(ctx)
-    return { ...initialProps }
-  }
+import { GA_TRACKING_ID } from '../lib/analytics'
 
+export default class NextSite extends Document {
   render() {
     const themeColor = '#0076ff'
     const modularScaleRatio = 'majorSecond' 
@@ -49,6 +46,20 @@ export default class NextSite extends Document {
         <body>
           <Main />
           <NextScript />
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_TRACKING_ID}');
+              `
+            }}
+          />
         </body>
       </html>
     )

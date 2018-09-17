@@ -1,6 +1,6 @@
 import { PureComponent } from 'react'
 
-import withPure from '../lib/pure'
+import withPure from './hoc/pure'
 
 export default class Tabs extends PureComponent {
   constructor(props) {

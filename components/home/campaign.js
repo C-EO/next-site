@@ -1,7 +1,5 @@
-import Container from './container'
-import WordSlider from './word-slider'
-
-// idea: add a background image to this
+import Container from '../container'
+import WordSlider from '../word-slider'
 
 export default () =>
   <div className='slider-container'>
@@ -13,7 +11,9 @@ export default () =>
       <span>the Desktop</span>
       <span>the Mobile Web</span>
       <span>Lightweight Apps</span>
-      <span>Seo-Friendly Sites</span>
+      <span>SEO-Friendly Sites</span>
+      <span>PWAs</span>
+      <span>Electron</span>
     </WordSlider>
     <style jsx>{`
       .slider-container {

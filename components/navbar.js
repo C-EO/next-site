@@ -102,8 +102,8 @@ export default withRouter(({ isMobile, router }) => {
           </div>
           <div className="links">
             <div className="icons">
-              <Link href="https://github.com/zeit/next.js"><a aria-label='Next.js on GitHub'><GitHubLogo/></a></Link>
-              <Link href={links.spectrum}><a aria-label='Next.js on Spectrum' className="no-margin"><SpectrumLogo/><span className="badge"/></a></Link>
+              <Link href="https://github.com/zeit/next.js"><a aria-label='Next.js on GitHub' target='_blank'><GitHubLogo/></a></Link>
+              <Link href={links.spectrum}><a aria-label='Next.js on Spectrum' target='_blank' className="no-margin"><SpectrumLogo/><span className="badge"/></a></Link>
             </div>
           </div>
           <div className="links mute dropdown">
@@ -215,9 +215,9 @@ export default withRouter(({ isMobile, router }) => {
             // <Link href="/enterprise" prefetch><a className={classNames('mute', { selected: route.startsWith('/enterprise') })} role='button'>Enterprise</a></Link>
           }
           <div className="icons">
-            <Link href="https://github.com/zeit/next.js"><a aria-label='Next.js on GitHub'><GitHubLogo/></a></Link>
+            <Link href="https://github.com/zeit/next.js"><a aria-label='Next.js on GitHub' target='_blank'><GitHubLogo/></a></Link>
             <Popover content={<div style={{ whiteSpace: 'nowrap' }}>Join <strong className="fw6">Next.js</strong> on <strong className="fw6">Spectrum</strong></div>}>
-              <Link href={links.spectrum}><a aria-label='Next.js on Spectrum' className="no-margin"><SpectrumLogo/><span className="badge"/></a></Link>
+              <Link href={links.spectrum}><a aria-label='Next.js on Spectrum' target='_blank' className="no-margin"><SpectrumLogo/><span className="badge"/></a></Link>
             </Popover>
           </div>
         </div>

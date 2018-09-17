@@ -17,6 +17,7 @@ import Coinbase from '../icons/companies/coinbase'
 import Docker from '../icons/companies/docker'
 import Invision from '../icons/companies/invision'
 import Binance from '../icons/companies/binance'
+import Hulu from '../icons/companies/hulu'
 
 export default () => (
   <div className="company-slider">
@@ -43,16 +44,18 @@ export default () => (
         <div><Docker/></div>
         <div><Invision/></div>
         <div><Binance/></div>
+        <div><Hulu/></div>
       </div>
     </BackgroundSlider>
     
     <style jsx>{`
       .company-slider {
         margin-top: 2rem;
-        margin-bottom: 5rem;
+        margin-bottom: 3rem;
       }
       .company-logos-container {
         white-space: nowrap;
+        overflow: hidden;
       }
       .company-logos-container > div {
         display: inline-block;

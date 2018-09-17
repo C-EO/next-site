@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react'
 import classNames from 'classnames'
 
-function easing(t) {
-  let r = t < 0.5 ? 16 * t * t * t * t * t : 1 + 16 * --t * t * t * t * t
-  return r < 0 ? 0 : r > 1 ? 1 : r
-}
+// function easing(t) {
+//   let r = t < 0.5 ? 16 * t * t * t * t * t : 1 + 16 * --t * t * t * t * t
+//   return r < 0 ? 0 : r > 1 ? 1 : r
+// }
 
 export default class extends PureComponent {
   state = {

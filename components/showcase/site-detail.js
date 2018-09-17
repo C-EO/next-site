@@ -39,6 +39,7 @@ export default class extends PureComponent {
             bottom: 0;
             padding: ${isMobile ? '2rem 1rem 3rem 1rem' : '3rem 3rem 7rem 3rem'};
             background-color: rgba(0, 0, 0, 0.9);
+            cursor: zoom-out;
           }
           .preview {
             width: 100%;
@@ -71,7 +72,7 @@ export default class extends PureComponent {
             <img src={src} alt={siteData.title}/>
             <div className='info'>
               <h3 className='f4'>{siteData.title}</h3>
-              <Link href={siteData.link}><a className='f5'>{siteData.link}</a></Link>
+              <Link href={siteData.link}><a className='f5' target='_blank'>{siteData.link}</a></Link>
             </div>
           </div>
         </Fade>

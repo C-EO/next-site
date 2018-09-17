@@ -1,6 +1,6 @@
-import Tabs from './tabs'
-
 import { ellipsis } from 'polished'
+
+import Tabs from '../tabs'
 
 export default ({ data, children }) => (
   <div className='browser'>

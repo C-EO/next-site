@@ -2,6 +2,12 @@ import Head from 'next/head'
 import classNames from 'classnames'
 
 import { withMediaQuery } from './media-query'
+import RouterEvents from '../lib/router-events'
+import { trackPageview } from '../lib/analytics'
+
+RouterEvents.on('routeChangeComplete', (url) => {
+  trackPageview(url)
+})
 
 export default withMediaQuery(({ isMobile, isTablet, title, children }) => (
   <div className={classNames({'is-mobile': isMobile, 'is-tablet': isTablet})}>

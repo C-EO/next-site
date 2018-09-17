@@ -1,4 +1,4 @@
-import withPure from '../lib/pure'
+import withPure from './hoc/pure'
 
 export default withPure(({size}) => (
   <svg

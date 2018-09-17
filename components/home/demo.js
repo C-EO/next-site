@@ -1,8 +1,8 @@
 import Logo from '../logo'
 import Container from '../container'
 import Tabs, { Indicator } from '../tabs'
-import Editor from '../editor'
-import Browser from '../browser'
+import Editor from './editor'
+import Browser from './browser'
 import { MediaQueryConsumer } from '../media-query'
 
 import TabButton from './tab-button'
@@ -73,29 +73,35 @@ export default () => {
                   }
                 </div>
                 <div className="demo-body row">
-                  {isTablet && <div className="column">
-                    <Tabs data={DEMO_DATA[selectedId].tabs}>{
-                      (onSelect, _selectedId, selectedIndex) => {
-                        let content = null
-                        let data = DEMO_DATA[selectedId]
-                        if (_selectedId === data.tabs[0]) {
-                          content = data.type[0] === 'editor' ? <Editor data={data.editor1}/> : <Browser data={data.browser1}/>
-                        } else {
-                          content = data.type[1] === 'editor' ? <Editor data={data.editor2}/> : <Browser data={data.browser2}/>
+                  {isTablet && (() => {
+                    let data = DEMO_DATA[selectedId]
+                    if (!data.type.length) {
+                      return data.getBody({ isTablet, isMobile }) || null
+                    }
+
+                    return <div className="column">
+                      <Tabs data={data.tabs}>{
+                        (onSelect, _selectedId, selectedIndex) => {
+                          let content = null
+                          let data = DEMO_DATA[selectedId]
+                          if (_selectedId === data.tabs[0]) {
+                            content = data.type[0] === 'editor' ? <Editor data={data.editor1}/> : <Browser data={data.browser1}/>
+                          } else {
+                            content = data.type[1] === 'editor' ? <Editor data={data.editor2}/> : <Browser data={data.browser2}/>
+                          }
+                          return <div>
+                            {content}
+                            <br/>
+                            <TabButton invert light isMobile={true} selected={_selectedId === data.tabs[0]} onClick={() => onSelect(data.tabs[0])}>{data.tabs[0]}</TabButton>
+                            <TabButton invert light isMobile={true} selected={_selectedId === data.tabs[1]} onClick={() => onSelect(data.tabs[1])}>{data.tabs[1]}</TabButton>
+                          </div>
                         }
-                        return <div>
-                          {content}
-                          <br/>
-                          <TabButton invert light isMobile={true} selected={_selectedId === data.tabs[0]} onClick={() => onSelect(data.tabs[0])}>{data.tabs[0]}</TabButton>
-                          <TabButton invert light isMobile={true} selected={_selectedId === data.tabs[1]} onClick={() => onSelect(data.tabs[1])}>{data.tabs[1]}</TabButton>
-                        </div>
-                      }
-                    }</Tabs></div>
-                  }
+                      }</Tabs></div>
+                    })()}
                   {!isTablet && (() => {
                     let data = DEMO_DATA[selectedId]
                     if (!data.type.length) {
-                      return null
+                      return data.getBody({}) || null
                     }
 
                     let content1 = data.type[0] === 'editor' ? <Editor data={data.editor1}/> : <Browser data={data.browser1}/>
@@ -112,7 +118,7 @@ export default () => {
                   })()}
                 </div>
                 <div className="demo-footer">
-                  <div className="note">
+                  <div className='note'>
                     {DEMO_DATA[selectedId].note}
                   </div>
                 </div>

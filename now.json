@@ -5,7 +5,7 @@
     "directoryListing": false,
     "headers": [
       {
-        "source": "/_next/webpack/chunks/*",
+        "source": "/_next/static/chunks/*",
         "headers": [
           {
             "key": "Cache-Control",
@@ -14,7 +14,7 @@
         ]
       },
       {
-        "source": "/_next/static/commons/**",
+        "source": "/_next/static/runtime/**",
         "headers": [
           {
             "key": "Cache-Control",
@@ -23,7 +23,7 @@
         ]
       },
       {
-        "source": "/_next/*/page/**/*.js",
+        "source": "/_next/static/*/pages/**/*.js",
         "headers": [
           {
             "key": "Cache-Control",

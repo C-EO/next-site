@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 
-import Tabs from './tabs'
+import Tabs from '../tabs'
 
 export default ({ data, children }) => {
   return <div className='editor'>
