@@ -1,16 +1,16 @@
 import Link from 'next/link'
 
-import Page from '../components/page'
-import Header from '../components/header'
-import Footer from '../components/footer'
-import Navbar from '../components/navbar'
-import Notification from '../components/notification'
-import Container from '../components/container'
-import SectionHeader from '../components/section-header'
-import Button from '../components/button'
-import Popover from '../components/popover'
-import Tabs from '../components/tabs'
-import TabButton from '../components/home/tab-button'
+import Page from 'components/page'
+import Header from 'components/header'
+import Footer from 'components/footer'
+import Navbar from 'components/navbar'
+import Notification from 'components/notification'
+import Container from 'components/container'
+import SectionHeader from 'components/section-header'
+import Button from 'components/button'
+import Popover from 'components/popover'
+import Tabs from 'components/tabs'
+import TabButton from 'components/home/tab-button'
 
 const ComponentTitle = ({children}) => <h3 className="fw8 f4">
   <style jsx>{`

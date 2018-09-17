@@ -1,7 +1,5 @@
-import Container from './container'
-import WordSlider from './word-slider'
-
-// idea: add a background image to this
+import Container from '../container'
+import WordSlider from '../word-slider'
 
 export default () =>
   <div className='slider-container'>

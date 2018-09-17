@@ -1,11 +1,12 @@
 import Link from 'next/link'
 
-import { MediaQueryConsumer } from './media-query'
-import { sortOrder, mapping } from '../showcase-manifest'
-import BackgroundSlider from './background-slider'
+import { MediaQueryConsumer } from '../media-query'
+import BackgroundSlider from '../background-slider'
+
+import { frontSortOrder, mapping } from '../../showcase-manifest'
 
 // length should be odd number
-const DATA = sortOrder.slice(0, 7).map(id => {
+const DATA = frontSortOrder.slice(0, 7).map(id => {
   return mapping[id]
 })
 

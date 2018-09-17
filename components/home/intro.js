@@ -5,7 +5,7 @@ import Container from '../container'
 import Button from '../button'
 import Popover from '../popover'
 
-import Campaign from '../campaign'
+import Campaign from './campaign'
 import { MediaQueryConsumer } from '../media-query'
 
 export default ({}) => {

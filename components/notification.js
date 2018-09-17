@@ -3,7 +3,7 @@ import { ellipsis } from 'polished'
 
 import { MediaQueryConsumer } from './media-query'
 import Container from './container'
-import withPure from '../lib/pure'
+import withPure from './hoc/pure'
 
 // TODO: dismiss & localStorage
 

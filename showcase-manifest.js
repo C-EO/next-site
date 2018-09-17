@@ -1,10 +1,14 @@
 const categories = ['All', 'Finance', 'News', 'E-commerce', 'Creative', 'Entertainment']
 const categoriesShort = ['All', 'Finance', 'News', 'E-comm', 'Creative', 'Entertainment']
 
+const frontSortOrder = [
+  'design-better', 'invision', 'marvel', 'magic-leap', 'nike', 'netflix-jobs', 'mozilla-vr'
+]
+
 const sortOrder = [
   "invision",
   "marvel",
-  "design-better",
+  'coinbase',
   "magic-leap",
   "nike",
   "mozilla-vr",
@@ -19,7 +23,7 @@ const sortOrder = [
   'styled-components',
   "hyper",
   "iota-data-market",
-  'jet',
+  'square-enix-games',
   "eaze",
   "zeit",
   "a24",
@@ -27,7 +31,7 @@ const sortOrder = [
   "expo",
   "sumup",
   "hashnode",
-  'square-enix-games',
+  'jet',
   "weedmaps",
   "sanity",
   'aenetworks',
@@ -40,6 +44,7 @@ const sortOrder = [
   'fontbase',
   'midrive',
   'stv',
+  'ticketmaster',
   'eurostar',
   'deliveroo',
   'plotly',
@@ -49,15 +54,24 @@ const sortOrder = [
   'nteract',
   'institchu',
   'syntax.fm',
+  "design-better",
   'nimiqscan',
   'pusher',
   'underbelly',
   'worldpopulationreview',
-  'coinbase',
   'h1pl',
 ]
 
 const mapping = {
+  ticketmaster: {
+    title: "Ticketmaster",
+    link: "https://www.ticketmaster.com/new",
+    src: "/static/images/showcases/ticketmaster.jpg",
+    width: 3836,
+    height: 2200,
+    internalUrl: 'ticketmaster',
+    tags: ['e-commerce']
+  },
   h1pl: {
     title: "H1Z1 Pro League",
     link: "https://h1pl.com",
@@ -545,5 +559,6 @@ module.exports = {
   categories,
   categoriesShort,
   sortOrder,
+  frontSortOrder,
   mapping
 }

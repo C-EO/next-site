@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 import Code from './code'
-import withBrowser from './browser'
+import withFrame from './frame'
 
 const CLI = () => <Code lang='none'>
   <span className='hljs-keyword'>▲</span>{' ~/my-site '}<span className='hljs-keyword'>yarn build</span>
@@ -41,14 +41,14 @@ const PackageFile = () => <Code lang='json'>{
 }
 `}</Code>
 
-const IndexPage = withBrowser(({A}) => 
+const IndexPage = withFrame(({A}) => 
   <div>
     <h1>My Awesome Static Blog</h1>
     <A tab='file:///.../my-site/out/about/index.html'>About</A>
   </div>
 )
 
-const AboutPage = withBrowser(({A}) => 
+const AboutPage = withFrame(({A}) => 
   <div>
     <p>This is the about page</p>
     <A tab='file:///.../my-site/out/index.html'>Go home</A>

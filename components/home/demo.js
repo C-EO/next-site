@@ -1,8 +1,8 @@
 import Logo from '../logo'
 import Container from '../container'
 import Tabs, { Indicator } from '../tabs'
-import Editor from '../editor'
-import Browser from '../browser'
+import Editor from './editor'
+import Browser from './browser'
 import { MediaQueryConsumer } from '../media-query'
 
 import TabButton from './tab-button'

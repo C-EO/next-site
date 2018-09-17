@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import classNames from 'classnames'
 
-import withPure from '../lib/pure'
+import withPure from './hoc/pure'
 
 export default withPure(({children, invert, href, as, className, prefetch, ...props }) => {
   let a = 

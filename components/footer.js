@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 import Container from './container'
-import withPure from '../lib/pure'
+import withPure from './hoc/pure'
 
 import { links } from '../site-manifest'
 
