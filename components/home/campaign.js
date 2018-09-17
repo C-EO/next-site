@@ -11,7 +11,9 @@ export default () =>
       <span>the Desktop</span>
       <span>the Mobile Web</span>
       <span>Lightweight Apps</span>
-      <span>Seo-Friendly Sites</span>
+      <span>SEO-Friendly Sites</span>
+      <span>PWAs</span>
+      <span>Electron</span>
     </WordSlider>
     <style jsx>{`
       .slider-container {
