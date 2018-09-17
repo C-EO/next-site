@@ -22,19 +22,19 @@ export const Code = ({ children, syntax }) => (
   </pre>
 )
 
-export const InlineCode = ({ children, noWrap }) => (
-  <code className={noWrap && 'no-wrap'}>
+export const InlineCode = ({ children, wrap = false }) => (
+  <code className={wrap && 'wrap'}>
     {children}
     <style jsx>
       {`
         code {
-          color: #313131;
+          color: #2195ff;
           font-size: .875em;
-          white-space: pre-wrap;
+          white-space: nowrap;
         }
 
         code.no-wrap {
-          white-space: nowrap;
+          white-space: pre-wrap;
         }
 
         code::before {

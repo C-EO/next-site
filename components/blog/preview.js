@@ -3,7 +3,6 @@ import Link from 'next/link'
 
 import Container from '../container'
 import Button from '../button'
-import { MediaQueryConsumer } from '../media-query'
 
 export default ({ caseStudy, card, detail, wide }) => {
   let content = null

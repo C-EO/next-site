@@ -1,4 +1,3 @@
-import { PureComponent } from 'react'
 import { MDXProvider } from '@mdx-js/tag'
 
 import Header from '../header'
@@ -18,7 +17,7 @@ export default (meta) => ({ children }) => {
           <Navbar/>
         </Header>
       }</MediaQueryConsumer>
-      <Container padding>
+      <Container padding small>
         <h1 className='title fw6 f0'>{ meta.title }</h1>
         <div className='date mute f5'>{ meta.date }</div>
         {children}
