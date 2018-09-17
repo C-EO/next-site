@@ -20,7 +20,7 @@ const SUBMIT_URL = `https://spectrum.chat/thread/e425a8b6-c9cb-4cd1-90bb-740fb3b
 
 const GAP_X = 48
 const GAP_Y = 48
-const ROW_HEIGHT = 250 + GAP_Y
+const ROW_HEIGHT = 220 + GAP_Y
 
 function getData(category) {
   return sortOrder.filter(id => {
@@ -65,6 +65,7 @@ const getRowRender = columnCount => ({
   // let height = getRowHeight({index}, columnCount)
   let content = []
   let highlighted = null
+  let rowDir = 'row'
 
   let startIndex = index * columnCount
   for (let i = 0; i < columnCount; ++i) {
@@ -78,6 +79,7 @@ const getRowRender = columnCount => ({
     }
     if (siteData.highlighted && columnCount === 3) {
       highlighted = <SitePreview siteData={siteData} flex={columnCount - 1} isVisible={isVisible} isScrolling={isScrolling} isTablet={columnCount < 3} key={`site-${siteData.internalUrl}`}/>
+      rowDir = siteData.highlighted === 1 ? 'row' : 'row-reverse'
     } else {
       content.push(<SitePreview siteData={siteData} isVisible={isVisible} isScrolling={isScrolling} isTablet={columnCount < 3} key={`site-${siteData.internalUrl}`}/>)
     }
@@ -85,7 +87,7 @@ const getRowRender = columnCount => ({
 
   return <div key={`row-${index}`} style={{
     display: 'flex',
-    flexDirection: columnCount === 1 ? 'column' : 'row',
+    flexDirection: columnCount === 1 ? 'column' : rowDir,
     ...directionalProperty('padding', 0, GAP_X / 2),
     ...style
   }}>

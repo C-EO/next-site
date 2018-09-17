@@ -1,4 +1,4 @@
-export default ({center, vCenter, dark, gray, wide, padding, overflow, minHeight, children, ...props}) => {
+export default ({center, vCenter, dark, gray, wide, padding, overflow, minHeight, dotBackground, children, ...props}) => {
   return <div {...props}>
     <style jsx>{`
       {
@@ -13,6 +13,10 @@ export default ({center, vCenter, dark, gray, wide, padding, overflow, minHeight
         ${wide && !overflow ? 'overflow: hidden;' : ''}
         ${minHeight ? 'min-height: ' + minHeight + 'px;' : ''}
         ${vCenter ? `display: flex; align-items: center;` : ''}
+        ${dotBackground ? `
+          background-image: radial-gradient(circle, #D7D7D7, #D7D7D7 1px, #FFF 1px, #FFF);
+          background-size: 28px 28px;
+        ` : ''}
       }
       :after {
         // BFC

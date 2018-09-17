@@ -1,60 +1,330 @@
-const categories = ['All', 'Finance', 'Dev', 'Creative', 'Entertainment']
+const categories = ['All', 'Finance', 'News', 'E-commerce', 'Creative', 'Entertainment']
+const categoriesShort = ['All', 'Finance', 'News', 'E-comm', 'Creative', 'Entertainment']
 
 const sortOrder = [
-  "marvel",
-  "nike",
   "invision",
+  "marvel",
+  "design-better",
   "magic-leap",
+  "nike",
   "mozilla-vr",
   "netflix-jobs",
   "hulu",
   "boosted-boards",
   "elton-john",
+  'binance',
   "auth0-careers",
   "scale",
   "open-collective",
-  "eaze",
+  'styled-components',
   "hyper",
+  "iota-data-market",
+  'jet',
+  "eaze",
   "zeit",
   "a24",
   "avocode",
-  "iota-data-market",
   "expo",
   "sumup",
   "hashnode",
-  "design-better",
+  'square-enix-games',
   "weedmaps",
   "sanity",
-
-  //
-
-  // "marvel",
-  // "nike",
-  // "invision",
-  // "magic-leap",
-  // "mozilla-vr",
-  // "netflix-jobs",
-  // "hulu",
-  // "boosted-boards",
-  // "elton-john",
-  // "auth0-careers",
-  // "scale",
-  // "open-collective",
-  // "eaze",
-  // "hyper",
-  // "zeit",
-  // "a24",
-  // "avocode",
-  // "iota-data-market",
-  // "expo",
-  // "sumup",
-  // "hashnode",
-  // "design-better",
-  // "weedmaps",
-  // "sanity",
+  'aenetworks',
+  'tencent-news',
+  "idean",
+  "prisma",
+  'repl.it',
+  'satoshis.place',
+  'givecrypto',
+  'fontbase',
+  'midrive',
+  'stv',
+  'eurostar',
+  'deliveroo',
+  'plotly',
+  'docker',
+  'verge',
+  'whowhatwear',
+  'nteract',
+  'institchu',
+  'syntax.fm',
+  'nimiqscan',
+  'pusher',
+  'underbelly',
+  'worldpopulationreview',
+  'coinbase',
+  'h1pl',
 ]
 
 const mapping = {
+  h1pl: {
+    title: "H1Z1 Pro League",
+    link: "https://h1pl.com",
+    src: "/static/images/showcases/h1pl.jpg",
+    width: 3836,
+    height: 2200,
+    internalUrl: 'h1pl',
+    tags: ['entertainment']
+  },
+  nimiqscan: {
+    title: "NimiqScan",
+    link: "https://nimiqscan.com",
+    src: "/static/images/showcases/nimiqscan.jpg",
+    width: 3836,
+    height: 2200,
+    internalUrl: 'nimiqscan',
+    tags: ['finance']
+  },
+  verge: {
+    title: "Verge",
+    link: "https://vergecurrency.com",
+    src: "/static/images/showcases/verge.jpg",
+    width: 3836,
+    height: 2200,
+    internalUrl: 'verge',
+    tags: ['finance']
+  },
+  coinbase: {
+    title: "Coinbase",
+    link: "https://coinbase.engineering",
+    src: "/static/images/showcases/coinbase.jpg",
+    width: 3836,
+    height: 2200,
+    internalUrl: 'coinbase',
+    tags: ['finance']
+  },
+  binance: {
+    title: "Binance",
+    link: "https://www.binance.com",
+    src: "/static/images/showcases/binance.jpg",
+    width: 3836,
+    height: 2200,
+    internalUrl: 'binance',
+    highlighted: 2,
+    tags: ['finance']
+  },
+  'pusher': {
+    title: "Pusher",
+    link: "https://pusher.com",
+    src: "/static/images/showcases/pusher.jpg",
+    width: 3836,
+    height: 2200,
+    internalUrl: 'pusher',
+    tags: ['creative']
+  },
+  "aenetworks": {
+    title: "A+E Networks",
+    link: "https://www.aenetworks.com",
+    src: "/static/images/showcases/aenetworks.jpg",
+    width: 3836,
+    height: 2200,
+    internalUrl: 'aenetworks',
+    tags: ['news']
+  },
+  "worldpopulationreview": {
+    title: "World Population Review",
+    link: "http://worldpopulationreview.com",
+    src: "/static/images/showcases/worldpopulationreview.jpg",
+    width: 3836,
+    height: 2200,
+    internalUrl: 'worldpopulationreview',
+    tags: ['news']
+  },
+  "underbelly": {
+    title: "Underbelly",
+    link: "https://underbelly.is",
+    src: "/static/images/showcases/underbelly.jpg",
+    width: 3836,
+    height: 2200,
+    internalUrl: 'underbelly',
+    tags: ['e-commerce', 'creative']
+  },
+  "syntax.fm": {
+    title: "Syntax",
+    link: "https://syntax.fm",
+    src: "/static/images/showcases/syntax.fm.jpg",
+    width: 3836,
+    height: 2200,
+    internalUrl: 'syntax.fm',
+    tags: ['creative']
+  },
+  "institchu": {
+    title: "InStitchu",
+    link: "https://www.institchu.com",
+    src: "/static/images/showcases/institchu.jpg",
+    width: 3836,
+    height: 2200,
+    internalUrl: 'institchu',
+    tags: ['e-commerce']
+  },
+  "nteract": {
+    title: "nteract",
+    link: "https://nteract.io",
+    src: "/static/images/showcases/nteract.jpg",
+    width: 3836,
+    height: 2200,
+    internalUrl: 'nteract',
+    tags: ['creative']
+  },
+  "whowhatwear": {
+    title: "Who What Wear UK",
+    link: "https://www.whowhatwear.co.uk",
+    src: "/static/images/showcases/whowhatwear.jpg",
+    width: 3836,
+    height: 2200,
+    internalUrl: 'whowhatwear',
+    highlighted: 1,
+    tags: ['news']
+  },
+  "square-enix-games": {
+    title: "Square Enix",
+    link: "https://square-enix-games.com/en_US",
+    src: "/static/images/showcases/square-enix-games.jpg",
+    width: 3836,
+    height: 2200,
+    internalUrl: 'square-enix-games',
+    highlighted: 1,
+    tags: ['entertainment']
+  },
+  "docker": {
+    title: "Docker",
+    link: "https://success.docker.com",
+    src: "/static/images/showcases/docker.jpg",
+    width: 3836,
+    height: 2200,
+    internalUrl: 'docker',
+    tags: ['dev']
+  },
+  "plotly": {
+    title: "Plotly",
+    link: "https://plot.ly",
+    src: "/static/images/showcases/plotly.jpg",
+    width: 3836,
+    height: 2200,
+    internalUrl: 'plotly',
+    tags: ['creative']
+  },
+  "deliveroo": {
+    title: "Deliveroo",
+    link: "https://deliveroo.co.uk",
+    src: "/static/images/showcases/deliveroo.jpg",
+    width: 3836,
+    height: 2200,
+    internalUrl: 'deliveroo',
+    tags: ['e-commerce']
+  },
+  "eurostar": {
+    title: "Eurostar",
+    link: "https://hotels.eurostar.com/uk-en/paris",
+    src: "/static/images/showcases/eurostar.jpg",
+    width: 3836,
+    height: 2200,
+    internalUrl: 'eurostar',
+    tags: ['e-commerce']
+  },
+  "stv": {
+    title: "STV",
+    link: "https://stv.tv",
+    src: "/static/images/showcases/stv.jpg",
+    width: 3836,
+    height: 2200,
+    internalUrl: 'stv',
+    tags: ['entertainment']
+  },
+  "midrive": {
+    title: "Midrive",
+    link: "https://midrive.com",
+    src: "/static/images/showcases/midrive.jpg",
+    width: 3836,
+    height: 2200,
+    internalUrl: 'midrive',
+    tags: ['e-commerce']
+  },
+  "fontbase": {
+    title: "FontBase",
+    link: "https://fontba.se",
+    src: "/static/images/showcases/fontbase.jpg",
+    width: 3836,
+    height: 2200,
+    internalUrl: 'fontbase',
+    highlighted: 2,
+    tags: ['creative']
+  },
+  "givecrypto": {
+    title: "GiveCrypto",
+    link: "https://www.givecrypto.org",
+    src: "/static/images/showcases/givecrypto.jpg",
+    width: 3836,
+    height: 2200,
+    internalUrl: 'givecrypto',
+    tags: ['finance']
+  },
+  "satoshis.place": {
+    title: "Satoshi's Place",
+    link: "https://satoshis.place",
+    src: "/static/images/showcases/satoshis.place.jpg",
+    width: 3836,
+    height: 2200,
+    internalUrl: 'satoshis.place',
+    tags: ['finance']
+  },
+  "repl.it": {
+    title: "repl.it",
+    link: "https://repl.it",
+    src: "/static/images/showcases/repl.it.jpg",
+    width: 3836,
+    height: 2200,
+    internalUrl: 'repl.it',
+    tags: ['dev']
+  },
+  "styled-components": {
+    title: "styled-components",
+    link: "https://www.styled-components.com",
+    src: "/static/images/showcases/styled-components.jpg",
+    width: 3836,
+    height: 2200,
+    internalUrl: 'styled-components',
+    tags: ['dev']
+  },
+  "tencent-news": {
+    title: "Tencent News",
+    link: "https://xw.qq.com",
+    src: "/static/images/showcases/tencentnews.jpg",
+    width: 3836,
+    height: 2200,
+    internalUrl: 'tencent-news',
+    highlighted: 2,
+    tags: ['news']
+  },
+  "jet": {
+    title: "Jet",
+    link: "https://jet.com",
+    src: "/static/images/showcases/jet.jpg",
+    width: 3836,
+    height: 2200,
+    internalUrl: 'jet',
+    highlighted: 1,
+    tags: ['e-commerce']
+  },
+  "idean": {
+    title: "Idean",
+    link: "https://www.idean.com",
+    src: "/static/images/showcases/idean.jpg",
+    width: 3836,
+    height: 2200,
+    internalUrl: 'idean',
+    tags: ['creative']
+  },
+  "prisma": {
+    title: "Prisma",
+    link: "https://www.prisma.io",
+    src: "/static/images/showcases/prisma.jpg",
+    width: 3836,
+    height: 2200,
+    internalUrl: 'prisma',
+    tags: ['dev']
+  },
   "magic-leap": {
     "title": "Magic Leap",
     "link": "https://magicleap.com",
@@ -62,12 +332,12 @@ const mapping = {
     "width": 1280,
     "height": 734,
     "internalUrl": "magic-leap",
-    "highlighted": true,
+    "highlighted": 1,
     "tags": ['creative']
   },
   "marvel": {
     "title": "Marvel",
-    "link": "https://www.marvel.com/",
+    "link": "https://www.marvel.com",
     "src": "/static/images/showcases/marvel.jpg",
     "width": 3840,
     "height": 2204,
@@ -84,11 +354,12 @@ const mapping = {
   },
   "boosted-boards": {
     "title": "Boosted Boards",
-    "link": "http://boostedboards.com/",
+    "link": "http://boostedboards.com",
     "src": "/static/images/showcases/boosted.jpg",
     "width": 3840,
     "height": 2206,
-    "internalUrl": "boosted-boards"
+    "internalUrl": "boosted-boards",
+    "tags": ['e-commerce']
   },
   "eaze": {
     "title": "Eaze",
@@ -96,7 +367,8 @@ const mapping = {
     "src": "/static/images/showcases/showcases-01.jpg",
     "width": 3832,
     "height": 2198,
-    "internalUrl": "eaze"
+    "internalUrl": "eaze",
+    "tags": ['e-commerce']
   },
   "netflix-jobs": {
     "title": "Netflix Jobs",
@@ -114,7 +386,7 @@ const mapping = {
     "width": 3828,
     "height": 2184,
     "internalUrl": "auth0-careers",
-    "tags": ['dev']
+    "tags": ['creative']
   },
   "scale": {
     "title": "Scale",
@@ -123,7 +395,7 @@ const mapping = {
     "width": 3836,
     "height": 2198,
     "internalUrl": "scale",
-    "tags": ['dev']
+    "tags": ['creative']
   },
   "elton-john": {
     "title": "Elton John",
@@ -141,7 +413,7 @@ const mapping = {
     "width": 3836,
     "height": 2206,
     "internalUrl": "open-collective",
-    "tags": ['dev']
+    "tags": ['creative']
   },
   "a24": {
     "title": "A24",
@@ -149,7 +421,8 @@ const mapping = {
     "src": "/static/images/showcases/showcases-07.jpg",
     "width": 3836,
     "height": 2200,
-    "internalUrl": "a24"
+    "internalUrl": "a24",
+    "tags": ['news']
   },
   "hyper": {
     "title": "Hyper",
@@ -167,7 +440,7 @@ const mapping = {
     "width": 3836,
     "height": 2198,
     "internalUrl": "zeit",
-    "tags": ["dev"]
+    "tags": ["creative"]
   },
   "mozilla-vr": {
     "title": "Mozilla VR",
@@ -224,7 +497,7 @@ const mapping = {
   },
   "invision": {
     "title": "Invision",
-    "link": "https://www.invisionapp.com/",
+    "link": "https://www.invisionapp.com",
     "src": "/static/images/showcases/showcases-16.jpg",
     "width": 3830,
     "height": 2200,
@@ -242,7 +515,7 @@ const mapping = {
   },
   "design-better": {
     "title": "DesignBetter.co",
-    "link": "https://www.designbetter.co/",
+    "link": "https://www.designbetter.co",
     "src": "/static/images/showcases/showcases-18.jpg",
     "width": 3832,
     "height": 2194,
@@ -255,7 +528,8 @@ const mapping = {
     "src": "/static/images/showcases/showcases-19.jpg",
     "width": 1920,
     "height": 1081,
-    "internalUrl": "weedmaps"
+    "internalUrl": "weedmaps",
+    "tags": ["e-commerce"]
   },
   "sanity": {
     "title": "Sanity.io",
@@ -269,6 +543,7 @@ const mapping = {
 
 module.exports = {
   categories,
+  categoriesShort,
   sortOrder,
   mapping
 }

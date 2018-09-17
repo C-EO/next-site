@@ -1,6 +1,11 @@
 import React, { PureComponent } from 'react'
 import classNames from 'classnames'
 
+function easing(t) {
+  let r = t < 0.5 ? 16 * t * t * t * t * t : 1 + 16 * --t * t * t * t * t
+  return r < 0 ? 0 : r > 1 ? 1 : r
+}
+
 export default class extends PureComponent {
   state = {
     scrolled: false,
@@ -12,7 +17,7 @@ export default class extends PureComponent {
     let scrolled = scroll > (this.props.distance || 0)
     let fixed = scroll >= (this.props.distance || 0)
     let active = scroll >= (this.props.active || 0)
-    
+
     if (scrolled !== this.state.scrolled 
       || fixed !== this.state.fixed
       || active !== this.state.active) {
@@ -28,7 +33,7 @@ export default class extends PureComponent {
   }
   render () {
     const { scrolled, fixed, active } = this.state
-    const { height, offset, shadow, zIndex, background, defaultActive, children } = this.props
+    const { height, offset, shadow, zIndex, distance, background, defaultActive, children } = this.props
 
     return <header>
       <div className={classNames('fixed-container', {

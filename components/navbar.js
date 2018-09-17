@@ -41,7 +41,8 @@ export default withRouter(({ isMobile, router }) => {
               margin: 0 -5px;
               text-align: left;
               // justify-content: flex-end;
-              justify-content: space-between;
+              // justify-content: space-between;
+              justify-content: space-around;
             }
             nav .links a {
               display: inline-block;
@@ -110,7 +111,9 @@ export default withRouter(({ isMobile, router }) => {
             <Link href="/learn"><a className={classNames({ selected: route.startsWith('/learn') })} title='Learn' role='button'>Learn</a></Link>
             <Link href="/showcase" prefetch><a className={classNames({ selected: route.startsWith('/showcase') })} title='Showcase' role='button'>Showcase</a></Link>
             <Link href="/blog" prefetch><a className={classNames({ selected: route.startsWith('/blog') })} title='Blog' role='button'>Blog</a></Link>
-            <Link href="/enterprise" prefetch><a className={classNames({ selected: route.startsWith('/enterprise') })} title='Enterprise' role='button'>Enterprise</a></Link>
+            {
+              // <Link href="/enterprise" prefetch><a className={classNames({ selected: route.startsWith('/enterprise') })} title='Enterprise' role='button'>Enterprise</a></Link>
+            }
           </div>
         </nav>
       </Container>
@@ -208,7 +211,9 @@ export default withRouter(({ isMobile, router }) => {
         </div>
         <div className="links">
           <Link href="/blog" prefetch><a className={classNames('mute', { selected: route.startsWith('/blog') })} role='button'>Blog</a></Link>
-          <Link href="/enterprise" prefetch><a className={classNames('mute', { selected: route.startsWith('/enterprise') })} role='button'>Enterprise</a></Link>
+          {
+            // <Link href="/enterprise" prefetch><a className={classNames('mute', { selected: route.startsWith('/enterprise') })} role='button'>Enterprise</a></Link>
+          }
           <div className="icons">
             <Link href="https://github.com/zeit/next.js"><a aria-label='Next.js on GitHub'><GitHubLogo/></a></Link>
             <Popover content={<div style={{ whiteSpace: 'nowrap' }}>Join <strong className="fw6">Next.js</strong> on <strong className="fw6">Spectrum</strong></div>}>

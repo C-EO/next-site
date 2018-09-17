@@ -15,7 +15,9 @@ export default () =>
         <Navbar/>
       </Header>
     }</MediaQueryConsumer>
-    <Preview caseStudy wide/>
+    {
+      // <Preview caseStudy wide/>
+    }
     <List/>
     <Footer/>
   </Page>

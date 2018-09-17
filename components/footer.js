@@ -66,8 +66,10 @@ export default withPure(() => <Container wide dark padding>
           <h4 className="fw5">Blog</h4>
           <p>Case Studies</p>
           <p>News</p>
-          <h4 className="fw5">Enterprise</h4>
-          <p>Plans</p>
+          {
+            // <h4 className="fw5">Enterprise</h4>
+            // <p>Plans</p>
+          }
         </div>
         <div className="column">
           <h4 className="fw5">More</h4>

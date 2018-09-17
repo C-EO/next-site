@@ -6,7 +6,7 @@ import Popover from '../popover'
 import HeartIcon from '../icons/heart'
 
 import { MediaQueryConsumer } from '../media-query'
-import { categories } from '../../showcase-manifest'
+import { categories, categoriesShort } from '../../showcase-manifest'
 
 const SUBMIT_URL = `https://spectrum.chat/thread/e425a8b6-c9cb-4cd1-90bb-740fb3bd7541`
 
@@ -40,10 +40,11 @@ export default class extends PureComponent {
           line-height: 2rem;
           position: relative;
           text-align: center;
-          padding: 0 ${isMobile ? '5px' : '1.25rem'};
+          padding: 0 ${isMobile ? '3px' : '1.25rem'};
           cursor: pointer;
           transition: color .5s ease;
-          text-transform: uppercase;
+          white-space: nowrap;
+          ${isMobile ? '' : 'text-transform: uppercase;'}
         }
         .tab.selected {
           // font-weight: 900;
@@ -94,7 +95,10 @@ export default class extends PureComponent {
       `}</style>
       <div className="indicator">
         {
-          categories.map(id => <span className={`tab${selectedId === id ? ' selected' : ''} f6`} key={id}>{id}</span>)
+          (isMobile ? categoriesShort : categories).map((_, index) => {
+            let id = categories[index]
+            return <span className={`tab${selectedId === id ? ' selected' : ''} f6`} key={id}>{_}</span>
+          })
         }
         { 
           !isMobile && <span className='tab f5 icon'><HeartIcon /></span>
@@ -102,9 +106,10 @@ export default class extends PureComponent {
       </div>
       <div className="categories">
         {
-          categories.map(id => {
+          (isMobile ? categoriesShort : categories).map((_, index) => {
+            let id = categories[index]
             return <span className={`no-tap-highlight tab${selectedId === id ? ' selected' : ''} f6`} role='button' onClick={() => onSelect(id)} key={id}>
-              {id}
+              {_}
             </span>
           })
         }

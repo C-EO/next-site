@@ -11,6 +11,13 @@ import Scale from '../icons/companies/scale'
 import Auth0 from '../icons/companies/auth0'
 import Ticketmaster from '../icons/companies/ticketmaster'
 
+import Tencent from '../icons/companies/tencent'
+import Jet from '../icons/companies/jet'
+import Coinbase from '../icons/companies/coinbase'
+import Docker from '../icons/companies/docker'
+import Invision from '../icons/companies/invision'
+import Binance from '../icons/companies/binance'
+
 export default () => (
   <div className="company-slider">
     <BackgroundSlider duration={40}>
@@ -23,23 +30,19 @@ export default () => (
         <div><Netflix /></div>
         <div><GitHub /></div>
         <div><Scale /></div>
-        <div><Auth0 /></div>
         <div><Ticketmaster /></div>
       </div>
     </BackgroundSlider>
     <div style={{ marginBottom: '1rem' }}/>
     <BackgroundSlider duration={50}>
       <div className="company-logos-container">
-        <div><Ticketmaster /></div>
-        <div><OpenCollective /></div>
-        <div><Netflix /></div>
-        <div><Eaze /></div>
-        <div><GitHub /></div>
-        <div><MagicLeap /></div>
-        <div><Scale /></div>
-        <div><Trulia /></div>
-        <div><MozillaVR /></div>
         <div><Auth0 /></div>
+        <div><Tencent /></div>
+        <div><Jet /></div>
+        <div><Coinbase /></div>
+        <div><Docker/></div>
+        <div><Invision/></div>
+        <div><Binance/></div>
       </div>
     </BackgroundSlider>
     
@@ -53,7 +56,7 @@ export default () => (
       }
       .company-logos-container > div {
         display: inline-block;
-        padding: 0 2rem;
+        padding: 0 2.2rem;
         vertical-align: middle;
         opacity: .25;
         outline: none;
