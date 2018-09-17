@@ -19,7 +19,7 @@ export default withRouter(class extends PureComponent {
     let src = siteData.src.replace('/showcases/', '/showcase-thumbnails/')
 
     if (useLargeThumbnail) {
-      src = src.replace(/\.(?<!(jpg|jpeg|png)$)/, '@2x.')
+      src = src.replace(/\.jpg/, '@2x.jpg')
     }
 
     return <div className={`no-tap-highlight site-container${siteData.highlighted && !isTablet ? ' highlighed' : ''}`} key={`site-${siteData.internalUrl}`}>
