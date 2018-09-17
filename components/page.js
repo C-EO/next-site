@@ -175,6 +175,9 @@ export default withMediaQuery(({ isMobile, isTablet, title, children }) => (
         touch-action: pan-y;
         -webkit-tap-highlight-color: transparent;
       }
+      .no-tap-callout {
+        -webkit-touch-callout: none;
+      }
       .no-drag {
         user-drag: none; 
         user-select: none;

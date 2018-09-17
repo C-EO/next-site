@@ -22,7 +22,7 @@ export default withRouter(class extends PureComponent {
       src = src.replace(/\.jpg/, '@2x.jpg')
     }
 
-    return <div className={`no-tap-highlight site-container${siteData.highlighted && !isTablet ? ' highlighed' : ''}`} key={`site-${siteData.internalUrl}`}>
+    return <div className={`no-tap-callout site-container${siteData.highlighted && !isTablet ? ' highlighed' : ''}`} key={`site-${siteData.internalUrl}`}>
       <div className='content' ref={el => this.previewEl = el}>
         <div className='preview' onClick={this.loadDetail}>
           <div className='shadow'>
