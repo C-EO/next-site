@@ -51,7 +51,7 @@ export default meta => ({ children }) => {
         <div className='date mute f6'>
           <time dateTime={meta.date}>
             {formatDate(date, 'dddd, MMMM Do YYYY')} ({distanceInWordsToNow(date, {
-              addSuffix: false
+              addSuffix: true
             })})
           </time>
         </div>
