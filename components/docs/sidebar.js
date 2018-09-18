@@ -125,7 +125,7 @@ export class SidebarNavItem extends Component {
           }
           a.active {
             font-weight: 600;
-            color: var(--theme-color);
+            color: #0076ff;
           }
         `}</style>
       </li>

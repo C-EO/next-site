@@ -52,10 +52,10 @@ export default withRouter(({ isMobile, router }) => {
               text-decoration: none;
             }
             nav .links a.active {
-              color: var(--theme-color);
+              color: #0076ff;
             }
             nav .links a.selected {
-              color: var(--theme-color);
+              color: #0076ff;
               font-weight: 600;
             }
             nav .logo {
@@ -150,7 +150,7 @@ export default withRouter(({ isMobile, router }) => {
             color: #111;
           }
           nav .links a.selected {
-            color: var(--theme-color);
+            color: #0076ff;
             font-weight: 600;
           }
           nav .logo {

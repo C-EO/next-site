@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import classNames from 'classnames'
 
+import '../lib/polyfill'
 import { withMediaQuery } from './media-query'
 import RouterEvents from '../lib/router-events'
 import { trackPageview } from '../lib/analytics'
@@ -37,7 +38,7 @@ export default withMediaQuery(({ isMobile, isTablet, title, children }) => (
         margin: 0;
         line-height: 1.65;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-        font-size: var(--text-base-size);
+        font-size: 16px;
         font-weight: 400;
         min-width: 320px;
         direction: ltr;
@@ -52,7 +53,7 @@ export default withMediaQuery(({ isMobile, isTablet, title, children }) => (
         color: #111;
       }
       ::selection {
-        background-color: var(--theme-color);
+        background-color: #0076ff;
         color: #FFF;
       }
       [role="grid"]:focus {
@@ -97,25 +98,25 @@ export default withMediaQuery(({ isMobile, isTablet, title, children }) => (
         font-size: 1rem;
       }
       .f0 {
-        font-size: var(--text-xxxl);
+        font-size: 1.802032470703125em;
       }
       .f1 {
-        font-size: var(--text-xxl);
+        font-size: 1.601806640625em;
       }
       .f2 {
-        font-size: var(--text-xl);
+        font-size: 1.423828125em;
       }
       .f3 {
-        font-size: var(--text-lg);
+        font-size: 1.265625em;
       }
       .f4 {
-        font-size: var(--text-md);
+        font-size: 1.125em;
       }
       .f5 {
-        font-size: var(--text-sm);
+        font-size: 0.8888888888888888em;
       }
       .f6 {
-        font-size: var(--text-xs);
+        font-size: 0.7901234567901234em;
       }
       .fw1 {
         font-weight: 100;

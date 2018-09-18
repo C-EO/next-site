@@ -15,12 +15,12 @@ export default withPure(({children, invert, href, as, className, prefetch, ...pr
           padding: .25rem .5rem;
           margin: -.25rem -.5rem;
           border-radius: 7px;
-          color: var(--theme-color);
+          color: #0076ff;
           transition: background .2s ease, color .2s ease, box-shadow .2s ease;
         }
         a:hover {
-          color: var(--theme-color);
-          background: var(--theme-color-transparent-near-white);
+          color: #0076ff;
+          background: rgba(0,118,255,0.1);
         }
         a.invert {
           margin: 0;
@@ -28,16 +28,16 @@ export default withPure(({children, invert, href, as, className, prefetch, ...pr
           height: 2.5rem;
           line-height: 2.5rem;
           border-radius: 7px;
-          background: var(--theme-color);
-          box-shadow: 0 4px 14px 0 var(--theme-color-transparent);
+          background: #0076ff;
+          box-shadow: 0 4px 14px 0 rgba(0,118,255,0.39);
           color: white;
         }
         a.invert:hover {
-          background: var(--theme-color-hover);
-          box-shadow: 0 6px 20px var(--theme-color-transparent-light);
+          background: rgba(0,118,255,0.9);
+          box-shadow: 0 6px 20px rgba(0,118,255,0.23);
         }
         a.invert:active {
-          background: var(--theme-color-active);
+          background: #006ae6;
         }
       `}</style>
     </a>
