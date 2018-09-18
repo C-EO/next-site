@@ -26,13 +26,15 @@ class Image extends Component {
       video = false,
       captionSpacing = null,
       renderImage,
+      oversize = true,
       ...rest
     } = this.props
 
     const aspectRatio = String(height / width * 100) + '%'
+    const classes = width > 650 && oversize ? 'oversize' : ''
 
     return (
-      <figure>
+      <figure className={classes}>
         <main style={{ width }}>
           <div style={{ paddingBottom: aspectRatio }}>
             {video && <video
@@ -80,6 +82,14 @@ class Image extends Component {
             font-size: 12px;
             margin: 0;
             text-align: center;
+          }
+
+          @media (min-width: 992px) {
+            figure.oversize {
+              width: ${width}px;
+              margin: ${margin}px 0 ${margin}px
+                calc(((${width}px - 650px) / 2) * -1);
+            }
           }
         `}</style>
       </figure>
