@@ -9,6 +9,7 @@ export const meta = {
   link: '/blog/next-7',
   authors: [{
     name: 'Tim Neutkens',
+    avatar: '/static/team/tim.jpg',
     twitter: 'timneutkens'
   }]
 }
@@ -50,7 +51,7 @@ A major improvement is that you're no longer required to add the following to `p
 <link rel="stylesheet" href="/_next/static/style.css" />
 ```
 
-Instead, Next.js will automatically inject the CSS file.
+Instead, Next.js will automatically inject the CSS file. In production Next.js will automatically add a content hash to the css url, so that if there are changes you never have to worry about users getting the old version of the file.
 
 This leaves adding CSS imports support to your project to creating a `next.config.js` and adding the `withCSS` plugin:
 
@@ -158,8 +159,48 @@ Thanks to webpack 4, Babel 7 and a lot of optimizations on the Next.js side, Nex
 
 Re-compilation when making changes is up to 40% faster thanks to intermediate caching steps.
 
-<Image src="/static/blog/next-7/bootup.png" width={3636/3} height={1134/3} caption="Making changes to a page" />
+<Image src="/static/blog/next-7/making-changes.png" width={3636/3} height={1134/3} caption="Making changes to a page" />
 
+<table>
+  <thead>
+    <tr>
+      <th>&nbsp;</th>
+      <th>6.0</th>
+      <th>
+        <b>7.0</b>
+      </th>
+      <th>delta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bootup time</td>
+      <td>
+        <b>1947ms</b>
+      </td>
+      <td>
+        <b>835ms</b>
+      </td>
+      <td>
+        <b>57%</b>
+        <em>faster</em>
+      </td>
+    </tr>
+    <tr>
+      <td>Making changes</td>
+      <td>
+        <b>304ms</b>
+      </td>
+      <td>
+        <b>178ms</b>
+      </td>
+      <td>
+        <b>42%</b>
+        <em>faster</em>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 We've also implemented [webpackbar](https://github.com/nuxt/webpackbar), which shows a real-time status bar when webpack is compiling.
 
@@ -177,17 +218,68 @@ As Next.js pre-renders HTML, it wraps pages into a default structure with `<html
 
 This initial structure was previously around 1.62kB. With Next.js 7 we've optimized the initial HTML structure, it is now 1.5kB, a 7.4% reduction, allowing pages to be downloaded faster.
 
+<table>
+  <thead>
+    <tr>
+      <th>&nbsp;</th>
+      <th>6.0</th>
+      <th>
+        <b>7.0</b>
+      </th>
+      <th>delta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Document size (server rendered)</td>
+      <td>
+        <b>1.62kb</b>
+      </td>
+      <td>
+        <b>1.50kb</b>
+      </td>
+      <td>
+        <b>7.4%</b>
+        <em>smaller</em>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 The main ways we've reduced size are:
 
 - The `__next-error` div has been removed
 - The inline scripts are now minified, in a future release they will be completely removed
 - Compiled away unused `__NEXT_DATA__` properties when they're not used, for example the `nextExport` and `assetPrefix` properties.
 
-<Image src="/static/blog/next-7/bytesize.png" width={1468 / 3} height={1178 / 3} caption="New (1.5KB) vs Old (1.62KB) HTML size." />
-
 ## Improved CDN support
 
+In Next.js 5 we introduced `assetPrefix` support, a way to make Next.js automatically load assets from a certain location, usually a CDN. This works great if your CDN supports proxying, you request a url like 
+```
+https://cdn.example.com/_next/static/<buildid>/pages/index.js
+```
 
+the CDN checks if it has the file in it's network, and if it does not it requests the file directly from your deployed instance. 
+
+This is exactly how the [Now CDN](https://zeit.co/cdn) works. 
+
+However, there are some solutions that require pre-uploading a directory directly onto the CDN. The problem in doing this is that Next.js it's url structure did not match the folder structure inside the `.next` folder. For example our earlier example
+
+```
+https://cdn.example.com/_next/static/<buildid>/pages/index.js
+// mapped to:
+.next/page/index.js
+```
+
+With Next.js 7 we've changed the directory structure of `.next` to match the url structure:
+
+```
+https://cdn.example.com/_next/static/<buildid>/pages/index.js
+// mapped to:
+.next/static/<buildid>/pages/index.js
+```
+
+While we do recommend using the proxying type of CDN, this new structure allows users of a different type of CDN to upload the `.next` directory to their CDN.
 
 ## Styled JSX v3
 
@@ -210,7 +302,7 @@ export default () => <div>
 <div/>
 ```
 
-Above code that tries to select the `p` tag doesn't work because styled-jsx styles are scoped to the current component, they don't leak into child components. One way to get around this was using the `:global` method, removing the prefix from the `p` tag. However this introduces a new issue, which is that styles do leak across the page.
+The above code tries to select the `p` tag doesn't work because styled-jsx styles are scoped to the current component, they don't leak into child components. One way to get around this was using the `:global` method, removing the prefix from the `p` tag. However this introduces a new issue, which is that styles do leak across the page.
 
 In styled-jsx 3 this issue has been solved by introducing a new API, `css.resolve`, which will generate the `className` and `<style>` 
  tags (the `styles` property) for the given styled-jsx string:
@@ -243,21 +335,78 @@ For all changes please refer to the [release notes](https://github.com/zeit/styl
 
 Starting from Next.js 7 we now support the new React context API between `pages/_app.js` and page components.
 
-Previously it was not possible to use React context in between pages on the server side. The reason for this was that webpack keeps an internal module cache instead of using `require.cache`, we've written a custom webpack plugin that changes this behavior to share module instances between pages. In doing so we don't only allow usage of the new React context, but also reduce Next.js's memory footprint when sharing code between pages.
+Previously it was not possible to use React context in between pages on the server side. The reason for this was that webpack keeps an internal module cache instead of using `require.cache`, we've written a custom webpack plugin that changes this behavior to share module instances between pages. In doing so we not only allow usage of the new React context, but also reduce Next.js's memory footprint when sharing code between pages.
 
 <Image src="/static/blog/next-7/memory.png" width={1800/1.5} height={674/1.5} caption="The old vs new memory footprint of a production Next.js app" />
 
 ## nextjs.org
 
-- New website
-- New showcase
+Combined with the Next.js 7 release we are launching a completely redesigned [nextjs.org](https://nextjs.org).
+
+### Blog
+
+The blog post you are currently reading is already part of the new blog section on [nextjs.org](https://nextjs.org). This will be the new home for communication related to Next.js, for example new version announcements.
+
+IMAGE HERE
+
+### Get Inspired
+
+As the amount of apps using Next.js is continously growing we needed a way to show all these beautiful apps in one overview. Meet the new [`/showcase`](/showcase) page:
+
+IMAGE HERE
+
+This new showcase allows us to continuously add new apps built with Next.js. 
+
+We invite you to visit [`/showcase`](/showcase) to get inspired, or submit your own site that uses Next.js!
 
 ## Community
 
-- Adoption of Next.js, more than 12500 public domains using Next.js
-- 500 contributors
-- Next.js spectrum watercooler, come chat
-- Next.js spectrum adoption
-- This release had 65 unique contributors (1 or more pull requests)
-- Good first issue / help wanted
+Ever since it's first release Next.js has been used in everything from fortune 500 companies to personal blogs. We're very excited to see the growth in Next.js adoption.
 
+Currently there are over 12500 publicly indexed domains using Next.js.
+
+We've had over 500 contributors landing at least 1 commit.
+
+On GitHub the project has been starred over 29100 times.
+
+Almost 2200 pull requests were submitted since the first release.
+
+The Next.js community on [spectrum.chat/next-js](https://spectrum.chat/next-js) has almost 1700 people, and we invite you to join the community too.
+
+We've created a [general chat / watercooler](https://spectrum.chat/next-js?thread=610cacbb-b81b-4c77-a071-7774c665e0ee) thread where you can discuss and chat with other Next.js users and the core maintainers.
+
+<style jsx>{`
+table {
+  margin: 0 auto 30px;
+}
+table td,
+table th {
+  padding: 10px 20px;
+}
+table th {
+  font-weight: normal;
+  font-size: 12px;
+  color: #9b9b9b;
+  padding-bottom: 0px;
+}
+table td:first-child {
+  width: 55%;
+}
+table td {
+  font-size: 14px;
+  vertical-align: middle;
+}
+table td:last-child {
+  color: #067df7;
+}
+table td:not(:first-child) {
+  text-align: center;
+}
+table td em {
+  font-weight: normal;
+  font-size: 10px;
+  text-transform: uppercase;
+  font-style: normal;
+  display: block;
+}
+`}</style>
