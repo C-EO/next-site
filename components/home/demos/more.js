@@ -111,7 +111,7 @@ const ExampleCard = withPure(({ name, href, description }) => <Link href={href}>
 export default {
   type: [],
   tabs: [],
-  getBody: ({ isTablet, isMobile }) => <>
+  getBody: ({ isTablet, isMobile }) =>
     <div className='example-row'>
       {(
         isMobile ? EXAMPLES.slice(0, 5) : isTablet ? EXAMPLES.slice(0, 8) : EXAMPLES
@@ -132,30 +132,29 @@ export default {
           </a>
         </Link>
       </div>
+      <style jsx>{`
+        .example-row {
+          display: flex;
+          margin: 0 1rem;
+          width: 100%;
+          flex-wrap: wrap;
+        }
+        .example-col {
+          flex: 1 0 25%;
+          min-width: 200px;
+          margin-bottom: 1rem;
+          align-content: stretch;
+          text-align: left;
+        }
+        .more {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          justify-content: center;
+          align-items: center;
+          margin: 0 .5rem;
+          padding: .5rem .8rem;
+        }
+      `}</style>
     </div>
-    <style jsx>{`
-      .example-row {
-        display: flex;
-        margin: 0 1rem;
-        width: 100%;
-        flex-wrap: wrap;
-      }
-      .example-col {
-        flex: 1 0 25%;
-        min-width: 200px;
-        margin-bottom: 1rem;
-        align-content: stretch;
-        text-align: left;
-      }
-      .more {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        justify-content: center;
-        align-items: center;
-        margin: 0 .5rem;
-        padding: .5rem .8rem;
-      }
-    `}</style>
-  </>
 }
