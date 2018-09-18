@@ -1,10 +1,10 @@
-import Page from 'components/page'
-import Screen from 'components/screen'
-import Header from 'components/header'
-import Footer from 'components/footer'
-import Navbar from 'components/navbar'
+import Page from '../components/page'
+import Screen from '../components/screen'
+import Header from '../components/header'
+import Footer from '../components/footer'
+import Navbar from '../components/navbar'
 
-import Contact from 'components/enterprise/contact'
+import Contact from '../components/enterprise/contact'
 
 export default () => {
   return <Page title='Enterprise'>

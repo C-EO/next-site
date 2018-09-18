@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Container from '../container'
 import Button from '../button'
 
-export default ({ caseStudy, card, detail, wide }) => {
+export default ({ caseStudy, card, detail, wide, url }) => {
   let content = null
 
   if (caseStudy) {
@@ -47,11 +47,11 @@ export default ({ caseStudy, card, detail, wide }) => {
       <Container>
         <div className="wrapper">
           {wide && <h3 className='f-reset'>Case Study</h3>}
-          <Link href='/blog/example'>
+          <Link href={url}>
             {wide ? <h2 className='f1 fw6'>Marvel</h2> : <h2 className='f2 fw6'>Case study: Marvel</h2>}
           </Link>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae neque quis augue congue rutrum non in leo. Praesent eu orci convallis nisl eleifend sollicitudin. Aliquam laoreet ac ex sed gravida. Proin et ex in elit luctus gravida non quis turpis.</p>
-          <div className='remove-shadow'><Button href="/blog/example" invert>Read More</Button></div>
+          <div className='remove-shadow'><Button href={url} invert>Read More</Button></div>
         </div>
       </Container>
     </div>
@@ -77,12 +77,12 @@ export default ({ caseStudy, card, detail, wide }) => {
         }
       `}</style>
       <Container>
-        <Link href='/blog/example'><h3 className='f3 title'>Next.js on ReactConf</h3></Link>
+        <Link href={url}><h3 className='f3 title'>Next.js on ReactConf</h3></Link>
         <p className='f6 date mute'>Thursday, June 28th 2018 (2 months ago)</p>
         {detail && <p className='content'>
           {`We're excited to announce that nextjs.org is now open source so that it can serve as a reference Nextjs implementation and issues/improvements can be filed directly on the project.`}
         </p>}
-        {detail && <Button href="/blog">Read More</Button>}
+        {detail && <Button href={url}>Read More</Button>}
       </Container>
     </div>
   }
