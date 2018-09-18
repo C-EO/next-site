@@ -23,6 +23,7 @@ const sortOrder = [
   'styled-components',
   "auth0-careers",
   "iota-data-market",
+  'h1pl',
   'square-enix-games',
   "eaze",
   "zeit",
@@ -59,7 +60,6 @@ const sortOrder = [
   'pusher',
   'underbelly',
   'worldpopulationreview',
-  'h1pl',
 ]
 
 const mapping = {
@@ -347,7 +347,7 @@ const mapping = {
     "height": 734,
     "internalUrl": "magic-leap",
     "highlighted": 1,
-    "tags": ['creative']
+    "tags": ['creative', 'entertainment']
   },
   "marvel": {
     "title": "Marvel",
@@ -418,7 +418,7 @@ const mapping = {
     "width": 3840,
     "height": 2206,
     "internalUrl": "elton-john",
-    "tags": ['creative']
+    "tags": ['creative', 'entertainment']
   },
   "open-collective": {
     "title": "Open Collective",
@@ -471,7 +471,8 @@ const mapping = {
     "src": "/static/images/showcases/avocode.jpg",
     "width": 3836,
     "height": 2204,
-    "internalUrl": "avocode"
+    "internalUrl": "avocode",
+    "tags": ['creative']
   },
   "iota-data-market": {
     "title": "IOTA Data Market",
@@ -489,7 +490,7 @@ const mapping = {
     "width": 3830,
     "height": 2196,
     "internalUrl": "expo",
-    "tags": ['dev']
+    "tags": ['dev', 'creative']
   },
   "sumup": {
     "title": "Sumup",

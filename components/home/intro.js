@@ -53,7 +53,7 @@ export default ({}) => {
           .title {
             display: flex;
             justify-content: center;
-            color: var(--theme-color);
+            color: #0076ff;
           }
           .title .version {
             margin-left: -0.2rem;

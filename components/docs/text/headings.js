@@ -3,7 +3,7 @@ const H1 = ({ children, ...props }) => (
     { children }
 
     <style jsx>{`
-      font-size: 2rem;
+      font-size: 1.8rem;
       font-weight: 400;
       margin-top: 0;
     `}</style>
@@ -26,7 +26,7 @@ const H3 = ({ children, ...props }) => (
     { children }
 
     <style jsx>{`
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       font-weight: 600;
     `}</style>
   </h3>
@@ -37,7 +37,7 @@ const H4 = ({ children, ...props }) => (
     { children }
 
     <style jsx>{`
-      font-size: 1.25rem;
+      font-size: 1rem;
       font-weight: 600;
     `}</style>
   </h4>

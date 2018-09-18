@@ -48,7 +48,7 @@ export default class extends PureComponent {
         }
         .tab.selected {
           // font-weight: 900;
-          color: var(--theme-color);
+          color: #0076ff;
         }
         .indicator {
           position: absolute;
@@ -86,7 +86,7 @@ export default class extends PureComponent {
           z-index: 0;
         }
         .indicator .tab.selected:after {
-          box-shadow: 0 4px 24px 0 var(--theme-color-transparent-light);
+          box-shadow: 0 4px 24px 0 rgba(0,118,255,0.23);
         }
         .indicator *::selection {
           background: transparent;

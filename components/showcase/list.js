@@ -216,7 +216,7 @@ export default class extends Component {
         <div className='spacer'/>
         <Button onClick={() => scrollTo(0)}>
           <div className='flex-center'>
-            <span className='icon-label'>Back to Top</span><ArrowUpIcon color='var(--theme-color)' />
+            <span className='icon-label'>Back to Top</span><ArrowUpIcon color='#0076ff' />
           </div>
         </Button>
         <div className='spacer'/>

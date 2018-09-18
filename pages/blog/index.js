@@ -8,7 +8,7 @@ import { MediaQueryConsumer } from '../../components/media-query'
 import List from '../../components/blog/list'
 
 export default () =>
-  <Page title='Blog - Next.js'>
+  <Page title='Next.js - Blog'>
     <MediaQueryConsumer>{({isMobile}) => 
       <Header height={64 + (isMobile ? 32 : 0)} shadow defaultActive>
         <Navbar/>

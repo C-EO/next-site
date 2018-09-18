@@ -22,7 +22,7 @@ export default withRouter(class extends Component {
     const { router } = this.props
     const { item, from } = router.query
 
-    return <Page title='Showcase - Next.js'>
+    return <Page title='Next.js - Showcase'>
       <Header height={0} zIndex={1001} background='white' defaultActive>
         <Navbar/>
       </Header>

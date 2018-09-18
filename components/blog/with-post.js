@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Head from 'next/head'
 import { MDXProvider } from '@mdx-js/tag'
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
 import formatDate from 'date-fns/format'
@@ -40,6 +41,9 @@ export default meta => ({ children }) => {
 
   return <MDXProvider components={components}>
     <Page title={meta.title + ' - Next.js Blog'}>
+      <Head>
+        <meta name="description" content={meta.description} />
+      </Head>
       <MediaQueryConsumer>{({isMobile}) => 
         <Header height={64 + (isMobile ? 32 : 0)} shadow defaultActive>
           <Navbar/>
