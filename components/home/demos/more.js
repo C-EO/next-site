@@ -55,7 +55,7 @@ const EXAMPLES = [
     href: 'https://github.com/zeit/next.js/tree/canary/examples/with-next-less'
   },
   {
-    name: 'Apollo',
+    name: 'Apollo GraphQL',
     description: 'How to use the Apollo framework for GraphQL data fetching.',
     href: 'https://github.com/zeit/next.js/tree/canary/examples/with-apollo'
   }

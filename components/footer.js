@@ -66,16 +66,16 @@ export default withPure(() => <Container wide dark padding>
         </div>
         <div className="column">
           <h4 className="fw5">Blog</h4>
-          <p><Link href='/blog'><a>News</a></Link></p>
+          <p><Link href='/blog'><a>Posts</a></Link></p>
           {
             // <p>Case Studies</p>
             // <h4 className="fw5">Enterprise</h4>
             // <p>Plans</p>
           }
           <h4 className="fw5">More</h4>
-          <p><Link href="https://github.com/zeit/next.js/blob/canary/license.md"><a target='_blank'>MIT Licensed</a></Link></p>
+          <p><Link href="https://github.com/zeit/next.js/blob/canary/license.md"><a target='_blank'>License</a></Link></p>
           <p><Link href="/design"><a>Design</a></Link></p>
-          <p><Link href="#"><a>Contact</a></Link></p>
+          <p><Link href={links.spectrum}><a rel="noreferrer" target='_blank'>Contact</a></Link></p>
         </div>
         <div className="column">
         </div>
