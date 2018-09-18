@@ -37,7 +37,7 @@ Another new feature is WebAssembly support, Next.js can even server-render WebAs
 
 There are no breaking changes in Next.js related to webpack 4, but if you're adding custom webpack loaders or plugins in `next.config.js` you will have to upgrade them.
 
-### CSS imports
+### CSS Imports
 
 With webpack 4, a new way of extracting CSS from bundles was introduced, called [mini-extract-css-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin).
 
@@ -61,7 +61,7 @@ const existingConfig = {}
 module.exports = withCSS(existingConfig)
 ```
 
-### Dynamic imports
+### Dynamic Imports
 
 Next.js has had support for dynamic imports through `next/dynamic` since version&nbsp;3.
 
@@ -147,11 +147,11 @@ With Next.js 7 this becomes:
 
 At this point the `.babelrc` can be removed, as Next.js will then automatically use `next/babel` when there is no Babel configuration.
 
-## Development improvements
+## Development Improvements
 
 One of Next.js's long-term goals is to provide the best possible development experience. Which is why for this release we've been very focused on optimizing development performance and debugging.
 
-### Compilation speed
+### Compilation Speed
 
 Thanks to webpack 4, Babel 7 and a lot of optimizations on the Next.js side, Next.js now boots up to 60% faster in development.
 
@@ -212,7 +212,7 @@ Next.js's error overlay is now powered by [react-error-overlay](https://github.c
 
 Another feature of react-error-overlay is that it supports opening your code editor by simply clicking the specific code block.
 
-## Smaller initial HTML
+## Smaller Initial HTML
 
 As Next.js pre-renders HTML, it wraps pages into a default structure with `<html>`, `<head>`, `<body>` and the Javascript files needed to render the page.
 
@@ -252,7 +252,7 @@ The main ways we've reduced size are:
 - The inline scripts are now minified, in a future release they will be completely removed
 - Compiled away unused `__NEXT_DATA__` properties when they're not used, for example the `nextExport` and `assetPrefix` properties.
 
-## Improved CDN support
+## Improved CDN Support
 
 In Next.js 5 we introduced `assetPrefix` support, a way to make Next.js automatically load assets from a certain location, usually a CDN. This works great if your CDN supports proxying, you request a url like 
 ```

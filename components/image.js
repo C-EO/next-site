@@ -83,7 +83,7 @@ class Image extends Component {
             text-align: center;
           }
 
-          @media (min-width: 992px) {
+          @media (min-width: 1200px) {
             figure.oversize {
               width: ${width}px;
               margin: ${margin}px 0 ${margin}px
