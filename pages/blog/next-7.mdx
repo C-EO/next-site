@@ -152,7 +152,14 @@ One of Next.js's long-term goals is to provide the best possible development exp
 
 ### Compilation speed
 
-Thanks to webpack 4, Babel 7 and a lot of optimizations on the Next.js side, Next.js now boots up to 60% faster in development. And re-compilation when making changes is up to 40% faster.
+Thanks to webpack 4, Babel 7 and a lot of optimizations on the Next.js side, Next.js now boots up to 60% faster in development.
+
+<Image src="/static/blog/next-7/bootup.png" width={3636/3} height={1134/3} caption="Booting up Next.js" />
+
+Re-compilation when making changes is up to 40% faster thanks to intermediate caching steps.
+
+<Image src="/static/blog/next-7/bootup.png" width={3636/3} height={1134/3} caption="Making changes to a page" />
+
 
 We've also implemented [webpackbar](https://github.com/nuxt/webpackbar), which shows a real-time status bar when webpack is compiling.
 
@@ -160,7 +167,7 @@ We've also implemented [webpackbar](https://github.com/nuxt/webpackbar), which s
 
 Next.js's error overlay is now powered by [react-error-overlay](https://github.com/facebook/create-react-app/tree/next/packages/react-error-overlay), whenever there is an error thrown in your app Next.js will automatically render the overlay showing the exact line the error happened on with source-maps applied. This means that you can immediately see where the error happened.
 
-IMAGE OF OLD VS NEW HERE
+<Image src="/static/blog/next-7/error-overlay.png" width={2683/2} height={868/2} caption="The previous overlay left, react-error-overlay right" />
 
 Another feature of react-error-overlay is that it supports opening your code editor by simply clicking the specific code block.
 
@@ -238,7 +245,7 @@ Starting from Next.js 7 we now support the new React context API between `pages/
 
 Previously it was not possible to use React context in between pages on the server side. The reason for this was that webpack keeps an internal module cache instead of using `require.cache`, we've written a custom webpack plugin that changes this behavior to share module instances between pages. In doing so we don't only allow usage of the new React context, but also reduce Next.js's memory footprint when sharing code between pages.
 
-<Image src="/static/blog/next-7/memory.png" width={1800} height={674} caption="The old vs new memory footprint of a running Next.js app" />
+<Image src="/static/blog/next-7/memory.png" width={1800/1.5} height={674/1.5} caption="The old vs new memory footprint of a production Next.js app" />
 
 ## nextjs.org
 

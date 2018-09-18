@@ -60,7 +60,6 @@ class Image extends Component {
             display: block;
             text-align: center;
             margin: ${margin}px 0;
-            max-width: 100%;
           }
           main {
             margin: 0 auto;
