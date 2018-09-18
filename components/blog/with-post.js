@@ -64,28 +64,30 @@ export default meta => ({ children }) => {
         <content>
           {children}
         </content>
+      </Container>
+      <Container padding>
         <hr/>
         <Button href='/blog' prefetch>Back to Blog</Button>
-        <style jsx>{`
-          .title {
-            text-align: center;
-            margin-bottom: 2rem;
-          }
-          hr {
-            margin: 6rem 0 2rem;
-            border: none;
-            border-bottom: 1px solid #efefef;
-          }
-          .date {
-            text-align: center;
-          }
-          .authors {
-            margin: 1rem 0 4rem;
-            text-align: center;
-          }
-        `}</style>
       </Container>
       <Footer/>
+      <style jsx>{`
+        .title {
+          text-align: center;
+          margin-bottom: 2rem;
+        }
+        hr {
+          margin: 2rem 0 2rem;
+          border: none;
+          border-bottom: 1px solid #efefef;
+        }
+        .date {
+          text-align: center;
+        }
+        .authors {
+          margin: 1rem 0 4rem;
+          text-align: center;
+        }
+      `}</style>
     </Page>
   </MDXProvider>
 }
