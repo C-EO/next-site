@@ -2209,7 +2209,7 @@ gzip-size@^4.1.0:
     duplexer "^0.1.1"
     pify "^3.0.0"
 
-hard-source-webpack-plugin@0.12.0, hard-source-webpack-plugin@^0.12.0:
+hard-source-webpack-plugin@0.12.0:
   version "0.12.0"
   resolved "https://registry.yarnpkg.com/hard-source-webpack-plugin/-/hard-source-webpack-plugin-0.12.0.tgz#ea21f0407538fcb62f6995371541baab0a5f679e"
   dependencies:
