@@ -1,10 +1,10 @@
-import Header from 'components/header'
-import Footer from 'components/footer'
-import Navbar from 'components/navbar'
-import Page from 'components/page'
-import { MediaQueryConsumer } from 'components/media-query'
+import Header from '../../components/header'
+import Footer from '../../components/footer'
+import Navbar from '../../components/navbar'
+import Page from '../../components/page'
+import { MediaQueryConsumer } from '../../components/media-query'
 
-import List from 'components/blog/list'
+import List from '../../components/blog/list'
 
 export default () =>
   <Page title='Blog - Next.js'>

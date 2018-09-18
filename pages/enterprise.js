@@ -1,8 +1,8 @@
-import Page from 'components/page'
-import Screen from 'components/screen'
-import Header from 'components/header'
-import Footer from 'components/footer'
-import Navbar from 'components/navbar'
+import Page from '../components/page'
+import Screen from '../components/screen'
+import Header from '../components/header'
+import Footer from '../components/footer'
+import Navbar from '../components/navbar'
 
 import Contact from 'components/enterprise/contact'
 
