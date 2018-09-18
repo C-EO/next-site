@@ -62,11 +62,22 @@ module.exports = withCSS(existingConfig)
 
 ### Dynamic imports
 
-Next.js has had support for dynamic import through `next/dynamic` since version 3. It was one of the early adopters of dynamic imports in React, and because of this we wrote our own solution to handling `import()`, because of this Next.js didn't support a few `import()` features webpack had introduced since, for example `import(/* webpackChunkName: 'my-chunk' */ '../lib/my-library')` for naming and bundling certain files together manually. Another example is using `import()` without being wrapped in the `next/dynamic` module.
+Next.js has had support for dynamic imports through `next/dynamic` since version&nbsp;3.
 
-Starting with Next 7 we no longer touch the default `import()` behavior and all these cases are supported.
+We were one of the early adopters of dynamic imports in React, and because of this we wrote our own solution to handling `import()`
 
-The `next/dynamic` usage has *not* been changed:
+Because of this Next.js didn't support a few `import()` features webpack has introduced since.
+
+For example for naming and bundling certain files together manually:
+```
+import(/* webpackChunkName: 'my-chunk' */ '../lib/my-library')
+``` 
+
+Another example is using `import()` without being wrapped in the `next/dynamic` module.
+
+Starting with Next.js 7 we no longer touch the default `import()` behavior and now all these cases are supported.
+
+The `next/dynamic` usage has **not** been changed:
 
 ```js
 import dynamic from 'next/dynamic'
@@ -80,7 +91,7 @@ export default () => {
 
 What this example will do is create a new Javascript file for `my-component` and only load it when `<MyComponent />` is rendered. If it's not rendered the `<script>` tag won't be included in the initial HTML document.
 
-The big change with Next 7 is that `next/dynamic` is now powered by a fork of the [`react-loadable`](https://github.com/jamiebuilds/react-loadable) library behind the scenes, allowing for a few new features coming from `react-loadable`:
+The big change with Next.js 7 is that `next/dynamic` is now powered by a fork of the [`react-loadable`](https://github.com/jamiebuilds/react-loadable) library behind the scenes, allowing for a few new features coming from `react-loadable`:
 
 - timeouts using the `timeout` option on `next/dynamic`
 - a loading component delay, using the `delay` option on `next/dynamic`. This allows your `loading` component to wait x time before rendering the loading state, for example if the import is very fast.
@@ -104,7 +115,9 @@ If you do however have a custom Babel configuration you will have to upgrade the
 
 In case you're upgrading from a version below Next.js 6 you can run the excellent [`babel-upgrade`](http://babeljs.io/blog/2018/08/27/7.0.0#babel-upgrade) tool.
 
-In addition to upgrading to Babel 7, the Next.js Babel preset ([`next/babel`](https://github.com/zeit/next.js#customizing-babel-config)) now defaults to setting the `modules` transform to `commonjs` when `NODE_ENV=test`. This was often the only reason for creating a custom `.babelrc` in a Next.js project:
+In addition to upgrading to Babel 7, the Next.js Babel preset ([`next/babel`](https://github.com/zeit/next.js#customizing-babel-config)) now defaults to setting the `modules` transform to `commonjs` when `NODE_ENV` is set to `test`. 
+
+This was often the only reason for creating a custom `.babelrc` in a Next.js project:
 
 ```json
 {
@@ -122,7 +135,7 @@ In addition to upgrading to Babel 7, the Next.js Babel preset ([`next/babel`](ht
 }
 ```
 
-With Next 7 becomes:
+With Next.js 7 this becomes:
 
 ```json
 {
@@ -130,18 +143,25 @@ With Next 7 becomes:
 }
 ```
 
+At this point the `.babelrc` can be removed, as Next.js will then automatically use `next/babel` when there is no Babel configuration.
+
 ## Development improvements
+
+One of Next.js's long-term goals is to provide the best possible development experience. Which is why for this release we've been very focused on optimizing development performance and debugging.
 
 ### Compilation speed
 
-- webpackbar
-- hard-source-webpack-plugin, might be the default in webpack 5
-- autodllplugin
+Thanks to webpack 4, Babel 7 and a lot of optimizations on the Next.js side, Next.js now boots up to 60% faster in development. And re-compilation when making changes is up to 40% faster.
+
+We've also implemented [webpackbar](https://github.com/nuxt/webpackbar), which shows a real-time status bar when webpack is compiling.
 
 ### React Error Overlay
 
-- See exactly what line an error is thrown, including real code
-- Immediately open your editor by clicking the link
+Next.js's error overlay is now powered by [react-error-overlay](https://github.com/facebook/create-react-app/tree/next/packages/react-error-overlay), whenever there is an error thrown in your app Next.js will automatically render the overlay showing the exact line the error happened on with source-maps applied. This means that you can immediately see where the error happened.
+
+IMAGE OF OLD VS NEW HERE
+
+Another feature of react-error-overlay is that it supports opening your code editor by simply clicking the specific code block.
 
 ## Smaller initial HTML
 

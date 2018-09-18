@@ -13,7 +13,7 @@ export const Code = ({ children, syntax }) => (
         }
 
         code {
-          color: #313131;
+          color: rgb(212, 0, 255);
           font-size: 14px;
           line-height: 20px;
         }
@@ -28,7 +28,7 @@ export const InlineCode = ({ children, wrap = false }) => (
     <style jsx>
       {`
         code {
-          color: #2195ff;
+          color: rgb(212, 0, 255);
           font-size: .875em;
           white-space: nowrap;
         }

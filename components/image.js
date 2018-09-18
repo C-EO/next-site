@@ -40,7 +40,7 @@ class Image extends Component {
               autoPlay={true}
               loop={true}
               playsInline={true}
-              {...rest}              
+              {...rest}
             />}
             {!video && !renderImage && <img {...rest} />}
             {renderImage && renderImage(rest)}
