@@ -11,7 +11,7 @@ export default () => {
     <Header height={64} shadow defaultActive>
       <Navbar/>
     </Header>
-    <Screen offset={64 + 448}>
+    <Screen offset={64 + 400}>
       <Contact/>
     </Screen>
     <Footer/>

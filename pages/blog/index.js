@@ -14,7 +14,7 @@ export default () =>
         <Navbar/>
       </Header>
     }</MediaQueryConsumer>
-    <Screen offset={64 + 448}>
+    <Screen offset={64 + 400}>
       <List/>
     </Screen>
     <Footer/>

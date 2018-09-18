@@ -31,7 +31,7 @@ const ComponentModal = ({title, children}) => <div>
   {children}
 </div>
 
-const PopoverText = () => <div style={{ whiteSpace: 'nowrap' }}>The tooltip will auto position<br/>when there's no space to display.</div>
+const PopoverText = () => <div style={{ whiteSpace: 'nowrap' }}>The tooltip will auto position<br/>when there's no room to display.</div>
 
 export default () => {
   return <Page title='Next.js - Design'>
