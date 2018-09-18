@@ -54,15 +54,67 @@ export default ({}) => {
             display: flex;
             justify-content: center;
             color: #0076ff;
+            opacity: 0;
+            animation: t .5s ease forwards 11.5s;
           }
           .title .version {
             margin-left: -0.2rem;
             margin-top: .4rem;
             cursor: pointer;
+            opacity: 0;
+            animation: t .5s ease forwards 12s;
           }
           .version .tip {
             color: #111;
             white-space: nowrap;
+          }
+          .ani {
+            width: 314px;
+            white-space: nowrap;
+            overflow: hidden;
+            margin: 0 auto -3rem auto;
+            animation: x 1s cubic-bezier(1, 0, 0, 1) forwards 8.5s, y 2.5s cubic-bezier(1, 0, 0, 1) forwards 9.8s;
+          }
+          @keyframes x {
+            0% {
+              width: 314px;
+            }
+            80% {
+              // margin-bottom: -3rem;
+            }
+            100% {
+              width: 275px;
+              // margin-bottom: -6.2rem;
+            }
+          }
+          @keyframes y {
+            0% {
+              // margin-bottom: -3rem;
+              opacity: 1;
+            }
+            50% {
+              // opacity: 0;
+            }
+            // 70% {
+              // margin-bottom: -6.5rem;
+              // opacity: 1;
+            // }
+            // 95% {
+            //   margin-bottom: -6.5rem;
+            //   opacity: 0;
+            // }
+            100% {
+              margin-bottom: -9.5rem;
+              // opacity: 0;
+            }
+          }
+          @keyframes t {
+            from {
+              opacity: 0;
+            }
+            to {
+              opacity: 1;
+            }
           }
         `}</style>
         <MediaQueryConsumer>{({ isMobile }) => {
@@ -78,7 +130,7 @@ export default ({}) => {
               <div className='campaign no-drag no-tap-highlight' style={{
                 margin: isMobile ? '0 0 5rem' : '1rem 0 1.6rem'
               }}>
-                <h1 className={classNames('fw6', isMobile ? 'f2' : 'f0')}>The React Framework for</h1>
+                <h1 className={classNames('ani', 'fw6', isMobile ? 'f2' : 'f0')}>The React Framework for</h1>
                 <h2 className={classNames(isMobile ? 'f0' : 'f-xs-0', 'campaign', 'fw7')} style={{
                   marginTop: isMobile ? '-2.4rem' : '-4.2rem',
                   marginBottom: 0,
@@ -89,7 +141,7 @@ export default ({}) => {
             }
           </>
         }}</MediaQueryConsumer>
-        <div>
+        <div style={{opacity: 0}}>
           <div className="main-button">
             <Button href="#showcases" invert>See Showcases</Button>
           </div>

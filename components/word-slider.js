@@ -1,10 +1,10 @@
 import { PureComponent } from 'react'
 import { Spring } from 'react-spring'
 
-const ANIMATION_STAGES = [
-  { opacity: 0, y: -60 },
+let ANIMATION_STAGES = [
+  { opacity: 0, y: -70 },
   { opacity: 1, y: 0 },
-  { opacity: 0, y: 50 },
+  { opacity: 0, y: 60 },
 ]
 
 export default class extends PureComponent {
@@ -18,18 +18,28 @@ export default class extends PureComponent {
     }
   }
   componentDidMount() {
+    this.t = this.props.duration
     this.startAnimation()
   }
   componentWillUnmount() {
-    clearInterval(this.animation)
+    // clearInterval(this.animation)
+    clearTimeout(this.animation)
   }
+  tension = 100
+  friction = 10
   startAnimation () {
-    this.animation = setInterval(() => {
+    this.animation = setTimeout(() => this.startAnimation(), this.t)
+    // this.animation = setInterval(() => {
       if (window.document.visibilityState === 'hidden') {
         // tab invisible; pause for one round to avoid flickering
         this.pauseAnimation = true
         return
       }
+      if (this.state.currentIndex === this.state.count - 1) {
+        return
+      //   this.t = 200
+      }
+
       if (!this.pauseAnimation) {
         let stage = (this.state.stage + 1) % 3
         this.setState({
@@ -39,7 +49,13 @@ export default class extends PureComponent {
       } else {
         this.pauseAnimation = false
       }
-    }, this.props.duration || 1500)
+
+      this.t = Math.max(this.t * 0.8, 340)
+      ANIMATION_STAGES[0].y *= 0.9
+      // ANIMATION_STAGES[2].opacity -= 0.04
+      ANIMATION_STAGES[2].y *= 0.98
+      // }
+    // }, this.props.duration || 1500)
   }
   render () {
     const { currentIndex, count, stage, width } = this.state
@@ -56,24 +72,26 @@ export default class extends PureComponent {
     // current   [B]   =>   [A]   =>   [C]    =>   ...
     // prev      [C]        [B]        [A]
 
+    let c = { tension: this.tension, friction: this.friction }
+
     let content = <div>
-      <Spring from={ANIMATION_STAGES[0]} to={ANIMATION_STAGES[stage]}>{
+      <Spring from={ANIMATION_STAGES[0]} to={ANIMATION_STAGES[stage]} config={c}>{
         ({ opacity, y }) => 
-          <div className='slug' style={{ transform: `translate3d(0, ${y + 100}%, 0)`, opacity }}>
+          <div className='slug' style={{ transform: `translate3d(0, ${y + 100}%, 0)`, opacity: Math.max(0, opacity) }}>
             {stage === 0 ? next : stage === 1 ? current : prev}
           </div>
       }</Spring>
       <br/>
-      <Spring from={ANIMATION_STAGES[1]} to={ANIMATION_STAGES[(stage + 1) % 3]}>{
+      <Spring from={ANIMATION_STAGES[1]} to={ANIMATION_STAGES[(stage + 1) % 3]} config={c}>{
         ({ opacity, y }) => 
-          <div className='slug' style={{ transform: `translate3d(0, ${y}%, 0)`, opacity }}>
+          <div className='slug' style={{ transform: `translate3d(0, ${y}%, 0)`, opacity: Math.max(0, opacity) }}>
             {stage === 0 ? current : stage === 1 ? prev : next}
           </div>
       }</Spring>
       <br/>
-      <Spring from={ANIMATION_STAGES[2]} to={ANIMATION_STAGES[(stage + 2) % 3]}>{
+      <Spring from={ANIMATION_STAGES[2]} to={ANIMATION_STAGES[(stage + 2) % 3]} config={c}>{
         ({ opacity, y }) => 
-          <div className='slug' style={{ transform: `translate3d(0, ${y - 100}%, 0)`, opacity }}>
+          <div className='slug' style={{ transform: `translate3d(0, ${y - 100}%, 0)`, opacity: Math.max(0, opacity) }}>
             {stage === 0 ? prev : stage === 1 ? next : current}
           </div>
       }</Spring>
