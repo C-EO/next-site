@@ -7,7 +7,7 @@ import Navbar from '../components/navbar'
 import Contact from '../components/enterprise/contact'
 
 export default () => {
-  return <Page title='Enterprise'>
+  return <Page title='Next.js - Enterprise'>
     <Header height={64} shadow defaultActive>
       <Navbar/>
     </Header>

@@ -30,11 +30,11 @@ export const InlineCode = ({ children, wrap = false }) => (
         code {
           color: rgb(212, 0, 255);
           font-size: .875em;
-          white-space: nowrap;
+          white-space: pre-wrap;
         }
 
         code.no-wrap {
-          white-space: pre-wrap;
+          white-space: nowrap;
         }
 
         code::before {
