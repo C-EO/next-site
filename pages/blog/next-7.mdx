@@ -1,0 +1,174 @@
+import withPost from '../../components/blog/with-post'
+import Image from '../../components/image'
+
+export const meta = {
+  title: 'Next.js 7',
+  description: '',
+  date: '2018-04-27T02:09:35.275Z',
+  url: 'https://nextjs.org/blog/next-7',
+  link: '/blog/next-7',
+  authors: [{
+    name: 'Tim Neutkens',
+    twitter: 'timneutkens'
+  }]
+}
+
+export default withPost({...meta})
+
+We are proud today to introduce the production-ready **Next.js 7**, featuring:
+
+- Webpack 4
+- Babel 7
+- Dynamic imports improvements
+- Development improvements
+- Improved CDN support
+- Smaller initial HTML
+
+In addition to the Next.js 7 release, we're excited to announce the new nextjs.org.
+
+## Webpack 4
+
+Since it's very first release Next.js has been powered by webpack for bundling. We're excited to announce Next.js is now powered by webpack 4, the latest version of webpack.
+
+Webpack 4 opens up a lot of new possiblities, for example Next.js now supports EcmaScript modules (`.mjs` files), code splitting and tree shaking (removal of unused code) has been improved.
+
+Another new feature is WebAssembly support, Next.js can even server-render WebAssembly, here's an [example](https://github.com/zeit/next.js/tree/canary/examples/with-webassembly).
+
+There are no breaking changes in Next.js related to webpack 4, but if you're adding custom webpack loaders or plugins in `next.config.js` you will have to upgrade them.
+
+### CSS imports
+
+With webpack 4, a new way of extracting CSS from bundles was introduced, called [mini-extract-css-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin).
+
+[`@zeit/next-css`](https://github.com/zeit/next-plugins/tree/master/packages/next-css), [`@zeit/next-less`](https://github.com/zeit/next-plugins/tree/master/packages/next-less), [`@zeit/next-sass`](https://github.com/zeit/next-plugins/tree/master/packages/next-sass), and [`@zeit/next-stylus`](https://github.com/zeit/next-plugins/tree/master/packages/next-stylus) are now powered by `mini-extract-css-plugin`.
+
+The new version of these Next.js plugins solves 20 existing issues related to CSS imports, one example is that importing CSS in dynamic `import()`s is now supported.
+
+A major improvement is that you're no longer required to add the following to `pages/_document.js`:
+
+```
+<link rel="stylesheet" href="/_next/static/style.css" />
+```
+
+Instead, Next.js will automatically inject the CSS file.
+
+This leaves adding CSS imports support to your project to creating a `next.config.js` and adding the `withCSS` plugin:
+
+```js
+const withCSS = require('@zeit/next-css')
+const existingConfig = {}
+module.exports = withCSS(existingConfig)
+```
+
+### Dynamic imports
+
+Next.js has had support for dynamic import through `next/dynamic` since version 3. It was one of the early adopters of dynamic imports in React, and because of this we wrote our own solution to handling `import()`, because of this Next.js didn't support a few `import()` features webpack had introduced since, for example `import(/* webpackChunkName: 'my-chunk' */ '../lib/my-library')` for naming and bundling certain files together manually. Another example is using `import()` without being wrapped in the `next/dynamic` module.
+
+Starting with Next 7 we no longer touch the default `import()` behavior and all these cases are supported.
+
+The `next/dynamic` usage has *not* been changed:
+
+```js
+import dynamic from 'next/dynamic'
+const MyComponent = dynamic(import('../components/my-component'))
+export default () => {
+  return <div>
+    <MyComponent />
+  </div>
+}
+```
+
+What this example will do is create a new Javascript file for `my-component` and only load it when `<MyComponent />` is rendered. If it's not rendered the `<script>` tag won't be included in the initial HTML document.
+
+The big change with Next 7 is that `next/dynamic` is now powered by a fork of the [`react-loadable`](https://github.com/jamiebuilds/react-loadable) library behind the scenes, allowing for a few new features coming from `react-loadable`:
+
+- timeouts using the `timeout` option on `next/dynamic`
+- a loading component delay, using the `delay` option on `next/dynamic`. This allows your `loading` component to wait x time before rendering the loading state, for example if the import is very fast.
+
+## Babel 7
+
+Next.js 6 introduced Babel 7 while it was still in beta. Since then the stable version of Babel 7 has been released, and Next.js 7 now using this version.
+
+For a full list of changes you can refer to Babel's [release notes](http://babeljs.io/blog/2018/08/27/7.0.0http://babeljs.io/blog/2018/08/27/7.0.0)
+
+Some of the main features are:
+
+- Typescript support, for Next.js you can use [`@zeit/next-typescript`](https://github.com/zeit/next-plugins/tree/master/packages/next-typescript)
+- Fragment syntax `<>` support
+- `babel.config.js` support
+- `overrides` property to apply presets/plugins only to a subset of files or directories
+
+If you don't have a custom Babel configuration in your Next.js project there are no breaking changes.
+
+If you do however have a custom Babel configuration you will have to upgrade the respective custom plugins/presets to their latest version
+
+In case you're upgrading from a version below Next.js 6 you can run the excellent [`babel-upgrade`](http://babeljs.io/blog/2018/08/27/7.0.0#babel-upgrade) tool.
+
+In addition to upgrading to Babel 7, the Next.js Babel preset ([`next/babel`](https://github.com/zeit/next.js#customizing-babel-config)) now defaults to setting the `modules` transform to `commonjs` when `NODE_ENV=test`. This was often the only reason for creating a custom `.babelrc` in a Next.js project:
+
+```json
+{
+  "env": {
+    "development": {
+      "presets": ["next/babel"]
+    },
+    "production": {
+      "presets": ["next/babel"]
+    },
+    "test": {
+      "presets": [["next/babel", { "preset-env": { "modules": "commonjs" } }]]
+    }
+  }
+}
+```
+
+With Next 7 becomes:
+
+```json
+{
+  "presets": ["next/babel"]
+}
+```
+
+## Development improvements
+
+### Compilation speed
+
+- webpackbar
+- hard-source-webpack-plugin, might be the default in webpack 5
+- autodllplugin
+
+### React Error Overlay
+
+- See exactly what line an error is thrown, including real code
+- Immediately open your editor by clicking the link
+
+## Smaller initial HTML
+
+- Removed `__next-error`
+- Minified inline scripts
+- Removed unused `__NEXT_DATA__` properties
+
+<Image src="/static/blog/next-7/bytesize.png" width={1468 / 3} height={1178 / 3} caption="New (1.5KB) vs Old (1.62KB) HTML size." />
+
+## Styled JSX v3
+
+## Improved CDN support
+
+## React Context between App and Pages
+
+## nextjs.org
+
+- New website
+- New showcase
+- 
+
+## Community
+
+- Adoption of Next.js, more than 12500 public domains using Next.js
+- 500 contributors
+- Next.js spectrum watercooler, come chat
+- Next.js spectrum adoption
+- This release had 65 unique contributors (1 or more pull requests)
+- Good first issue / help wanted
+

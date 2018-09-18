@@ -1,4 +1,3 @@
-import { PureComponent } from 'react'
 import Link from 'next/link'
 import { MDXProvider } from '@mdx-js/tag'
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
@@ -46,7 +45,7 @@ export default meta => ({ children }) => {
           <Navbar/>
         </Header>
       }</MediaQueryConsumer>
-      <Container padding>
+      <Container padding small>
         <h1 className='title fw6 f0'>{ meta.title }</h1>
         <div className='date mute f6'>
           <time dateTime={meta.date}>
