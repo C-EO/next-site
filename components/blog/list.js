@@ -6,6 +6,6 @@ import Preview from './preview'
 export default () => (
   <Container padding wide>
     <SectionHeader title='Blog' />
-    <Preview detail/>
+    <Preview url='/blog/next-7' detail/>
   </Container>
 )
