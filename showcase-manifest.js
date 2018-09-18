@@ -2,7 +2,7 @@ const categories = ['All', 'Finance', 'News', 'E-commerce', 'Creative', 'Enterta
 const categoriesShort = ['All', 'Finance', 'News', 'E-comm', 'Creative', 'Entertainment']
 
 const frontSortOrder = [
-  'design-better', 'invision', 'marvel', 'magic-leap', 'nike', 'netflix-jobs', 'mozilla-vr'
+  'ticketmaster', 'invision', 'marvel', 'magic-leap', 'nike', 'netflix-jobs', 'mozilla-vr'
 ]
 
 const sortOrder = [
