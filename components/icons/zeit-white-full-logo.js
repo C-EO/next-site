@@ -2,8 +2,8 @@ export default () =>
 <svg height="20" viewBox="0 0 230 45">
     <defs>
         <linearGradient x1="196.572434%" y1="228.815483%" x2="50%" y2="50%" id="linearGradient-1">
-            <stop stop-color="#000000" offset="0%"></stop>
-            <stop stop-color="#FFFFFF" offset="100%"></stop>
+            <stop stopColor="#000000" offset="0%"></stop>
+            <stop stopColor="#FFFFFF" offset="100%"></stop>
         </linearGradient>
     </defs>
     <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
