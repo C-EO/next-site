@@ -55,14 +55,14 @@ export default ({}) => {
             justify-content: center;
             color: #0076ff;
             opacity: 0;
-            animation: t .5s ease forwards 11.5s;
+            animation: t .5s ease forwards 12.5s;
           }
           .title .version {
             margin-left: -0.2rem;
             margin-top: .4rem;
             cursor: pointer;
             opacity: 0;
-            animation: t .5s ease forwards 12s;
+            animation: t .5s ease forwards 13s;
           }
           .version .tip {
             color: #111;
@@ -73,7 +73,10 @@ export default ({}) => {
             white-space: nowrap;
             overflow: hidden;
             margin: 0 auto -3rem auto;
-            animation: x 1s cubic-bezier(1, 0, 0, 1) forwards 8.5s, y 2.5s cubic-bezier(1, 0, 0, 1) forwards 9.8s;
+            animation: x 1s cubic-bezier(1, 0, 0, 1) forwards 10.5s, y 2.5s cubic-bezier(1, 0, 0, 1) forwards 10.8s;
+          }
+          h2.campaign {
+            animation: tt 2s ease forwards 9s;
           }
           @keyframes x {
             0% {
@@ -114,6 +117,14 @@ export default ({}) => {
             }
             to {
               opacity: 1;
+            }
+          }
+          @keyframes tt {
+            from {
+              opacity: 1;
+            }
+            to {
+              opacity: 0;
             }
           }
         `}</style>

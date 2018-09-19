@@ -37,7 +37,6 @@ export default class extends PureComponent {
       }
       if (this.state.currentIndex === this.state.count - 1) {
         return
-      //   this.t = 200
       }
 
       if (!this.pauseAnimation) {
@@ -50,10 +49,10 @@ export default class extends PureComponent {
         this.pauseAnimation = false
       }
 
-      this.t = Math.max(this.t * 0.8, 340)
-      ANIMATION_STAGES[0].y *= 0.9
-      // ANIMATION_STAGES[2].opacity -= 0.04
-      ANIMATION_STAGES[2].y *= 0.98
+      this.t = Math.max(this.t * 0.9, 280)
+      // ANIMATION_STAGES[0].y *= 0.9
+      // ANIMATION_STAGES[1].opacity *= 0.9
+      // ANIMATION_STAGES[2].y *= 0.98
       // }
     // }, this.props.duration || 1500)
   }
