@@ -5,6 +5,7 @@ import GithubSlugger from 'github-slugger';
 export default class Tabs extends PureComponent {
   constructor(props) {
     super();
+
     this.state = {
       selected: props.data[0]
     };
@@ -14,7 +15,7 @@ export default class Tabs extends PureComponent {
 
     if (this.props.anchor) {
       let index = this.props.data
-        .map(slugger.slug)
+        .map(tab => slugger.slug(tab))
         .indexOf(window.location.hash.slice(1));
       if (index !== -1) {
         this.setState({
@@ -58,7 +59,7 @@ export default class Tabs extends PureComponent {
   }
 
   render() {
-    const { data, children } = this.props;
+    const { data, anchor, children } = this.props;
     if (!data.length) {
       return null;
     }
@@ -75,25 +76,3 @@ export default class Tabs extends PureComponent {
     return children(this.onSelect, selected, index);
   }
 }
-
-export const Indicator = withPure(({ selected, onClick }) => (
-  <div onClick={onClick}>
-    <style jsx>
-      {`
-         {
-          display: inline-block;
-          width: 10px;
-          height: 10px;
-          margin: 0 5px;
-          border-radius: 50%;
-          transition: background 0.2s ease;
-          background: ${selected ? '#EEEEEE' : '#909090'};
-          cursor: pointer;
-        }
-        div:hover {
-          background: ${selected ? '#EEEEEE' : '#AAAAAA'};
-        }
-      `}
-    </style>
-  </div>
-));
