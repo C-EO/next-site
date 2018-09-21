@@ -30,6 +30,7 @@ const Author = meta => (
         display: inline-flex;
         align-items: center;
         padding: 0 1rem;
+        white-space: nowrap;
       }
       img {
         width: 2rem;
@@ -96,6 +97,15 @@ export default meta => ({ children }) => {
           .authors {
             margin: 1rem 0 4rem;
             text-align: center;
+          }
+          // CSS only media query for mobile
+          @media screen and (max-width: 640px) {
+            .authors {
+              text-align: left;
+              margin-left: -1rem;
+              margin-right: -1rem;
+              font-size: 14px;
+            }
           }
         `}</style>
       </Page>
