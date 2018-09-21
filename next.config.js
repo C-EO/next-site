@@ -1,7 +1,18 @@
 const rehypePrism = require('@mapbox/rehype-prism');
+const rehypeReadme = require('./lib/rehype-readme');
+
 const withMDX = require('@zeit/next-mdx')({
   options: {
-    hastPlugins: [rehypePrism]
+    hastPlugins: [
+      rehypePrism,
+      [
+        rehypeReadme,
+        {
+          repo: 'zeit/next.js',
+          branch: 'canary'
+        }
+      ]
+    ]
   }
 });
 
