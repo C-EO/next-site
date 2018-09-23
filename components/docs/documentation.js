@@ -70,10 +70,7 @@ export default class Documentation extends Component {
       }
 
       const hash = '#' + (id || '');
-      if (location.hash !== hash) {
-        changeHash(hash);
-        this.updateSelected(hash);
-      }
+      this.updateSelected(hash);
     });
 
     for (const node of nodes) {
@@ -92,9 +89,11 @@ export default class Documentation extends Component {
   }
 
   updateSelected = hash => {
-    this.setState({
-      currentSelection: hash
-    });
+    if (this.state.currentSelection !== hash) {
+      this.setState({
+        currentSelection: hash
+      });
+    }
   };
 
   onHashChange() {

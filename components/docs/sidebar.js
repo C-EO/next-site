@@ -142,12 +142,12 @@ export default class Sidebar extends PureComponent {
     this.setState({ dropdown: !this.state.dropdown });
   };
   render() {
-    const { isMobile } = this.props;
+    const { isMobile, currentSelection } = this.props;
     const { dropdown } = this.state;
 
     if (isMobile) {
       const currentItem = navElements.filter(
-        item => this.props.currentSelection === `#${slugify(item)}`
+        item => currentSelection === `#${slugify(item)}`
       )[0];
       return (
         <>
@@ -193,9 +193,7 @@ export default class Sidebar extends PureComponent {
                           updateSelected={() =>
                             this.updateSelected(`#${slugify(item)}`)
                           }
-                          isActive={
-                            this.props.currentSelection === `#${slugify(item)}`
-                          }
+                          isActive={currentSelection === `#${slugify(item)}`}
                           isMobile={true}
                         />
                       ))}
