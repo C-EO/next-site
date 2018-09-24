@@ -6,6 +6,7 @@ const withMDX = require('@zeit/next-mdx')({
 });
 
 const { mapping: showcaseMapping } = require('./showcase-manifest');
+const { generate: generateRSS } = require('./lib/rss');
 const webpack = require('webpack');
 
 var config = {
@@ -26,6 +27,9 @@ var config = {
         page: '/showcase',
         query: { item: route, from: 'url' }
       };
+    }
+    if (process.env.NODE_ENV === 'production') {
+      console.log(generateRSS());
     }
     return defaultPathMap;
   }
