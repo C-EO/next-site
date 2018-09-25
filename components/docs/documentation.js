@@ -101,6 +101,8 @@ export default class Documentation extends Component {
   }
 
   render() {
+    const { headings } = this.props;
+
     return (
       <MediaQueryConsumer>
         {({ isMobile, isTablet }) => {
@@ -113,6 +115,7 @@ export default class Documentation extends Component {
                   updateSelected={this.updateSelected}
                   currentSelection={this.state.currentSelection}
                   isMobile={isMobile}
+                  headings={headings}
                 />
 
                 <div className="documentation__container">
@@ -165,9 +168,9 @@ export default class Documentation extends Component {
   }
 }
 
-const DocH2 = ({ children }) => (
+const DocH2 = ({ children, id }) => (
   <div>
-    <Heading lean>
+    <Heading lean id={id}>
       <H2>{children}</H2>
     </Heading>
     <style jsx>{`
@@ -178,9 +181,9 @@ const DocH2 = ({ children }) => (
   </div>
 );
 
-const DocH3 = ({ children }) => (
+const DocH3 = ({ children, id }) => (
   <div>
-    <Heading lean>
+    <Heading lean id={id}>
       <H3>{children}</H3>
     </Heading>
     <style jsx>{`
@@ -188,6 +191,14 @@ const DocH3 = ({ children }) => (
         margin: 2rem 0 0 0;
       }
     `}</style>
+  </div>
+);
+
+const DocH4 = ({ children, id }) => (
+  <div>
+    <Heading lean id={id}>
+      <H4>{children}</H4>
+    </Heading>
   </div>
 );
 
@@ -203,7 +214,7 @@ export const components = {
   h1: H1,
   h2: DocH2,
   h3: DocH3,
-  h4: H4,
+  h4: DocH4,
   blockquote: Blockquote,
   code: Code,
   inlineCode: InlineCode,

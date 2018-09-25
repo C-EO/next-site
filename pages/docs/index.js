@@ -5,7 +5,7 @@ import Container from '../../components/container';
 import { MediaQueryConsumer } from '../../components/media-query';
 import withPure from '../../components/hoc/pure';
 
-import Markdown from '../../components/docs/docs.mdx';
+import Markdown, { headings } from '../../components/docs/docs.mdx';
 import Documentation, { components } from '../../components/docs/documentation';
 
 const Content = withPure(() => <Markdown components={components} />);
@@ -24,7 +24,7 @@ export default () => (
       )}
     </MediaQueryConsumer>
     <Container>
-      <Documentation>
+      <Documentation headings={headings}>
         <Content />
       </Documentation>
     </Container>

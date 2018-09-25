@@ -1,42 +1,10 @@
 import { PureComponent, Component } from 'react';
-import { Code } from './text/code';
 import _scrollIntoViewIfNeeded from 'scroll-into-view-if-needed';
-import slugify from '@sindresorhus/slugify';
+import GithubSlugger from 'github-slugger';
 
 import Header from '../header';
 import Container from '../container';
 import ArrowRight from '../icons/arrow-right';
-
-const navElements = [
-  'Setup',
-  'Automatic Code Splitting',
-  'CSS',
-  'Static file serving (e.g.: images)',
-  'Populating <head>',
-  'Fetching data and component lifecycle',
-  'Routing',
-  'Prefetching Pages',
-  'Custom server and routing',
-  'Dynamic Import',
-  'Custom <App>',
-  'Custom <Document>',
-  'Custom error handling',
-  'Reusing the built-in error page',
-  'Custom configuration',
-  'Customizing webpack config',
-  'Customizing babel config',
-  'CDN support with Asset Prefix',
-  'Production deployment',
-  'Static HTML export',
-  'Usage',
-  'Limitation',
-  'Multi Zones',
-  'How to define a zone',
-  'How to merge them',
-  'Recipes',
-  'FAQ',
-  'Contributing'
-];
 
 function scrollIntoViewIfNeeded(elem) {
   const finalElement = findClosestScrollableElement(elem);
@@ -60,6 +28,22 @@ function findClosestScrollableElement(_elem) {
   } else {
     return findClosestScrollableElement(parentNode);
   }
+}
+
+function flattenHeadings(headings) {
+  if (!Array.isArray(headings)) {
+    return headings;
+  }
+  return [].concat(...headings.map(flattenHeadings));
+}
+
+function slugifyHeadings(headings) {
+  const slugger = new GithubSlugger();
+
+  return headings.map(heading => {
+    heading.id = slugger.slug(heading.title);
+    return heading;
+  });
 }
 
 export class SidebarNavItem extends Component {
@@ -92,30 +76,43 @@ export class SidebarNavItem extends Component {
   }
 
   render() {
-    const { item, updateSelected, isActive, isMobile } = this.props;
+    const { item, updateSelected, isActive } = this.props;
+
+    let listStyle =
+      'padding: 5px 3px 5px 0; font-size: 16px; font-weight: 500;';
+    switch (item.level) {
+      case 3:
+        listStyle = 'padding: 5px 3px 5px 15px; font-size: 15px;';
+        break;
+      case 4:
+        listStyle = 'padding: 2px 3px 2px 30px; font-size: 13px; color: #666;';
+        break;
+      case 5:
+        listStyle = 'padding: 2px 3px 2px 45px; font-size: 13px; color: #666;';
+        break;
+      case 6:
+        listStyle = 'padding: 2px 3px 2px 60px; font-size: 13px; color: #666;';
+        break;
+    }
 
     return (
       <li>
         <a
-          href={`#${slugify(item)}`}
+          href={'#' + item.id}
           onClick={updateSelected}
-          className={`${isActive ? 'active' : ''} f5`}
+          className={`${isActive ? 'active' : ''} f-reset`}
           ref={ref => (this.activeNavItem = ref)}
         >
-          {item}
+          {item.title}
         </a>
         <style jsx>{`
           li {
             list-style: none;
           }
-          li:last-of-type {
-            padding-bottom: 2rem;
-          }
           a {
-            display: inline-block;
+            display: block;
             color: inherit;
-            padding: 6px 3px;
-            ${isMobile ? 'width: 100%;' : ''};
+            ${listStyle};
           }
           a:hover {
             color: gray;
@@ -130,25 +127,63 @@ export class SidebarNavItem extends Component {
   }
 }
 
+export class SidebarNavItemContainer extends Component {
+  render() {
+    const { headings, currentSelection, updateSelected, isMobile } = this.props;
+
+    if (Array.isArray(headings)) {
+      return (
+        <ul>
+          {headings.map((item, i) => (
+            <SidebarNavItemContainer
+              {...this.props}
+              updateSelected={updateSelected}
+              headings={item}
+              key={i}
+            />
+          ))}
+          <style jsx>{`
+            ul {
+              margin: 0 0 0.5rem 0;
+              padding: 0;
+            }
+          `}</style>
+        </ul>
+      );
+    }
+
+    return (
+      <SidebarNavItem
+        item={headings}
+        updateSelected={() => updateSelected('#' + headings.id)}
+        isActive={currentSelection === '#' + headings.id}
+        isMobile={isMobile}
+      />
+    );
+  }
+}
+
 export default class Sidebar extends PureComponent {
   state = {
     dropdown: false
   };
-  updateSelected = hash => {
-    this.props.updateSelected(hash);
+  updateSelected = () => {
     this.setState({ dropdown: false });
   };
   toggleDropdown = () => {
     this.setState({ dropdown: !this.state.dropdown });
   };
   render() {
-    const { isMobile, currentSelection } = this.props;
+    let { isMobile, headings, currentSelection } = this.props;
     const { dropdown } = this.state;
 
+    let flatHeadings = slugifyHeadings(flattenHeadings(headings));
+
     if (isMobile) {
-      const currentItem = navElements.filter(
-        item => currentSelection === `#${slugify(item)}`
-      )[0];
+      const currentItem = flatHeadings.filter(
+        item => currentSelection === '#' + item.id
+      )[0].title;
+
       return (
         <>
           <div className="negative-spacer">
@@ -185,19 +220,11 @@ export default class Sidebar extends PureComponent {
                     <span className="documentation__sidebar-heading f6 fw6">
                       Getting Started
                     </span>
-                    <ul>
-                      {navElements.map((item, i) => (
-                        <SidebarNavItem
-                          key={i}
-                          item={item}
-                          updateSelected={() =>
-                            this.updateSelected(`#${slugify(item)}`)
-                          }
-                          isActive={currentSelection === `#${slugify(item)}`}
-                          isMobile={true}
-                        />
-                      ))}
-                    </ul>
+                    <SidebarNavItemContainer
+                      headings={headings}
+                      currentSelection={currentSelection}
+                      updateSelected={this.updateSelected}
+                    />
                   </nav>
                 </Container>
               </div>
@@ -231,18 +258,13 @@ export default class Sidebar extends PureComponent {
                 bottom: 100%;
               }
               .documentation__sidebar nav {
-                padding-left: 24px;
-              }
-              .documentation__sidebar nav ul {
-                margin: 0;
-                padding: 0;
+                padding-left: 28px;
               }
               .documentation__sidebar-heading {
                 display: inline-block;
                 margin-top: 1rem;
                 margin-bottom: 12px;
-                margin-left: 3px;
-                color: #999999;
+                color: #999;
                 text-transform: uppercase;
               }
               .negative-spacer {
@@ -266,18 +288,11 @@ export default class Sidebar extends PureComponent {
           <span className="documentation__sidebar-heading">
             Getting Started
           </span>
-          <ul>
-            {navElements.map((item, i) => (
-              <SidebarNavItem
-                key={i}
-                item={item}
-                updateSelected={() =>
-                  this.props.updateSelected(`#${slugify(item)}`)
-                }
-                isActive={this.props.currentSelection === `#${slugify(item)}`}
-              />
-            ))}
-          </ul>
+          <SidebarNavItemContainer
+            headings={headings}
+            currentSelection={currentSelection}
+            updateSelected={this.updateSelected}
+          />
         </nav>
 
         <style jsx>{`
@@ -287,7 +302,6 @@ export default class Sidebar extends PureComponent {
             position: relative;
             padding-right: 3rem;
           }
-
           .documentation__sidebar nav {
             position: fixed;
             overflow-y: auto;
@@ -298,18 +312,11 @@ export default class Sidebar extends PureComponent {
             padding: 2rem 1rem 0 0;
             height: calc(100vh - 64px);
           }
-
-          .documentation__sidebar nav ul {
-            margin: 0;
-            padding: 0;
-          }
-
           .documentation__sidebar-heading {
             color: #999999;
             text-transform: uppercase;
             margin-bottom: 12px;
           }
-
           // CSS only media query for mobile + SSR
           @media screen and (max-width: 640px) {
             .documentation__sidebar nav {

@@ -16,7 +16,8 @@ const withGitHubMDX = nextMDX({
         rehypeReadme,
         {
           repo: 'zeit/next.js',
-          branch: 'master'
+          branch: 'master',
+          level: 4
         }
       ]
     ]
