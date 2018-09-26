@@ -66,7 +66,7 @@ export class SidebarNavItem extends Component {
   }
 
   scrollIntoViewIfNeeded() {
-    if (this.props.isActive) {
+    if (this.activeNavItem && this.props.isActive) {
       if (this.activeNavItem.scrollIntoViewIfNeeded) {
         this.activeNavItem.scrollIntoViewIfNeeded();
       } else {
@@ -78,20 +78,49 @@ export class SidebarNavItem extends Component {
   render() {
     const { item, updateSelected, isActive } = this.props;
 
+    if (item.level === 2) {
+      return (
+        <li>
+          <a
+            href={'#' + item.id}
+            onClick={updateSelected}
+            className="documentation__sidebar-heading f-reset fw6"
+          >
+            {item.title}
+          </a>
+          <style jsx>{`
+            li {
+              list-style: none;
+            }
+            .documentation__sidebar-heading {
+              display: inline-block;
+              margin-top: 1rem;
+              margin-bottom: 4px;
+              color: #111;
+              text-transform: uppercase;
+            }
+            a:hover {
+              color: gray;
+            }
+          `}</style>
+        </li>
+      );
+    }
+
     let listStyle =
       'padding: 5px 3px 5px 0; font-size: 16px; font-weight: 500;';
     switch (item.level) {
       case 3:
-        listStyle = 'padding: 5px 3px 5px 15px; font-size: 15px;';
+        listStyle = 'padding: 5px 3px 5px 0; font-size: 15px;';
         break;
       case 4:
-        listStyle = 'padding: 2px 3px 2px 30px; font-size: 13px; color: #666;';
+        listStyle = 'padding: 3px 3px 3px 15px; font-size: 14px; color: #666;';
         break;
       case 5:
-        listStyle = 'padding: 2px 3px 2px 45px; font-size: 13px; color: #666;';
+        listStyle = 'padding: 2px 3px 2px 30px; font-size: 13px; color: #666;';
         break;
       case 6:
-        listStyle = 'padding: 2px 3px 2px 60px; font-size: 13px; color: #666;';
+        listStyle = 'padding: 2px 3px 2px 45px; font-size: 13px; color: #666;';
         break;
     }
 
@@ -217,9 +246,6 @@ export default class Sidebar extends PureComponent {
               >
                 <Container>
                   <nav>
-                    <span className="documentation__sidebar-heading f6 fw6">
-                      Getting Started
-                    </span>
                     <SidebarNavItemContainer
                       headings={headings}
                       currentSelection={currentSelection}
@@ -260,13 +286,6 @@ export default class Sidebar extends PureComponent {
               .documentation__sidebar nav {
                 padding-left: 28px;
               }
-              .documentation__sidebar-heading {
-                display: inline-block;
-                margin-top: 1rem;
-                margin-bottom: 12px;
-                color: #999;
-                text-transform: uppercase;
-              }
               .negative-spacer {
                 margin: 0 -1rem;
               }
@@ -285,9 +304,6 @@ export default class Sidebar extends PureComponent {
     return (
       <div className="documentation__sidebar">
         <nav>
-          <span className="documentation__sidebar-heading">
-            Getting Started
-          </span>
           <SidebarNavItemContainer
             headings={headings}
             currentSelection={currentSelection}
@@ -311,11 +327,6 @@ export default class Sidebar extends PureComponent {
             width: 18rem;
             padding: 2rem 1rem 0 0;
             height: calc(100vh - 64px);
-          }
-          .documentation__sidebar-heading {
-            color: #999999;
-            text-transform: uppercase;
-            margin-bottom: 12px;
           }
           // CSS only media query for mobile + SSR
           @media screen and (max-width: 640px) {

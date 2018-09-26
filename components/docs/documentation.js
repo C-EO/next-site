@@ -36,6 +36,7 @@ export default class Documentation extends Component {
     };
     this.contentNode = null;
     this.observer = null;
+    this.preventScrollObserverUpdate = false;
 
     this.updateSelected = this.updateSelected.bind(this);
     this.onHashChange = this.onHashChange.bind(this);
@@ -44,7 +45,7 @@ export default class Documentation extends Component {
   componentDidMount() {
     window.addEventListener('hashchange', this.onHashChange);
 
-    const nodes = [...this.contentNode.querySelectorAll('[id]')];
+    const nodes = [...this.contentNode.querySelectorAll('h3 [id], h4 [id]')];
     const intersectingTargets = new Set();
 
     this.observer = new IntersectionObserver(entries => {
@@ -56,6 +57,10 @@ export default class Documentation extends Component {
         }
       }
 
+      if (this.preventScrollObserverUpdate) {
+        this.preventScrollObserverUpdate = false;
+        return;
+      }
       if (!intersectingTargets.size) return;
 
       let minIndex = Infinity;
@@ -97,6 +102,7 @@ export default class Documentation extends Component {
   };
 
   onHashChange() {
+    this.preventScrollObserverUpdate = true;
     this.updateSelected(window.location.hash);
   }
 
