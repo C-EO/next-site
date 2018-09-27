@@ -3,10 +3,7 @@
   "description": "Next.js Official Homepage",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/zeit/next-website.git"
-  },
+  "repository": "zeit/next-site",
   "author": "",
   "homepage": "https://nextjs.org",
   "license": "MIT",
