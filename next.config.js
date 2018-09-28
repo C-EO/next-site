@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 const rehypePrism = require('@mapbox/rehype-prism');
 const withMDX = require('@zeit/next-mdx')({
   options: {
@@ -21,16 +23,19 @@ var config = {
     );
     return config;
   },
-  exportPathMap(defaultPathMap) {
+  exportPathMap(defaultPathMap, { dev, outDir }) {
     for (const route of Object.keys(showcaseMapping)) {
       defaultPathMap[`/showcase/${route}`] = {
         page: '/showcase',
         query: { item: route, from: 'url' }
       };
     }
-    if (process.env.NODE_ENV === 'production') {
-      console.log(generateRSS());
+
+    if (!dev) {
+      fs.writeFileSync(path.join(outDir, 'feed.xml'), generateRSS());
+      console.log(`\nRSS feed auto generated at ${outDir}/feed.xml\n`);
     }
+
     return defaultPathMap;
   }
 };
