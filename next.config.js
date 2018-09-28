@@ -8,12 +8,11 @@ const withMDX = require('@zeit/next-mdx')({
 });
 
 const { mapping: showcaseMapping } = require('./showcase-manifest');
-const { generate: generateRSS } = require('./lib/rss');
 const webpack = require('webpack');
 
 var config = {
   pageExtensions: ['jsx', 'js', 'mdx'],
-  webpack: config => {
+  webpack: (config, { dev, isServer }) => {
     config.plugins = config.plugins || [];
     config.plugins.push(
       new webpack.ContextReplacementPlugin(
@@ -21,9 +20,20 @@ var config = {
         new RegExp(`^./(${['javascript', 'json', 'xml'].join('|')})$`)
       )
     );
+
+    if (isServer && !dev) {
+      const originalEntry = config.entry;
+      config.entry = async () => {
+        const entries = { ...(await originalEntry()) };
+        // This script imports components from the Next app, so it's transpiled to `.next/server/scripts/build-rss.js`
+        entries['./scripts/build-rss.js'] = './scripts/build-rss.js';
+        return entries;
+      };
+    }
+
     return config;
   },
-  exportPathMap(defaultPathMap, { dev, outDir }) {
+  exportPathMap(defaultPathMap, { dev, dir, outDir }) {
     for (const route of Object.keys(showcaseMapping)) {
       defaultPathMap[`/showcase/${route}`] = {
         page: '/showcase',
@@ -32,8 +42,10 @@ var config = {
     }
 
     if (!dev) {
-      fs.writeFileSync(path.join(outDir, 'feed.xml'), generateRSS());
-      console.log(`\nRSS feed auto generated at ${outDir}/feed.xml\n`);
+      fs.copyFileSync(
+        path.join(dir, 'feed.xml'),
+        path.join(outDir, 'feed.xml')
+      );
     }
 
     return defaultPathMap;
