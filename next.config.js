@@ -42,6 +42,8 @@ var config = {
     }
 
     if (!dev) {
+      require('./.next/server/scripts/build-rss.js');
+
       fs.copyFileSync(
         path.join(dir, 'feed.xml'),
         path.join(outDir, 'feed.xml')

@@ -7,8 +7,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "next",
-    "build": "next build && yarn run build:rss",
-    "build:rss": "node ./.next/server/scripts/build-rss.js",
+    "build": "next build",
     "export": "next export",
     "start": "next start",
     "lint": "eslint",
