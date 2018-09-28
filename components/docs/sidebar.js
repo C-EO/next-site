@@ -84,7 +84,7 @@ export class SidebarNavItem extends Component {
           <a
             href={'#' + item.id}
             onClick={updateSelected}
-            className="documentation__sidebar-heading f-reset fw6"
+            className="documentation__sidebar-heading f5"
           >
             {item.title}
           </a>
@@ -96,7 +96,7 @@ export class SidebarNavItem extends Component {
               display: inline-block;
               margin-top: 1rem;
               margin-bottom: 4px;
-              color: #111;
+              color: #999;
               text-transform: uppercase;
             }
             a:hover {
@@ -107,8 +107,7 @@ export class SidebarNavItem extends Component {
       );
     }
 
-    let listStyle =
-      'padding: 5px 3px 5px 0; font-size: 16px; font-weight: 500;';
+    let listStyle = '';
     switch (item.level) {
       case 3:
         listStyle = 'padding: 5px 3px 5px 0; font-size: 15px;';
