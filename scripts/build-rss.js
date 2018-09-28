@@ -18,14 +18,14 @@ function dateSortDesc(a, b) {
   return 0;
 }
 
-function generate() {
+function generate(outputPath) {
   const feed = new RSS({
     title: 'Next.js Blog',
     site_url: 'https://nextjs.org',
     feed_url: 'https://nextjs.org/feed.xml'
   });
 
-  previewItems.sort(dateSortDesc).map(({ default: content, meta }) => {
+  previewItems.sort(dateSortDesc).map(({ meta }) => {
     feed.item({
       title: meta.title,
       guid: meta.link,
@@ -39,7 +39,7 @@ function generate() {
   });
 
   const rss = feed.xml({ indent: true });
-  fs.writeFileSync(path.resolve('./feed.xml'), rss);
+  fs.writeFileSync(path.join(outputPath, 'feed.xml'), rss);
 }
 
-generate();
+export default generate;

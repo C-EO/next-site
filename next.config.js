@@ -1,5 +1,3 @@
-const fs = require('fs');
-const path = require('path');
 const rehypePrism = require('@mapbox/rehype-prism');
 const withMDX = require('@zeit/next-mdx')({
   options: {
@@ -42,12 +40,9 @@ var config = {
     }
 
     if (!dev) {
-      require('./.next/server/scripts/build-rss.js');
-
-      fs.copyFileSync(
-        path.join(dir, 'feed.xml'),
-        path.join(outDir, 'feed.xml')
-      );
+      const generateRSS = require('./.next/server/scripts/build-rss.js')
+        .default;
+      generateRSS(outDir);
     }
 
     return defaultPathMap;
