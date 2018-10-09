@@ -13,7 +13,7 @@ export default ({ detail, link, title, date, prefetch, children }) => {
           transition: all 0.5s ease;
         }
         .post-preview:not(:last-of-type) {
-          border-bottom: 1px solid #f3f3f3;
+          border-bottom: 1px solid #eee;
         }
         .post-preview:hover {
           background-color: rgba(0, 0, 0, 0.03);
@@ -32,7 +32,7 @@ export default ({ detail, link, title, date, prefetch, children }) => {
       `}</style>
       <Container small>
         <Link href={link} prefetch={prefetch}>
-          <h3 className="f3 post-title">{title}</h3>
+          <h3 className="f3 fw6 post-title">{title}</h3>
         </Link>
         <p className="f6 date mute">
           {formatDate(date, 'dddd, MMMM Do YYYY')} (
