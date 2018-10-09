@@ -82,14 +82,14 @@ const Author = meta => (
 );
 
 const Hero = meta => {
-  if (meta.featured) {
+  if (meta.headerImage) {
     return (
       <div>
         <style jsx>{`
           div {
-            background-image: url(${meta.featured});
+            background-image: url(${meta.headerImage});
             background-size: cover;
-            background-position: 53% 36%;
+            background-position: center 30%;
             width: 100%;
             padding-bottom: 25%;
             min-height: 220px;
