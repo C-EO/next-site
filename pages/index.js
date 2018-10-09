@@ -22,13 +22,7 @@ export default () => (
     />
     <MediaQueryConsumer>
       {({ isMobile }) => (
-        <Header
-          height={32}
-          offset={-32}
-          distance={32}
-          shadow
-          active={isMobile ? 32 : 320}
-        >
+        <Header height={32} offset={-32} distance={32} shadow active={32}>
           <Notification
             href="/blog/next-7"
             title="Next 7 is out!"
