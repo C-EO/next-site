@@ -12,6 +12,8 @@ import Featured from '../../components/blog/featured';
 import Preview from '../../components/blog/preview';
 import { components } from '../../components/blog/post-components';
 
+import { meta } from '../../blog/nextjsorg-preview.mdx';
+
 function importAll(r) {
   return r.keys().map(r);
 }
@@ -53,6 +55,7 @@ export default () => (
       )}
     </MediaQueryConsumer>
     <Screen offset={64 + 400}>
+      {/* <Featured {...meta} prefetch/> */}
       <Container padding wide>
         <SectionHeader title="Blog" />
         {items}
