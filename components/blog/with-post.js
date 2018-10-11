@@ -81,7 +81,7 @@ const Author = meta => (
   </div>
 );
 
-const Hero = meta => {
+const HeaderImage = meta => {
   if (meta.headerImage) {
     return (
       <div>
@@ -91,7 +91,7 @@ const Hero = meta => {
             background-size: cover;
             background-position: center 30%;
             width: 100%;
-            padding-bottom: 25%;
+            padding: 11% 0;
             min-height: 220px;
           }
         `}</style>
@@ -118,10 +118,10 @@ export default meta => ({ children }) => {
             </Header>
           )}
         </MediaQueryConsumer>
-        <Hero {...meta} />
+        <HeaderImage {...meta} />
         <Container padding>
           <h1 className="title fw6 f0">{meta.title}</h1>
-          {meta.type && <span className="post-type mute fw6">{meta.type}</span>}
+          {meta.type && <span className="post-type mute fw7">{meta.type}</span>}
           <div className="date mute f6">
             <time dateTime={meta.date}>
               {formatDate(date, 'dddd, MMMM Do YYYY')} (
@@ -131,12 +131,12 @@ export default meta => ({ children }) => {
               )
             </time>
           </div>
+          <div className="authors">
+            {meta.authors.map(data => (
+              <Author key={data.name} {...data} />
+            ))}
+          </div>
           <Container small wide overflow>
-            <div className="authors">
-              {meta.authors.map(data => (
-                <Author key={data.name} {...data} />
-              ))}
-            </div>
             <content>{children}</content>
             <div className="back-button">
               <Button href="/blog" invert prefetch>
@@ -180,16 +180,16 @@ export default meta => ({ children }) => {
             .authors {
               display: flex;
               flex-direction: column;
-              align-items: left;
+              align-items: center;
               margin-left: -1rem;
               margin-right: -1rem;
             }
             .title {
-              text-align: left;
+              text-align: center;
             }
             .date {
               margin-top: 1rem;
-              text-align: left;
+              text-align: center;
             }
           }
         `}</style>
