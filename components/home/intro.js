@@ -13,9 +13,7 @@ import { links } from '../../site-manifest';
 const LOGO_TOP = 170;
 
 function easing(t) {
-  // let r = t < 0.5 ? 16 * t * t * t * t * t : 1 + 16 * --t * t * t * t * t
-  // return r < 0 ? 0 : r > 1 ? 1 : r
-  return t < 0 ? 0 : t > 1 ? 1 : Math.sin((t * Math.PI) / 2);
+  return 1 + --t * t * t * t * t;
 }
 
 export default class extends React.PureComponent {
