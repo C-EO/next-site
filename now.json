@@ -1,7 +1,6 @@
 {
   "version": 2,
   "alias": "nextjsorg.now.sh",
-  "type": "static",
   "builds": [
     { "src": "package.json", "use": "@now/static-build" }
   ],
