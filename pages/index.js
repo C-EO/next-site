@@ -22,7 +22,13 @@ export default () => (
     />
     <MediaQueryConsumer>
       {({ isMobile }) => (
-        <Header height={32} offset={-32} distance={32} shadow active={32}>
+        <Header
+          height={32}
+          offset={-32}
+          distance={32}
+          shadow
+          active={isMobile ? 32 : 160}
+        >
           <Notification
             href="/blog/next-7"
             title="Next 7 is out!"
@@ -31,7 +37,7 @@ export default () => (
             Next 7 is out! — DX improvements, better error reporting, upgraded
             compilation pipeline Wednesday, September 19th 2018
           </Notification>
-          <Navbar />
+          <Navbar hideLogo={!isMobile} />
         </Header>
       )}
     </MediaQueryConsumer>
